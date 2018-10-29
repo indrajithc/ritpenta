@@ -1,0 +1,91 @@
+RewriteEngine on
+
+#RewriteCond %{REQUEST_URI}::$1 ^(.*?/)(.*)::\2$
+#RewriteRule ^(.*)$ - [E=BASE:%1]
+
+
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#========================== pulbic ======================================================
+
+RewriteRule ^login$ public/login.php [L]   
+
+
+#================ ======================================= ==================================
+
+
+
+
+# ========================= admin ===========================================================
+RewriteRule ^admin$ admin/dashboard [L] 
+
+RewriteRule ^admin/dashboard$	 admin/index.php [L]  
+
+RewriteRule ^admin/new$	 admin/new.php [L]  
+RewriteRule ^admin/add$	 admin/addvol.php [L]
+RewriteRule ^admin/view$ admin/viewvol.php [L]
+RewriteRule ^admin/addcamp$ admin/addcamp.php [L]
+RewriteRule ^admin/addevent$ admin/addevent.php [L]
+RewriteRule ^admin/vol_select$ admin/vol_select.php [L]
+RewriteRule ^volunteer/dashboard$	 volunteer/index.php [L]  
+
+
+
+
+
+
+
+
+#================ ======================================= ==================================
+
+
+
+RewriteRule ^files/(.*) files_p9DFyy/$1
+
+
+
+
+
+
+
+
+#RewriteRule ^login$ login.php [L]  
+#RewriteRule ^ajax$ ajax.php [L]  
+
+
+
+
+
+#RewriteRule ^password$ public/rit_soft_pass.php [L]   
+#RewriteRule ^password_key$ public/rit_soft_pass.php [L]   
+#RewriteRule ^password_key/([^/]+)$ public/rit_soft_pass.php?key=$1 [L] 
+
+
+
+RewriteRule ^global.php$ index.php [L]  
+RewriteRule ^uploads/$ index.php [L]  
+RewriteRule ^root/$ index.php [L]  
+RewriteRule ^root/(.*) index.php [L]  
+RewriteRule ^files/$ index.php [L]  
+RewriteRule ^files/(.*) index.php [L]  
+RewriteRule ^assets/$ index.php [L]   
+
+
+
+
+RewriteRule ^logout$ logout.php [L]  
+RewriteRule ^exit$ logout.php [L]  
+
+
+
+
+
+ErrorDocument 400 /rit_penta/public/error.php?key=400
+ErrorDocument 401 /rit_penta/public/error.php?key=401
+ErrorDocument 403 /rit_penta/public/error.php?key=403 
+ErrorDocument 404 /rit_penta/public/error.php?key=404
+ErrorDocument 500 /rit_penta/public/error.php?key=500
+ErrorDocument 502 /rit_penta/public/error.php?key=502
+ErrorDocument 504 /rit_penta/public/error.php?key=504
