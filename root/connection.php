@@ -6,8 +6,8 @@
 class Database extends Exception {
 	
 	private $host = 'localhost';
-	private $username = 'root';
-	private $password = '';
+	private $username = 'nss_db';
+	private $password = 'nss_db';
 	private $db = 'nss_db';
 
 	

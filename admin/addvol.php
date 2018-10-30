@@ -24,8 +24,8 @@ include_once('includes/header.php'); ?>
 <?php
 
 $message=array(
-  null,
-  null
+	null,
+	null
 );
 
 
@@ -52,7 +52,7 @@ if (isset($_POST['find-me'])) {
 	
 
 
-	 
+	
 	$stmnt='select * from stud_details where LOWER(admissionno) = LOWER(:admissionno)';
 
 
@@ -64,11 +64,11 @@ if (isset($_POST['find-me'])) {
 
 
 
-$data = $db->display($stmnt,$params);
+	$data = $db->display($stmnt,$params);
 
 	if( $data){ 
 
-$details = $data[0];
+		$details = $data[0];
 
 	}
 } 
@@ -76,13 +76,13 @@ $details = $data[0];
 if(empty($details)) {
 
 
-  $message [0] = 3;
-   $message [1] = ' non'; 
+	$message [0] = 3;
+	$message [1] = ' non'; 
 
 
 
 }
- 
+
 
 	// var_dump($details);
 
@@ -121,35 +121,35 @@ if(isset($_POST['submit'])){
 
 
 
-	$params=array(
+		$params=array(
 
 
-		':vol_id'        =>  $vol_id,
-		':admnno'       =>  $admnno,
-		':vol_bg'         =>  $vol_bg,
-		':vol_mob'            =>  $vol_mob,
-		':vol_alt_mob'         =>  $vol_alt_mob,
-		':vol_emailid'         =>  $vol_emailid
+			':vol_id'        =>  $vol_id,
+			':admnno'       =>  $admnno,
+			':vol_bg'         =>  $vol_bg,
+			':vol_mob'            =>  $vol_mob,
+			':vol_alt_mob'         =>  $vol_alt_mob,
+			':vol_emailid'         =>  $vol_emailid
 
-	);
+		);
 
 		$stmnt =  'insert into nss_vol_reg(vol_id,admnno,vol_bg,vol_mob,vol_alt_mob,vol_emailid) values(:vol_id,:admnno,:vol_bg,:vol_mob,:vol_alt_mob,:vol_emailid)';
 		$istrue=$db->execute_query($stmnt,$params);
 		if($istrue){
-					$message=' added!';
+			$message=' added!';
 
-					   $message [0] = 1;
-   $message [1] = ' added '; 
+			$message [0] = 1;
+			$message [1] = ' added '; 
 
 
 
-				}else
-			$message=$istrue;	
+		}else
+		$message=$istrue;	
 	}else{
 		// $message=' value already exists';
 
-		   $message [0] = 3;
-   $message [1] = ' value already exists'; 
+		$message [0] = 3;
+		$message [1] = ' value already exists'; 
 
 
 	}
@@ -161,23 +161,21 @@ if(isset($_POST['submit'])){
 
 
 
-<div class="content-wrapper">
-
-	<div class="row">
-		<div class="col h3 mb-3 bg-primary text-white">
+<div class="row">
+	<div class="col h3 mb-3 bg-primary text-white">
 
 
 
-			<div class="page-header">
-				<h1>Add Volunteer</h1>
-			</div>
-
-
-
-
-
+		<div class="page-header">
+			<h1>Add Volunteer</h1>
 		</div>
+
+
+
+
+
 	</div>
+</div>
 
 
 <div class="row">
@@ -189,7 +187,7 @@ if(isset($_POST['submit'])){
 
 
 
- echo show_error($message); ?>
+		echo show_error($message); ?>
 
 
 	</div>
@@ -217,7 +215,7 @@ if(isset($_POST['submit'])){
 		</div>
 
 		<div class="col-3"> 
-					
+			
 			<button class="btn btn-outline-info " name="find-me" style="margin-top: 1.9rem;" type="submit">find</button>
 			
 		</div>
@@ -262,15 +260,15 @@ if(isset($_POST['submit'])){
 						<div class="">
 							<select name="vol_bg" class="form-control"   required>
 
-		<option  value="A+"  selected  >Select</option>
-		<option  value="A+" <?php if( strtolower( $details['blood'] ) == "a" ) echo " selected "; ?> >O+ve</option>
-		<option  value="A+" <?php if( strtolower( $details['blood'] ) == "a" ) echo " selected "; ?> >O-ve</option>
-		<option  value="A+" <?php if( strtolower( $details['blood'] ) == "a" ) echo " selected "; ?> >B+ve</option>
-		<option  value="A+" <?php if( strtolower( $details['blood'] ) == "a" ) echo " selected "; ?> >B-ve</option>
-		<option  value="A+" <?php if( strtolower( $details['blood'] ) == "a" ) echo " selected "; ?> >A+ve</option>
-		<option  value="A+" <?php if( strtolower( $details['blood'] ) == "a" ) echo " selected "; ?> >A-ve</option>
-		<option  value="A+" <?php if( strtolower( $details['blood'] ) == "a" ) echo " selected "; ?> >AB+ve</option>
-		<option  value="A+" <?php if( strtolower( $details['blood'] ) == "a" ) echo " selected "; ?> >AB-ve</option>
+								<option  value="A+"  selected  >Select</option>
+								<option  value="A+" <?php if( strtolower( $details['blood'] ) == "a" ) echo " selected "; ?> >O+ve</option>
+								<option  value="A+" <?php if( strtolower( $details['blood'] ) == "a" ) echo " selected "; ?> >O-ve</option>
+								<option  value="A+" <?php if( strtolower( $details['blood'] ) == "a" ) echo " selected "; ?> >B+ve</option>
+								<option  value="A+" <?php if( strtolower( $details['blood'] ) == "a" ) echo " selected "; ?> >B-ve</option>
+								<option  value="A+" <?php if( strtolower( $details['blood'] ) == "a" ) echo " selected "; ?> >A+ve</option>
+								<option  value="A+" <?php if( strtolower( $details['blood'] ) == "a" ) echo " selected "; ?> >A-ve</option>
+								<option  value="A+" <?php if( strtolower( $details['blood'] ) == "a" ) echo " selected "; ?> >AB+ve</option>
+								<option  value="A+" <?php if( strtolower( $details['blood'] ) == "a" ) echo " selected "; ?> >AB-ve</option>
 
 
 							</select>
@@ -341,7 +339,6 @@ if(isset($_POST['submit'])){
 <?php  endif; ?>
 
 
-</div>
 
 <?php
 

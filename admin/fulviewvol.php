@@ -1,6 +1,6 @@
 
 <?php
- 
+
 //(?=<!--)(.*)(?=-->)(.*)(?=\n)
 
 
@@ -17,14 +17,14 @@ auth_login();
 
 $id = -1;
 if (isset($_GET['id'])) {
-$id = $_GET['id'];
+  $id = $_GET['id'];
 
 }
 
 
 if (   $id == -1) {
 
-setLocation("viewvol.php");
+  setLocation("viewvol.php");
 }
 
 
@@ -33,7 +33,7 @@ setLocation("viewvol.php");
 include_once('includes/header.php');
 
 
- $db=new Database();
+$db=new Database();
 $error='';
 
 $message=array(
@@ -42,11 +42,8 @@ $message=array(
 );
 
 
- ?>
+?>
 
-
-
-<div class="content-wrapper">
 
 
 
@@ -55,36 +52,34 @@ $message=array(
 
 
 
-<div class="page-header">
-  <div class="h3 mb-3 bg-primary text-white"><h1> Complete Details</h1>
+    <div class="page-header">
+      <div class="h3 mb-3 bg-primary text-white"><h1> Complete Details</h1>
+      </div>
     </div>
-  </div>
 
 
- 
-
-<?php
 
 
-   $stmnt=' SELECT * FROM `nss_vol_reg` WHERE vol_id = :id ';
-  
-  $params = array (
-':id' => $id
-  );
+    <?php
 
 
-  $details = $db->display($stmnt,  $params );
- 
- if (isset(  $details[0])) {
+    $stmnt=' SELECT * FROM `nss_vol_reg` WHERE vol_id = :id ';
+
+    $params = array (
+      ':id' => $id
+    );
+
+
+    $details = $db->display($stmnt,  $params );
+
+    if (isset(  $details[0])) {
      $details =   $details[0];
- }  else {
+   }  else {
 
-setLocation("viewvol.php");
- }
+    setLocation("viewvol.php");
+  }
 
-?>
- 
-
+  ?>
 
 
 
@@ -100,100 +95,94 @@ setLocation("viewvol.php");
 
 
 
-<table class="table table-hover w-50">
-  <tbody>
-    <tr>
-      <th scope="col">Volunteer Id</th>
-      <td>
-        <?php echo  $details['vol_id']; ?>
-      </td>
-    </tr>
-    <tr>
-      <th scope="col">Admission Number</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="col">Name</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="col">DOB</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="col">Gender</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="col">Religion</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="col">Caste</th>
-      <td></td>
-    </tr>
+
+
+  <table class="table table-hover w-50">
+    <tbody>
+      <tr>
+        <th scope="col">Volunteer Id</th>
+        <td>
+          <?php echo  $details['vol_id']; ?>
+        </td>
+      </tr>
+      <tr>
+        <th scope="col">Admission Number</th>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="col">Name</th>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="col">DOB</th>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="col">Gender</th>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="col">Religion</th>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="col">Caste</th>
+        <td></td>
+      </tr>
 
       <tr>
 
-      <th scope="col">Address</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="col">Year of Admission</th>
-      <td></td>
-    </tr>
-<tr>
-      <th scope="col">Course</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="col">Branch</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="col">Semester</th>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="col">Department</th>
-    </tr>
-    <tr>
-      <th scope="col">Blood Group</th>
-    </tr>
-    <tr>
-      <th scope="col">Mobile Number</th>
-    </tr>
-    <tr>
-      <th scope="col">Alternate Mobile Number</th>
-    </tr>
-    <tr>
-      <th scope="col">Email Id</th>
-      <th scope="col"></th>
-    </tr>
-  </tbody>
-     
-     
-</table>
+        <th scope="col">Address</th>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="col">Year of Admission</th>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="col">Course</th>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="col">Branch</th>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="col">Semester</th>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="col">Department</th>
+      </tr>
+      <tr>
+        <th scope="col">Blood Group</th>
+      </tr>
+      <tr>
+        <th scope="col">Mobile Number</th>
+      </tr>
+      <tr>
+        <th scope="col">Alternate Mobile Number</th>
+      </tr>
+      <tr>
+        <th scope="col">Email Id</th>
+        <th scope="col"></th>
+      </tr>
+    </tbody>
+
+
+  </table>
 
 
 
- 
 
-  </div> 
+
+</div> 
 </div>
 
 
 
 
 
- 
-
-
-
-
-
-
-        </div>
 
 
 
@@ -202,4 +191,8 @@ setLocation("viewvol.php");
 
 
 
-        <?php include_once('includes/footer.php'); ?>
+
+
+
+
+<?php include_once('includes/footer.php'); ?>

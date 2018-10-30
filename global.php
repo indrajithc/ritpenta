@@ -4,15 +4,15 @@
  * @Author: indran
  * @Date:   2018-10-17 13:24:39
  * @Last Modified by:   indran
- * @Last Modified time: 2018-10-17 17:40:01
+ * @Last Modified time: 2018-10-30 17:37:14
  */
 ?>
 <?php
 if (session_status() === PHP_SESSION_NONE){session_start();}
 
-define( 'SYSTEM_NAME', 'rit_penta' ); 
+define( 'SYSTEM_NAME', 'ritpenta' ); 
 define( 'DISPLAY_NAME', 'RIT PENTA' );
-define( 'SYSTEM_ROOT', '/rit_penta' );
+define( 'SYSTEM_ROOT', '/ritpenta' );
 
 
 

@@ -4,10 +4,11 @@
  * @Author: indran
  * @Date:   2018-10-17 16:49:19
  * @Last Modified by:   indran
- * @Last Modified time: 2018-10-17 16:57:33
+ * @Last Modified time: 2018-10-30 17:43:20
  */
 ?>
 
+</div>
 
 <footer class="footer">
 	<div class="container-fluid clearfix">
