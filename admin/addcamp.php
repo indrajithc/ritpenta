@@ -115,56 +115,59 @@
 
 
 
- 	<form  id="addcamp"  action="" method="post" data-parsley-validate class="form-horizontal borderd-row" align="center">
+ <form  id="addcamp"  action="" method="post" data-parsley-validate class="form-horizontal borderd-row" align="center">
 
- 		<h3 class="h3 mb-3 font-weight-normal danger-text">Add Camp Activities</h3>
-
-
+ 	<h3 class="h3 mb-3 font-weight-normal danger-text">Add Camp Activities</h3>
 
 
 
 
 
- 		<div class="form-group"> 
- 			<div class="input-group">
- 				<input type="text" class="form-control" name="cp_name" placeholder="Camp Name" data-parsley-required="true" data-parsley-type="">
- 			</div>
+
+
+ 	<div class="form-group"> 
+ 		<div class="input-group">
+ 			<input type="text" class="form-control" name="cp_name" placeholder="Camp Name" data-parsley-required="true" data-parsley-type="">
  		</div>
+ 	</div>
 
 
 
- 		<div class="form-group"> 
- 			<div class="input-group">
- 				<input type="date" class="form-control" name="cp_date_frm" placeholder=" Start On" data-parsley-required="true" data-parsley-type="number">
+ 	<div class="form-group"> 
+ 		<div class="input-group">
+ 			<input type="text" class="form-control datetimepicker" data-date-format="D-M-YYYY" name="cp_date_frm" placeholder=" Start On" data-parsley-required="true" data-parsley-type="number">
 
- 			</div>
+ 			
+
+
  		</div>
+ 	</div>
 
 
 
 
- 		<div class="form-group">
+ 	<div class="form-group">
 
- 			<div class="input-group">
- 				<input type="date" class="form-control" name="cp_date_to" placeholder="End On" data-parsley-required="true" data-parsley-type="number">
+ 		<div class="input-group">
+ 			<input type="date" class="form-control" name="cp_date_to" placeholder="End On" data-parsley-required="true" data-parsley-type="number">
 
 
 
- 			</div>
  		</div>
+ 	</div>
 
 
 
 
 
 
- 		<div class="form-group">
+ 	<div class="form-group">
 
- 			<div class="input-group">
- 				<input type="textarea" class="form-control" name="cp_details" placeholder="Objective Of Camp" data-parsley-required="true" data-parsley-type="" style="height: 100px">
+ 		<div class="input-group">
+ 			<input type="textarea" class="form-control" name="cp_details" placeholder="Objective Of Camp" data-parsley-required="true" data-parsley-type="" style="height: 100px">
 
- 			</div>
  		</div>
+ 	</div>
 
 
 
@@ -173,12 +176,12 @@
 
 
 
- 		<div class="container">
- 			<button class="btn btn-dark submit-btn btn-block btn btn-outline-dark" name="submit-btn">Submit
- 			</button>
- 		</div>
+ 	<div class="container">
+ 		<button class="btn btn-dark submit-btn btn-block btn btn-outline-dark" name="submit-btn">Submit
+ 		</button>
+ 	</div>
 
 
- 	</form>
+ </form>
 
- 	<?php   include_once('includes/footer.php'); ?>
+ <?php   include_once('includes/footer.php'); ?>

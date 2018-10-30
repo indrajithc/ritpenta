@@ -4,7 +4,7 @@
  * @Author: indran
  * @Date:   2018-10-17 16:48:54
  * @Last Modified by:   indran
- * @Last Modified time: 2018-10-30 17:50:51
+ * @Last Modified time: 2018-10-30 18:50:35
  */
 ?>
 <!DOCTYPE html>
@@ -36,6 +36,7 @@
 
 	<link rel="stylesheet" href="admin/css/style.css">  
 	<link rel="stylesheet" href="admin/css/style_01.css">
+	<link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css">
 
 
 
