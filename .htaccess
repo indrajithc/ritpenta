@@ -82,10 +82,10 @@ RewriteRule ^exit$ logout.php [L]
 
 
 
-ErrorDocument 400 /rit_penta/public/error.php?key=400
-ErrorDocument 401 /rit_penta/public/error.php?key=401
-ErrorDocument 403 /rit_penta/public/error.php?key=403 
-ErrorDocument 404 /rit_penta/public/error.php?key=404
-ErrorDocument 500 /rit_penta/public/error.php?key=500
-ErrorDocument 502 /rit_penta/public/error.php?key=502
-ErrorDocument 504 /rit_penta/public/error.php?key=504
+ErrorDocument 400 /ritpenta/public/error.php?key=400
+ErrorDocument 401 /ritpenta/public/error.php?key=401
+ErrorDocument 403 /ritpenta/public/error.php?key=403 
+ErrorDocument 404 /ritpenta/public/error.php?key=404
+ErrorDocument 500 /ritpenta/public/error.php?key=500
+ErrorDocument 502 /ritpenta/public/error.php?key=502
+ErrorDocument 504 /ritpenta/public/error.php?key=504

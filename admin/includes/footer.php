@@ -4,10 +4,11 @@
  * @Author: indran
  * @Date:   2018-10-17 16:49:19
  * @Last Modified by:   indran
- * @Last Modified time: 2018-10-17 16:57:33
+ * @Last Modified time: 2018-10-30 19:18:40
  */
 ?>
 
+</div>
 
 <footer class="footer">
 	<div class="container-fluid clearfix">
@@ -24,9 +25,14 @@
 
 <script src="assets/js/popper.min.js"></script>  
 <script src="assets/js/bootstrap-material-design.min.js"></script> 
+
+<script src="assets/js/moment.min.js"></script>   
+<script src="assets/js/bootstrap-datetimepicker.min.js"></script>  
+
 <script src="assets/js/jquery.slimscroll.min.js"></script> 
 <script src="assets/js/parsley.min.js"></script>
 <script src="assets/js/lobibox.min.js"></script>  
+
 
 
 <script src="admin/js/main.js"></script>
@@ -35,9 +41,10 @@
 
 <script type="text/javascript">
 	$(document).ready(function($) {
-		$('body').bootstrapMaterialDesign();
+		// $('body').bootstrapMaterialDesign();
+		$('.datetimepicker').datetimepicker( );
 
-
+		
 		$("[data-parsley-validate]").parsley({
 			errorClass: 'has-danger',
 			successClass: 'has-success',
