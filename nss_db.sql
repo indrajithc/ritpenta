@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2018 at 09:01 AM
+-- Generation Time: Nov 05, 2018 at 06:33 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -212,6 +212,19 @@ INSERT INTO `current_class` (`classid`, `studid`, `rollno`, `adm_status`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `nss_awards`
+--
+
+CREATE TABLE IF NOT EXISTS `nss_awards` (
+  `awrd_id` int(11) NOT NULL,
+  `awrd_name` varchar(50) NOT NULL,
+  `awrd_detls` varchar(100) NOT NULL,
+  `awrd_photo` blob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `nss_bg_reqst`
 --
 
@@ -224,7 +237,20 @@ CREATE TABLE IF NOT EXISTS `nss_bg_reqst` (
   `req_bg` varchar(5) NOT NULL,
   `req_loc` varchar(80) NOT NULL,
   `req_status` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `nss_bg_reqst`
+--
+
+INSERT INTO `nss_bg_reqst` (`req_id`, `req_name`, `req_email`, `req_mob`, `req_date`, `req_bg`, `req_loc`, `req_status`) VALUES
+(1, '', '', '', '0000-00-00', 'Blood', '', ''),
+(2, '', '', '', '0000-00-00', 'Blood', '', ''),
+(3, 'djhghjfv', 'sdghj@gmail.com', '7890543245', '0000-00-00', 'B+', 'rhgjykjkj', ''),
+(4, 'djhghjfv', 'sdghj@gmail.com', '7890543245', '0000-00-00', 'B+', 'rhgjykjkj', ''),
+(5, 'djhghjfv', 'sdghj@gmail.com', '7890543245', '0000-00-00', 'B+', 'rhgjykjkj', ''),
+(6, 'neethu', 'neethu@gmail.com', '7890543242', '0000-00-00', 'O-', 'dsyudsasdghjk', ''),
+(7, 'nilee', 'nilee@gmail.com', '7890543249', '0000-00-00', 'A+', 'gjjhgfd', '');
 
 -- --------------------------------------------------------
 
@@ -280,7 +306,7 @@ CREATE TABLE IF NOT EXISTS `nss_camp_reg` (
   `cp_date_to` date NOT NULL,
   `cp_details` varchar(100) NOT NULL,
   `cp_status` varchar(30) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `nss_camp_reg`
@@ -289,7 +315,8 @@ CREATE TABLE IF NOT EXISTS `nss_camp_reg` (
 INSERT INTO `nss_camp_reg` (`cp_id`, `cp_name`, `cp_date_frm`, `cp_date_to`, `cp_details`, `cp_status`) VALUES
 (16, 'dhhgfgfhh', '2018-10-24', '2018-10-31', 'sdghjhgfh', ''),
 (17, 'dfghhgdfghj', '2018-10-24', '2018-10-31', 'sfghghkgjg', ''),
-(18, 'fdhfgjh', '2018-10-17', '2018-10-21', 'hhgttjty', '');
+(18, 'fdhfgjh', '2018-10-17', '2018-10-21', 'hhgttjty', ''),
+(19, 'fgghdfhggf', '2018-11-01', '2018-11-08', 'dfdgjjfgkggh', '');
 
 -- --------------------------------------------------------
 
@@ -358,6 +385,20 @@ CREATE TABLE IF NOT EXISTS `nss_eve_cordntrs` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `nss_feedback`
+--
+
+CREATE TABLE IF NOT EXISTS `nss_feedback` (
+  `fd_id` int(11) NOT NULL,
+  `fd_name` varchar(30) NOT NULL,
+  `fd_email` text NOT NULL,
+  `fd_phoneno` text NOT NULL,
+  `fd_msg` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `nss_log`
 --
 
@@ -373,7 +414,7 @@ CREATE TABLE IF NOT EXISTS `nss_log` (
 --
 
 INSERT INTO `nss_log` (`user_id`, `user_type`, `user_pwd`, `date`) VALUES
-('admin@penta', 'admin', 'qwerty', '2018-10-07');
+('admin@penta.com', 'admin', 'qwerty', '2018-10-07');
 
 -- --------------------------------------------------------
 
@@ -395,7 +436,6 @@ CREATE TABLE IF NOT EXISTS `nss_vol_reg` (
 --
 
 INSERT INTO `nss_vol_reg` (`vol_id`, `admnno`, `vol_bg`, `vol_mob`, `vol_alt_mob`, `vol_emailid`) VALUES
-(0, '16MP675', 'A+', '9747766256', '', 'neethunithin68@gmail.com'),
 (101, '16MP675', 'O-ve', '7979149300', '9567140622', 'neethunithin68@gmail.com'),
 (102, '16MP676', 'O+ve', '7979149300', '9567140622', 'nileenamjohn@gmail.com'),
 (106, '16MP677', 'A+', '9605565668', '9567140620', 'reshmaraveendran40@gmail.com'),
@@ -536,6 +576,12 @@ ALTER TABLE `current_class`
   ADD PRIMARY KEY (`studid`), ADD KEY `classid` (`classid`,`studid`);
 
 --
+-- Indexes for table `nss_awards`
+--
+ALTER TABLE `nss_awards`
+  ADD PRIMARY KEY (`awrd_id`);
+
+--
 -- Indexes for table `nss_bg_reqst`
 --
 ALTER TABLE `nss_bg_reqst`
@@ -615,7 +661,7 @@ ALTER TABLE `stud_details`
 -- AUTO_INCREMENT for table `nss_bg_reqst`
 --
 ALTER TABLE `nss_bg_reqst`
-  MODIFY `req_id` int(15) NOT NULL AUTO_INCREMENT;
+  MODIFY `req_id` int(15) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `nss_camp_cordntrs`
 --
@@ -635,7 +681,7 @@ ALTER TABLE `nss_camp_photo`
 -- AUTO_INCREMENT for table `nss_camp_reg`
 --
 ALTER TABLE `nss_camp_reg`
-  MODIFY `cp_id` int(15) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+  MODIFY `cp_id` int(15) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `nss_event_partcptn`
 --
