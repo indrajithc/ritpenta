@@ -4,7 +4,7 @@
  * @Author: indran
  * @Date:   2018-10-17 16:49:19
  * @Last Modified by:   indran
- * @Last Modified time: 2018-10-30 19:18:40
+ * @Last Modified time: 2018-11-07 06:18:47
  */
 ?>
 
@@ -31,6 +31,9 @@
 
 <script src="assets/js/jquery.slimscroll.min.js"></script> 
 <script src="assets/js/parsley.min.js"></script>
+<script src="assets/js/select2.full.min.js"></script>
+
+
 <script src="assets/js/lobibox.min.js"></script>  
 
 
@@ -43,6 +46,9 @@
 	$(document).ready(function($) {
 		// $('body').bootstrapMaterialDesign();
 		$('.datetimepicker').datetimepicker( );
+		// $.fn.select2.defaults.set("theme", "classic");
+		
+		$('.select2').select2();
 
 		
 		$("[data-parsley-validate]").parsley({

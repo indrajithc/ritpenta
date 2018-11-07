@@ -5,7 +5,7 @@
 
 
 
- 
+
 
 
 
@@ -32,10 +32,31 @@
 <li class="nav-item">
 	<a class="nav-link" href="admin/addcamp">
 		<i class="fas fa-tachometer-alt  pr-4"></i>
-		<span class="menu-title">Add Camp</span>
+		<span class="menu-title">Add </span>
 	</a>
 </li>
-      
+
+
+<li class="nav-item">
+	<a class="nav-link" data-toggle="collapse" href="#camp-dropdown" aria-expanded="false" aria-controls="camp-dropdown">
+		<i class="fas fa-tachometer-alt  pr-4"></i>
+		<span class="menu-title">Camp</span>
+		<i class="menu-arrow"></i>
+	</a>
+	<div class="collapse" id="camp-dropdown">
+		<ul class="nav flex-column sub-menu">
+			<li class="nav-item">
+				<a class="nav-link" href="admin/addcamp">Add</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="admin/viewcamp">View</a>
+			</li>
+		</ul>
+	</div>
+</li>
+
+
+
 
 <li class="nav-item">
 	<a class="nav-link" href="admin/addevent">
