@@ -12,7 +12,7 @@ if (session_status() === PHP_SESSION_NONE){session_start();}
 
 define( 'SYSTEM_NAME', 'ritpenta' ); 
 define( 'DISPLAY_NAME', 'RIT PENTA' );
-define( 'SYSTEM_ROOT', '/ritpenta' );
+define( 'SYSTEM_ROOT', '/ritpentanew' );
 
 
 try {
