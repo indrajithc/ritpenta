@@ -4,7 +4,7 @@
  * @Author: indran
  * @Date:   2018-10-17 13:24:39
  * @Last Modified by:   indran
- * @Last Modified time: 2018-10-30 17:37:14
+ * @Last Modified time: 2018-11-07 05:46:12
  */
 ?>
 <?php
@@ -14,6 +14,11 @@ define( 'SYSTEM_NAME', 'ritpenta' );
 define( 'DISPLAY_NAME', 'RIT PENTA' );
 define( 'SYSTEM_ROOT', '/ritpenta' );
 
+
+try {
+	date_default_timezone_set("Asia/Kolkata");
+} catch (Exception $e) {
+}
 
 
 
@@ -82,6 +87,12 @@ define( 'PATH_VOLUNTEER', PATH . VOLUNTEER );
 define( 'TERMS__CONDITIONS', '#'); 
 define( 'THEME_OWN_BY', '2018 MCA RIT ');
 
+function isit($key , $bigarray, $returnme = '') {
+	if (isset($bigarray[$key])) {
+		return $bigarray[$key];
+	}
+	return $returnme;
+}
 function indexMe ( $index ) {
 	$index = INDEX_NUMBER + $index;
 	return  $index;

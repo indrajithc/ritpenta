@@ -136,7 +136,7 @@
 
 							<div class="form-group">
 								<div class="input-group">
-									<input type="text" class="form-control"  placeholder="Activity Name" name="event_name" data-parsley-required="true" data-parsley-type="">
+									<input type="text" class="form-control"  placeholder="Activity Name" name="event_name" data-parsley-required="true"  >
 								</div>
 							</div>
 
@@ -165,7 +165,7 @@
             <div class="form-group">
             	<label class="bmd-label-floating">Total Hours</label>
                 <div class='input-group date' id='datetimepicker3'>
-                    <input type="text" class="form-control" placeholdera="Hours" name="event_hrs" data-parsley-required="true" data-parsley-type="" />
+                    <input type="text" class="form-control" placeholdera="Hours" name="event_hrs" data-parsley-required="true"   />
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-time"></span>
                     </span>
@@ -197,7 +197,7 @@
 <div class="form-group">
 	
 	<div class="input-group">
-		<input type="textarea" class="form-control" name="event_dtls" placeholder="Details Of Event" data-parsley-required="true" data-parsley-type="" style="height: 100px">
+		<input type="textarea" class="form-control" name="event_dtls" placeholder="Details Of Event" data-parsley-required="true"   style="height: 100px">
 		
 	</div>
 </div>

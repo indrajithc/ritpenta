@@ -78,7 +78,7 @@ include_once('includes/header.php'); ?>
 	<div class="form-group">
 		<label class="bmd-label-floating">Email Id</label>
 		<div class="">
-			<input type="email" class="form-control"  placeholdera="Email Id" name="reqmail" data-parsley-required="true" data-parsley-type="">
+			<input type="email" class="form-control"  placeholdera="Email Id" name="reqmail" data-parsley-required="true"  >
 		</div>
 	</div>	
 
