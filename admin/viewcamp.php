@@ -1,5 +1,11 @@
+
 <?php
-include_once('includes/header.php'); ?>
+include_once('../global.php')?>
+<?php include_once('../root/functions.php')?>
+<?php include_once('../root/functions.php')?>
+<?php 
+include_once('includes/header.php');
+?>
 
 
 
