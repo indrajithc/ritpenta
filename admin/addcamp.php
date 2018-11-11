@@ -1,151 +1,81 @@
- <?php
 
+
+
+
+
+
+
+ <?php
  include_once('../global.php')?>
  <?php include_once('../root/functions.php')?>
  <?php
  auth_login();
-
  include_once('includes/header.php'); ?>
 
 
 
 
  <?php
-
-
-
-
-
-
  include_once('../root/connection.php');
  $db=  new Database();
  $message=array(null,null);
 //$message='';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  if(isset($_POST['submit-btn'])){
-
  	$cp_name         =  $_POST['cp_name'];
  	$cp_date_frm        =  $_POST['cp_date_frm'];
  	$cp_date_to      =  $_POST['cp_date_to'];
  	$cp_details         =  $_POST['cp_details'];
  	$cp_id = $_POST['cp_id'];
-
-
  	$cp_coordinator_1 = $_POST['cp_coordinator_1'];
  	$cp_coordinator_2 = $_POST['cp_coordinator_2'];
-
-
-
  	if ($cp_coordinator_1  ==  $cp_coordinator_2) {
-
  		$message [0] = 3;
  		$message [1] = ' both coordinators cannot be same '; 
  		
-
-
  	} else  if(strtotime($cp_date_frm) <= strtotime($cp_date_to)) {
-
-
-
-
-
  		$stmnt=" SELECT * FROM nss_camp_reg WHERE cp_name= '" . $cp_name ."' OR cp_key= '" . $cp_id ."' ";
-
-
-
-
-
  		$result = $db->display( $stmnt);
  		if( $result ){
-
  			$message [0] = 2;
  			$message [1] = ' cmap name or camp id is already exists'; 
-
  		} else {
-
-
  			$stmnt =  'insert into nss_camp_reg(cp_key, cp_name,cp_date_frm,cp_date_to,cp_details) values(:cp_id, :cp_name,:cp_date_frm,:cp_date_to,:cp_details)';
-
-
-
-
-
  			$params=array(
-
  				':cp_id' 	=> $cp_id,
  				':cp_name'        =>  $cp_name,
  				':cp_date_frm'       =>  $cp_date_frm,
  				':cp_date_to'         =>  $cp_date_to,
  				':cp_details'            =>  $cp_details
-
  			);
-
-
  			$istrue=$db->execute_query_return_id($stmnt,$params);
-
  			if($istrue){
 					//$message=' added!';
-
  				$message [0] = 1;
  				$message [1] = ' camp added '; 
-
-
-
  				$params=array( 
  					'cmp_id' 	=> $istrue,
  					'cmp_cd_id1'        =>  $cp_coordinator_1,
  					'cmp_cd_id2'       =>  $cp_coordinator_2  
  				);
-
-
  				$result = insertInToTable('nss_camp_cordntrs', $params, $db);
-
  				if ($result) {
-
  					$message [0] = 1;
  					$message [1] = ' camp and coordinators are added '; 
  				}
-
-
  			}
  			else
  			{
 			//$message=$istrue;	
-
 		// $message=' value already exists';
-
  				$message [0] = 3;
  				$message [1] = ' something is wrong'; 
  			}
-
  		}
-
-
  	} else  {
-
  		$message [0] = 4;
  		$message [1] = ' end date should not be less than start date '; 
  	}
-
-
-
  }
-
-
-
  ?>
 
 
@@ -168,20 +98,15 @@
  				<label for="exampleInputName2" class="col-sm-3 col-form-label">Camp ID</label>
  				<div class="col-sm-9">
  					<input type="text" class="form-control text-success" name="cp_id" placeholder="Camp ID" data-parsley-required="true"   value="<?php
-
  					try {
  						$keyge = "CAMP_" . Date('Y') . "_"; 
  						$keyge .= rand(100,999)."";
-
  						$result = selectFromTable( 'COUNT(*) AS count ', 'nss_camp_reg' , "1", $db);
  						if( isset($result[0]['count'])){
  							$keyge  .=  $result[0]['count'];
  						}
-
-
  						echo $keyge ;
  						} catch(Exception $e){
-
  						}
  						?>">
  					</div>
@@ -231,7 +156,8 @@
 
 
 
- 				<h5  class="text-capitalize mt-3 text-left">camp coordinator</h5>
+ 			<center ><h5  class="text-capitalize mt-3 ">camp coordinators</h5> </center>
+ 		</br>
 
 
  				<?php  

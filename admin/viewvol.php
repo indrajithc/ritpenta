@@ -32,23 +32,21 @@ $message=array(
   <div class="col-sm-12 ">
 
 
+<h1 class="h3 mb-3 font-weight-normal text-dark text-center">Volunteer Details</h1>
+    
 
-    <div class="page-header">
-      <div class="h3 mb-3 bg-primary text-white"><h1>Volunteer Details</h1>
-      </div>
-    </div>
 
 
     <table class="table table-hover bg-white">
       <thead>
         <tr>
           <th scope="col">Volunteer Id</th>
-          <th scope="col">Admission Number</th>
-          <th scope="col">Name</th>
-          <th scope="col">Department</th>
-          <th scope="col">Mobile Number</th>
-          <th scope="col">Email Id</th>
-          <th scope="col"></th>
+      <th scope="col">Admission Number</th>
+      <th scope="col">Blood grroup</th>
+      <th scope="col">Department</th>
+      <th scope="col">Mobile Number</th>
+      <th scope="col">Email Id</th>
+      <th scope="col"></th>
         </tr>
       </thead>
       
@@ -67,19 +65,20 @@ $message=array(
         ?>
 
         <?php foreach ($details as $key => $value): ?>
+   <tr>
+        <td><?php echo $value['vol_id']; ?></td>
+        <td><?php echo $value['admnno']; ?></td>
+        <td><?php echo $value['vol_bg']; ?></td>
+        <td><?php echo $value['vol_mob']; ?></td>
+        <td><?php echo $value['vol_alt_mob']; ?></td>
+        <td><?php echo $value['vol_emailid']; ?></td>
 
-          <tr>
-            <td><?php echo $value['vol_id']; ?></td>
-            <td><?php echo $value['admnno']; ?></td>
-            <td><?php echo $value['vol_bg']; ?></td>
-            <td><?php echo $value['vol_mob']; ?></td>
-            <td><?php echo $value['vol_alt_mob']; ?></td>
-            <td><?php echo $value['vol_emailid']; ?></td>
 
+<td><a href="admin/fulviewvol.php?id=<?php echo $value['vol_id']; ?>"  class="btn btn-sm btn-success "  > <i  class=" fa fa-eye"></i></a>
+<td><a href="admin/edit_vol.php?id=<?php echo $value['vol_id']; ?>"   class="btn btn-sm btn-primary "  ><i class="far fa-edit"></i></a>
+      </td>
+    </tr>
 
-            <td><a href="admin/fulviewvol.php?id=<?php echo $value['vol_id']; ?>" class="btn btn-primary btn-sm">view</a>
-            </td>
-          </tr>
 
 
         <?php endforeach; ?>
@@ -92,16 +91,6 @@ $message=array(
 
   </div> 
 </div>
-
-
-
-
-
-
-
-
-
-
 
 
 
