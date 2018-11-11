@@ -1,11 +1,6 @@
 <?php
 
-/**
- * @Author: indran
- * @Date:   2018-10-17 16:48:54
- * @Last Modified by:   indran
- * @Last Modified time: 2018-11-07 06:42:24
- */
+
 ?>
 <!DOCTYPE html>
 <html lang="en"  ng-app="app-admin">
@@ -15,7 +10,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
 	<meta name="description" content="">
-	<meta name="author" content="Indran">
 	<meta name="github" content="https://github.com/indrajithc">
 
 	<base href="<?php echo DIRECTORY ; ?>">
