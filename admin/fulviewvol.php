@@ -6,31 +6,23 @@
 
 
 
+include_once('includes/header.php');
 
-
-include_once('../global.php'); ?>
-<?php include_once('../root/functions.php'); ?>
-<?php include_once('../root/connection.php'); ?>
-<?php  
-
-auth_login();
 
 $id = -1;
 if (isset($_GET['id'])) {
-  $id = $_GET['id'];
+  $id = unIndexMe($_GET['id']);
 
 }
 
 
 if (   $id == -1) {
 
-  setLocation("viewvol.php");
+  setLocation("admin/viewvol");
 }
 
 
 
-
-include_once('includes/header.php');
 
 
 $db=new Database();
@@ -63,7 +55,7 @@ $message=array(
     <?php
 
 
-    $stmnt=' SELECT * FROM `nss_vol_reg` WHERE vol_id = :id ';
+    $stmnt=" SELECT * FROM `nss_vol_reg` v LEFT JOIN  stud_details d ON v.admnno = d.admissionno   WHERE v.vol_id = :id ";
 
     $params = array (
       ':id' => $id
@@ -76,7 +68,7 @@ $message=array(
      $details =   $details[0];
    }  else {
 
-    setLocation("viewvol.php");
+    setLocation("admin/viewvol");
   }
 
   ?>
@@ -85,95 +77,96 @@ $message=array(
 
 
 
+  <div class="row">
+   <div class="col-sm-12 col-md-8 offset-md-2">
 
 
 
 
+     <table class="table table-hover w-100">
+       <tbody>
+         <tr>
+           <th scope="col">Volunteer Id</th>
+           <td>
+            <?php echo  isit( 'vol_id', $details); ?>
+          </td>
+        </tr>
+        <tr>
+         <th scope="col">Admission Number</th>
+         <td>
+
+           <?php echo  isit( 'admissionno', $details); ?>
+
+         </td>
+       </tr>
+       <tr>
+         <th scope="col">Name</th>
+         <td> <?php echo  isit( 'name', $details); ?>
+       </td>
+     </tr>
+     <tr>
+       <th scope="col">DOB</th>
+       <td></td>
+     </tr>
+     <tr>
+       <th scope="col">Gender</th>
+       <td></td>
+     </tr>
+     <tr>
+       <th scope="col">Religion</th>
+       <td></td>
+     </tr>
+     <tr>
+       <th scope="col">Caste</th>
+       <td></td>
+     </tr>
+
+     <tr>
+
+       <th scope="col">Address</th>
+       <td></td>
+     </tr>
+     <tr>
+       <th scope="col">Year of Admission</th>
+       <td></td>
+     </tr>
+     <tr>
+       <th scope="col">Course</th>
+       <td></td>
+     </tr>
+     <tr>
+       <th scope="col">Branch</th>
+       <td></td>
+     </tr>
+     <tr>
+       <th scope="col">Semester</th>
+       <td></td>
+     </tr>
+     <tr>
+       <th scope="col">Department</th>
+     </tr>
+     <tr>
+       <th scope="col">Blood Group</th>
+     </tr>
+     <tr>
+       <th scope="col">Mobile Number</th>
+     </tr>
+     <tr>
+       <th scope="col">Alternate Mobile Number</th>
+     </tr>
+     <tr>
+       <th scope="col">Email Id</th>
+       <th scope="col"></th>
+     </tr>
+   </tbody>
+
+
+ </table>
 
 
 
-
-
-
-
-
-  <table class="table table-hover w-50">
-    <tbody>
-      <tr>
-        <th scope="col">Volunteer Id</th>
-        <td>
-          <?php echo  $details['vol_id']; ?>
-        </td>
-      </tr>
-      <tr>
-        <th scope="col">Admission Number</th>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="col">Name</th>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="col">DOB</th>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="col">Gender</th>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="col">Religion</th>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="col">Caste</th>
-        <td></td>
-      </tr>
-
-      <tr>
-
-        <th scope="col">Address</th>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="col">Year of Admission</th>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="col">Course</th>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="col">Branch</th>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="col">Semester</th>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="col">Department</th>
-      </tr>
-      <tr>
-        <th scope="col">Blood Group</th>
-      </tr>
-      <tr>
-        <th scope="col">Mobile Number</th>
-      </tr>
-      <tr>
-        <th scope="col">Alternate Mobile Number</th>
-      </tr>
-      <tr>
-        <th scope="col">Email Id</th>
-        <th scope="col"></th>
-      </tr>
-    </tbody>
-
-
-  </table>
-
-
-
+</div>
+</div>
 
 
 </div> 

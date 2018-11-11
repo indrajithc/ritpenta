@@ -1,10 +1,47 @@
+<?php
+
+/**
+ * @Author: indran
+ * @Date:   2018-11-07 06:49:44
+ * @Last Modified by:   indran
+ * @Last Modified time: 2018-11-11 17:37:44
+ */
+include_once('includes/header.php'); ?>
+
+
 
 <?php
-include_once('../global.php')?>
-<?php include_once('../root/functions.php')?>
-<?php include_once('../root/functions.php')?>
-<?php 
-include_once('includes/header.php');
+
+if (isset($_POST['make_delete'])) {
+	$action = 0;
+
+
+	$id = isit('id', $_POST, 0 );
+	$id = unIndexMe((int) $id );
+
+	if($_POST['make_delete'] == 1)
+		$action = 1;
+
+
+	$params = array(
+		'cp_delete' => $action
+	); 
+
+	$istrue = updateTable( 'nss_camp_reg', $params, ' cp_id = ' . $id , $db);
+
+	if($istrue){
+
+		$message [0] = 1;
+		$message [1] = ' updated ';  
+
+	}  else {
+
+		$message [0] = 4;
+		$message [1] = ' update error ';  
+	}
+
+}
+
 ?>
 
 
@@ -12,11 +49,28 @@ include_once('includes/header.php');
 
 <?php 
 $data = array();
-$data = selectFromTable('*' , 'nss_camp_cordntrs' , ' 1 ', $db);
+$data = selectFromTable('*' , 'nss_camp_reg ' , ' 1 ', $db);
+
 ?>
 
 
 
+
+
+<div class="row">
+	<div class="col">
+
+		<?php 
+
+
+
+
+
+		echo show_error($message); ?>
+
+
+	</div>
+</div>
 
 <div class="row flex-grow mt-3">
 	<div class="col-12">
@@ -34,40 +88,39 @@ $data = selectFromTable('*' , 'nss_camp_cordntrs' , ' 1 ', $db);
 				<?php if($data): ?>
 					<div class="table-responsive">
 
-						<table class="table  table-hover">
-							<tr>
-								<th class="text-uppercase">name</th>
-								<th class="text-uppercase">caption</th>
-								<th class="text-uppercase">description</th>
-								<th class="text-uppercase">added time</th>
-								<th class="text-uppercase">public</th>
-								<th class="text-uppercase">delete</th>
-								<th class="text-uppercase">more</th>
-							</tr>
-							<?php foreach ($data as $key => $value): ?>
-
-
+						<table class="table dataTable table-hover">
+							<thead>
 								<tr>
-									<td ><?php echo isit('dpt_name', $value); ?></td>
-									<td ><?php echo isit('dpt_caption', $value); ?></td>
-									<td ><?php echo isit('dpt_description', $value); ?></td>
-									<td ><?php echo isit('dpt_date', $value); ?></td>
-									<td > 
-										<form accept="" method="post">
-											<input type="hidden" name="id" value="<?php echo indexMe(isit('dpt_id', $value)); ?>">
-											<?php if( isit('dpt_public', $value) == 0 ): ?>
-												<button class="btn btn-sm btn-success" name="make_public" value="1">make public</button>
-												<?php else: ?>
-													<button class="btn btn-sm btn-danger" name="make_public" value="0">hide</button>
-												<?php endif; ?>
-											</form>
+									<th class="text-uppercase">name</th>
+									<th class="text-uppercase">key</th>
+									<th class="text-uppercase">date from</th>
+									<th class="text-uppercase">date to</th>
+									<th class="text-uppercase">added time</th> 
+									<th class="text-uppercase">delete</th>
+									<th class="text-uppercase">more</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php foreach ($data as $key => $value): ?>
+
+
+									<tr>
+										<td ><?php echo isit('cp_key', $value); ?></td>
+										<td ><?php echo isit('cp_name', $value); ?></td>
+										<td ><?php echo isit('cp_date_frm', $value); ?></td>
+										<td ><?php echo isit('cp_date_to', $value); ?></td>
+										<td >
+
+											<time class="timeago" datetime="<?php echo isit('cp_date', $value); ?>" title="<?php echo isit('cp_date', $value); ?>">1 hour ago</time>
+
 
 
 										</td>
+
 										<td >
 											<form accept="" method="post">
-												<input type="hidden" name="id" value="<?php echo indexMe(isit('dpt_id', $value)); ?>">
-												<?php if( isit('dpt_delete', $value) == 0 ): ?>
+												<input type="hidden" name="id" value="<?php echo indexMe( (int) isit('cp_id', $value, 0)); ?>">
+												<?php if( isit('cp_delete', $value) == 0 ): ?>
 													<button class="btn btn-sm btn-danger" name="make_delete" value="1">delete</button>
 													<?php else: ?>
 														<button class="btn btn-sm btn-success" name="make_delete" value="0">active</button>
@@ -77,7 +130,10 @@ $data = selectFromTable('*' , 'nss_camp_cordntrs' , ' 1 ', $db);
 
 											</td>
 											<td>
-												<a title="edit" href="admin/department/<?php echo indexMe(isit('dpt_id', $value)); ?>" class="btn btn-sm btn-info ">
+												<a title="edit" href="admin/viewcamp/<?php echo indexMe((int)isit('cp_id', $value, 0)); ?>" class="btn btn-sm btn-info ">
+													<i class="ti-eye"></i>
+												</a>
+												<a title="edit" href="admin/editcamp/<?php echo indexMe((int)isit('cp_id', $value, 0)); ?>" class="btn btn-sm btn-warning ">
 													<i class="ti-pencil-alt"></i>
 												</a>
 											</td>
@@ -86,31 +142,31 @@ $data = selectFromTable('*' , 'nss_camp_cordntrs' , ' 1 ', $db);
 
 
 									<?php endforeach; ?>
-
-								</table>
-
-							</div>
-							<?php else: ?>
-								<div class="alert alert-warning text-center text-capitalize">
-									<p>no department added</p>
-								</div>
-
-
-							<?php endif; ?>
-
-
-
+								</tbody>
+							</table>
 
 						</div>
+						<?php else: ?>
+							<div class="alert alert-warning text-center text-capitalize">
+								<p>no camp added</p>
+							</div>
+
+
+						<?php endif; ?>
+
+
+
+
 					</div>
-
-
-
 				</div>
+
+
 
 			</div>
 
+		</div>
 
 
 
-			<?php include_once('includes/footer.php'); ?>
+
+		<?php include_once('includes/footer.php'); ?>

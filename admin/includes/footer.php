@@ -4,7 +4,7 @@
  * @Author: indran
  * @Date:   2018-10-17 16:49:19
  * @Last Modified by:   indran
- * @Last Modified time: 2018-11-07 06:18:47
+ * @Last Modified time: 2018-11-11 14:19:52
  */
 ?>
 
@@ -27,6 +27,8 @@
 <script src="assets/js/bootstrap-material-design.min.js"></script> 
 
 <script src="assets/js/moment.min.js"></script>   
+
+<script src="assets/js/datatables.min.js"></script>  
 <script src="assets/js/bootstrap-datetimepicker.min.js"></script>  
 
 <script src="assets/js/jquery.slimscroll.min.js"></script> 
@@ -35,6 +37,7 @@
 
 
 <script src="assets/js/lobibox.min.js"></script>  
+<script src="assets/js/jquery.timeago.min.js"></script>  
 
 
 
@@ -49,8 +52,9 @@
 		// $.fn.select2.defaults.set("theme", "classic");
 		
 		$('.select2').select2();
+		$('.dataTable').DataTable();
+		$("time.timeago").timeago();
 
-		
 		$("[data-parsley-validate]").parsley({
 			errorClass: 'has-danger',
 			successClass: 'has-success',

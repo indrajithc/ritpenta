@@ -3,88 +3,73 @@
 
 //(?=<!--)(.*)(?=-->)(.*)(?=\n)
 
-include_once('../global.php'); ?>
-<?php include_once('../root/functions.php'); ?>
-<?php include_once('../root/connection.php'); ?>
-<?php  
-
-auth_login();
 
 include_once('includes/header.php');
 
 
-$db=new Database();
-$error='';
-
-$message=array(
-  null,
-  null
-);
-
 
 ?>
-
-
-
 
 
 <div class="row">
   <div class="col-sm-12 ">
 
 
-<h1 class="h3 mb-3 font-weight-normal text-dark text-center">Volunteer Details</h1>
+    <h1 class="h3 mb-3 font-weight-normal text-dark text-center">Volunteer Details</h1>
     
 
 
+    <div class="table-responsive">
 
-    <table class="table table-hover bg-white">
-      <thead>
-        <tr>
-          <th scope="col">Volunteer Id</th>
-      <th scope="col">Admission Number</th>
-      <th scope="col">Blood grroup</th>
-      <th scope="col">Department</th>
-      <th scope="col">Mobile Number</th>
-      <th scope="col">Email Id</th>
-      <th scope="col"></th>
-        </tr>
-      </thead>
-      
-      <tbody>
-
-        <?php
-
-
-        $stmnt=' SELECT * FROM `nss_vol_reg` ';
+      <table class="table dataTable table-hover bg-white">
+        <thead>
+          <tr>
+            <th scope="col">Vol Id</th>
+            <th scope="col">Name </th>
+            <th scope="col">Adm No</th>
+            <th scope="col">BG</th>
+            <th scope="col">Department</th>
+            <th scope="col">Mobile No</th>
+            <th scope="col">Email Id</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
         
+        <tbody>
+
+          <?php
+          $stmnt=" SELECT v.*, d.branch_or_specialisation, d.name FROM `nss_vol_reg` v LEFT JOIN  stud_details d ON v.admnno = d.admissionno  ";
+          
+          $details = $db->display($stmnt);
+          
+          ?>
+
+          <?php if ($details ): ?>
+            <?php foreach ($details as $key => $value): ?>
+             <tr>
+              <td><?php echo $value['vol_regid']; ?></td>
+              <td><?php echo $value['name']; ?></td>
+              <td><?php echo $value['admnno']; ?></td>
+              <td><?php echo $value['vol_bg']; ?></td>
+              <td><?php echo $value['branch_or_specialisation']; ?></td>
+              <td><?php echo $value['vol_mob']; ?></td>
+              <td><?php echo $value['vol_emailid']; ?></td>
 
 
-        $details = $db->display($stmnt);
-        
-
-        ?>
-
-        <?php foreach ($details as $key => $value): ?>
-   <tr>
-        <td><?php echo $value['vol_id']; ?></td>
-        <td><?php echo $value['admnno']; ?></td>
-        <td><?php echo $value['vol_bg']; ?></td>
-        <td><?php echo $value['vol_mob']; ?></td>
-        <td><?php echo $value['vol_alt_mob']; ?></td>
-        <td><?php echo $value['vol_emailid']; ?></td>
-
-
-<td><a href="admin/fulviewvol.php?id=<?php echo $value['vol_id']; ?>"  class="btn btn-sm btn-success "  > <i  class=" fa fa-eye"></i></a>
-<td><a href="admin/edit_vol.php?id=<?php echo $value['vol_id']; ?>"   class="btn btn-sm btn-primary "  ><i class="far fa-edit"></i></a>
-      </td>
-    </tr>
+              <td><a href="admin/viewvol/<?php echo indexMe($value['vol_id']); ?>"  class="btn btn-sm btn-success "  > <i  class=" fa fa-eye"></i></a>
+                <td><a href="admin/edit_vol/<?php echo  indexMe($value['vol_id']); ?>"   class="btn btn-sm btn-primary "  ><i class="far fa-edit"></i></a>
+                </td>
+              </tr>
 
 
 
-        <?php endforeach; ?>
-      </tbody>
-    </table>
+            <?php endforeach; ?>
+          <?php endif; ?>
+        </tbody>
+      </table>
 
+    </div>
 
 
     
