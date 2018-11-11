@@ -4,14 +4,34 @@
  * @Author: indran
  * @Date:   2018-11-07 06:49:44
  * @Last Modified by:   indran
- * @Last Modified time: 2018-11-07 06:53:11
+ * @Last Modified time: 2018-11-07 11:54:17
  */
+
+
+include_once('../global.php')?>
+<?php include_once('../root/functions.php')?>
+<?php
+auth_login();
+
 include_once('includes/header.php'); ?>
 
 
 
 
-<?php 
+<?php
+
+
+
+
+
+
+include_once('../root/connection.php');
+$db=  new Database();
+$message=array(null,null);
+//$message='';
+
+
+
 $data = array();
 $data = selectFromTable('*' , 'nss_camp_cordntrs' , ' 1 ', $db);
 
