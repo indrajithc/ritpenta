@@ -1,5 +1,24 @@
 <?php
 
+/**
+ * @Author: indran
+ * @Date:   2018-10-17 16:48:54
+ * @Last Modified by:   indran
+ * @Last Modified time: 2018-11-11 15:16:23
+ */
+
+
+include_once('../global.php'); ?>
+<?php include_once('../root/connection.php');
+include_once('../root/functions.php');
+
+?>
+<?php  
+
+auth_login();  
+
+$db=  new Database();
+$message=array(null,null);
 
 ?>
 <!DOCTYPE html>
@@ -10,6 +29,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
 	<meta name="description" content="">
+	<meta name="author" content="Indran">
 	<meta name="github" content="https://github.com/indrajithc">
 
 	<base href="<?php echo DIRECTORY ; ?>">
@@ -32,6 +52,7 @@
 	<link rel="stylesheet" href="admin/css/style.css"> 
 	<link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css">
 	<link rel="stylesheet" href="assets/css/select2.min.css">
+	<link rel="stylesheet" href="assets/css/datatables.min.css">
 
 
 
@@ -241,3 +262,11 @@
 								<div class="main-panel">
 
 									<div class="content-wrapper">
+
+										<?php
+										if (isset($_SESSION['message'])) {
+											$message = $_SESSION['message'];
+											unset($_SESSION['message']);
+										}
+
+										?>

@@ -23,18 +23,39 @@ RewriteRule ^admin$ admin/dashboard [L]
 
 RewriteRule ^admin/dashboard$	 admin/index.php [L]  
 
+
+RewriteRule ^admin/addvol$	 admin/addvol.php [L]  
+RewriteRule ^admin/viewvol$	 admin/viewvol.php [L]  
+RewriteRule ^admin/volsecretary$	 admin/volsecretary.php [L]  
+
+
+RewriteRule ^admin/viewvol/([^/]+)$ admin/fulviewvol.php?id=$1 [L] 
+RewriteRule ^admin/edit_vol/([^/]+)$ admin/edit_vol.php?id=$1 [L] 
+
+
+
 RewriteRule ^admin/new$	 admin/new.php [L]  
 RewriteRule ^admin/add$	 admin/addvol.php [L]
 RewriteRule ^admin/view$ admin/viewvol.php [L]
 RewriteRule ^admin/addcamp$ admin/addcamp.php [L]
 RewriteRule ^admin/viewcamp$ admin/viewcamp.php [L]
-RewriteRule ^admin/edit_vol$ admin/edit_vol.php [L]
 
+
+RewriteRule ^admin/viewcamp/([^/]+)$ admin/viewsingecamp.php?id=$1 [L] 
 RewriteRule ^admin/editcamp/([^/]+)$ admin/editcamp.php?id=$1 [L] 
 
+
+
 RewriteRule ^admin/addevent$ admin/addevent.php [L]
-RewriteRule ^admin/vol_select$ admin/vol_select.php [L]
-RewriteRule ^volunteer/dashboard$	 volunteer/index.php [L]  
+RewriteRule ^admin/viewevent$ admin/viewevent.php [L]
+
+
+RewriteRule ^admin/viewevent/([^/]+)$ admin/viewsingeevent.php?id=$1 [L] 
+RewriteRule ^admin/editevent/([^/]+)$ admin/editevent.php?id=$1 [L] 
+
+
+
+RewriteRule ^admin/vol_select$ admin/vol_select.php [L] 
 
 
 
@@ -87,10 +108,10 @@ RewriteRule ^exit$ logout.php [L]
 
 
 
-ErrorDocument 400 /ritpentanew/public/error.php?key=400
-ErrorDocument 401 /ritpentanew/public/error.php?key=401
-ErrorDocument 403 /ritpentanew/public/error.php?key=403 
-ErrorDocument 404 /ritpentanew/public/error.php?key=404
-ErrorDocument 500 /ritpentanew/public/error.php?key=500
-ErrorDocument 502 /ritpentanew/public/error.php?key=502
-ErrorDocument 504 /ritpentanew/public/error.php?key=504
+ErrorDocument 400 /ritpenta/public/error.php?key=400
+ErrorDocument 401 /ritpenta/public/error.php?key=401
+ErrorDocument 403 /ritpenta/public/error.php?key=403 
+ErrorDocument 404 /ritpenta/public/error.php?key=404
+ErrorDocument 500 /ritpenta/public/error.php?key=500
+ErrorDocument 502 /ritpenta/public/error.php?key=502
+ErrorDocument 504 /ritpenta/public/error.php?key=504

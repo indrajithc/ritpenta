@@ -30,9 +30,9 @@
 -->
 
 <li class="nav-item">
-	<a class="nav-link" href="admin/addcamp">
+	<a class="nav-link" href="admin/dashboard">
 		<i class="fas fa-tachometer-alt  pr-4"></i>
-		<span class="menu-title">Add </span>
+		<span class="menu-title">Dashboard </span>
 	</a>
 </li>
 
@@ -58,11 +58,23 @@
 
 
 
+
 <li class="nav-item">
-	<a class="nav-link" href="admin/addevent">
+	<a class="nav-link" data-toggle="collapse" href="#event-dropdown" aria-expanded="false" aria-controls="event-dropdown">
 		<i class="fas fa-tachometer-alt  pr-4"></i>
-		<span class="menu-title">Add Event</span>
+		<span class="menu-title">Event</span>
+		<i class="menu-arrow"></i>
 	</a>
+	<div class="collapse" id="event-dropdown">
+		<ul class="nav flex-column sub-menu">
+			<li class="nav-item">
+				<a class="nav-link" href="admin/addevent">Add</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="admin/viewevent">View</a>
+			</li>
+		</ul>
+	</div>
 </li>
 
 
@@ -87,11 +99,17 @@
 	<div class="collapse" id="dashboard-dropdown">
 		<ul class="nav flex-column sub-menu">
 			<li class="nav-item">
-				<a class="nav-link" href="admin/addvol.php">Add</a>
+				<a class="nav-link" href="admin/addvol">Add</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="admin/viewvol.php">View</a>
+				<a class="nav-link" href="admin/viewvol">View</a>
 			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="admin/volsecretary">Secretary</a>
+			</li>
+
+			
+
 		</ul>
 	</div>
 </li>

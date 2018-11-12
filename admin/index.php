@@ -4,15 +4,11 @@
  * @Author: indran
  * @Date:   2018-10-17 13:20:42
  * @Last Modified by:   indran
- * @Last Modified time: 2018-10-30 17:45:48
+ * @Last Modified time: 2018-11-11 13:39:41
  */
 //(?=<!--)(.*)(?=-->)(.*)(?=\n)
 
-include_once('../global.php'); ?>
-<?php include_once('../root/functions.php'); ?>
-<?php  
 
-auth_login();
 
 include_once('includes/header.php'); ?>
 

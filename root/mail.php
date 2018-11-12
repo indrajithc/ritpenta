@@ -2,7 +2,7 @@
 
 
 
-funciton mainTo ($to, $subject , $body) {
+function mainTo ($to, $subject , $body) {
 
 
 	return 1;

@@ -4,7 +4,7 @@
  * @Author: indran
  * @Date:   2018-10-17 13:24:39
  * @Last Modified by:   indran
- * @Last Modified time: 2018-11-07 05:46:12
+ * @Last Modified time: 2018-11-11 17:43:37
  */
 ?>
 <?php
@@ -12,7 +12,7 @@ if (session_status() === PHP_SESSION_NONE){session_start();}
 
 define( 'SYSTEM_NAME', 'ritpenta' ); 
 define( 'DISPLAY_NAME', 'RIT PENTA' );
-define( 'SYSTEM_ROOT', '/ritpentanew' );
+define( 'SYSTEM_ROOT', '/ritpenta' );
 
 
 try {
@@ -94,10 +94,14 @@ function isit($key , $bigarray, $returnme = '') {
 	return $returnme;
 }
 function indexMe ( $index ) {
+	if(!is_numeric($index))
+		return 0;
 	$index = INDEX_NUMBER + $index;
 	return  $index;
 }
 function unIndexMe ( $index ) {
+	if(!is_numeric($index))
+		return 0;
 	$index = $index - INDEX_NUMBER ;
 	return  $index;
 }
