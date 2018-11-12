@@ -1,237 +1,302 @@
-
-
-
-
-
-
-
- <?php
- include_once('../global.php')?>
- <?php include_once('../root/functions.php')?>
- <?php
- auth_login();
- include_once('includes/header.php'); ?>
-
-
-
-
- <?php
- include_once('../root/connection.php');
- $db=  new Database();
- $message=array(null,null);
-//$message='';
- if(isset($_POST['submit-btn'])){
- 	$cp_name         =  $_POST['cp_name'];
- 	$cp_date_frm        =  $_POST['cp_date_frm'];
- 	$cp_date_to      =  $_POST['cp_date_to'];
- 	$cp_details         =  $_POST['cp_details'];
- 	$cp_id = $_POST['cp_id'];
- 	$cp_coordinator_1 = $_POST['cp_coordinator_1'];
- 	$cp_coordinator_2 = $_POST['cp_coordinator_2'];
- 	if ($cp_coordinator_1  ==  $cp_coordinator_2) {
- 		$message [0] = 3;
- 		$message [1] = ' both coordinators cannot be same '; 
- 		
- 	} else  if(strtotime($cp_date_frm) <= strtotime($cp_date_to)) {
- 		$stmnt=" SELECT * FROM nss_camp_reg WHERE cp_name= '" . $cp_name ."' OR cp_key= '" . $cp_id ."' ";
- 		$result = $db->display( $stmnt);
- 		if( $result ){
- 			$message [0] = 2;
- 			$message [1] = ' cmap name or camp id is already exists'; 
- 		} else {
- 			$stmnt =  'insert into nss_camp_reg(cp_key, cp_name,cp_date_frm,cp_date_to,cp_details) values(:cp_id, :cp_name,:cp_date_frm,:cp_date_to,:cp_details)';
- 			$params=array(
- 				':cp_id' 	=> $cp_id,
- 				':cp_name'        =>  $cp_name,
- 				':cp_date_frm'       =>  $cp_date_frm,
- 				':cp_date_to'         =>  $cp_date_to,
- 				':cp_details'            =>  $cp_details
- 			);
- 			$istrue=$db->execute_query_return_id($stmnt,$params);
- 			if($istrue){
-					//$message=' added!';
- 				$message [0] = 1;
- 				$message [1] = ' camp added '; 
- 				$params=array( 
- 					'cmp_id' 	=> $istrue,
- 					'cmp_cd_id1'        =>  $cp_coordinator_1,
- 					'cmp_cd_id2'       =>  $cp_coordinator_2  
- 				);
- 				$result = insertInToTable('nss_camp_cordntrs', $params, $db);
- 				if ($result) {
- 					$message [0] = 1;
- 					$message [1] = ' camp and coordinators are added '; 
- 				}
- 			}
- 			else
- 			{
-			//$message=$istrue;	
-		// $message=' value already exists';
- 				$message [0] = 3;
- 				$message [1] = ' something is wrong'; 
- 			}
- 		}
- 	} else  {
- 		$message [0] = 4;
- 		$message [1] = ' end date should not be less than start date '; 
- 	}
- }
- ?>
-
-
-
  
+<?php 
 
- <div class="card">
- 	<div class="card-body">
+include_once('includes/header.php'); ?>
 
- 		<form  id="addcampa"  action="" method="post" class="form-horizontal borderd-row" align="center" data-parsley-validate >
 
- 			<h3 class="h3 mb-3 font-weight-normal danger-text">Add Camp Activities</h3>
 
 
+<?php
 
 
- 			<?php echo show_error($message); ?>
 
- 			<div class="form-group row">
- 				<label for="exampleInputName2" class="col-sm-3 col-form-label">Camp ID</label>
- 				<div class="col-sm-9">
- 					<input type="text" class="form-control text-success" name="cp_id" placeholder="Camp ID" data-parsley-required="true"   value="<?php
- 					try {
- 						$keyge = "CAMP_" . Date('Y') . "_"; 
- 						$keyge .= rand(100,999)."";
- 						$result = selectFromTable( 'COUNT(*) AS count ', 'nss_camp_reg' , "1", $db);
- 						if( isset($result[0]['count'])){
- 							$keyge  .=  $result[0]['count'];
- 						}
- 						echo $keyge ;
- 						} catch(Exception $e){
- 						}
- 						?>">
- 					</div>
- 				</div>
 
 
 
 
- 				<div class="form-group row">
- 					<label for="exampleInputName2" class="col-sm-3 col-form-label">Camp Name</label>
- 					<div class="col-sm-9">
- 						<input type="text" class="form-control" name="cp_name" placeholder="Camp Name" data-parsley-required="true"  required>
- 					</div>
- 				</div>
 
 
 
- 				<div class="form-group row">
- 					<label for="exampleInputName2" class="col-sm-3 col-form-label">Start On</label>
- 					<div class="col-sm-9">
- 						<input type="text" class="form-control datetimepicker" data-date-format="YYYY-M-D" name="cp_date_frm" placeholder=" Start On" data-parsley-required="true"  >
 
- 					</div>
- 				</div>
 
- 				<div class="form-group row">
- 					<label for="exampleInputName2" class="col-sm-3 col-form-label">End On</label>
- 					<div class="col-sm-9">
- 						<input type="text" class="form-control datetimepicker" data-date-format="YYYY-M-D" name="cp_date_to"  placeholder=" End On" data-parsley-required="true"  >
 
 
- 					</div>
- 				</div>
 
 
 
 
- 				<div class="form-group row">
- 					<label for="exampleInputName2" class="col-sm-3 col-form-label">Objectives</label>
- 					<div class="col-sm-9">
 
- 						<textarea type="textarea" class="form-control" name="cp_details" placeholder="Objective Of Camp" data-parsley-required="true"   style="height: 100px"></textarea>
+if(isset($_POST['submit-btn'])){
 
- 					</div>
- 				</div>
+	$cp_name         =  $_POST['cp_name'];
+	$cp_date_frm        =  $_POST['cp_date_frm'];
+	$cp_date_to      =  $_POST['cp_date_to'];
+	$cp_details         =  $_POST['cp_details'];
+	$cp_id = $_POST['cp_id'];
 
 
+	$cp_coordinator_1 = $_POST['cp_coordinator_1'];
+	$cp_coordinator_2 = $_POST['cp_coordinator_2'];
 
 
- 			<center ><h5  class="text-capitalize mt-3 ">camp coordinators</h5> </center>
- 		</br>
 
+	if ($cp_coordinator_1  ==  $cp_coordinator_2) {
 
- 				<?php  
- 				$result = selectFromTable( ' * ', '  `nss_vol_reg` v LEFT JOIN stud_details s ON v.admnno = s.admissionno   ' , "1  ORDER BY s.courseid, s.branch_or_specialisation , s.name ", $db); ?>
+		$message [0] = 3;
+		$message [1] = ' both coordinators cannot be same '; 
 
 
- 				<div class="form-group row">
- 					<label for="exampleInputcoordinator12" class="col-sm-3 col-form-label">coordinator 1:</label>
- 					<div class="col-sm-9">
 
+	} else  if(strtotime($cp_date_frm) <= strtotime($cp_date_to)) {
 
- 						<select  id="exampleInputcoordinator12" type="textarea" class="form-control select2" name="cp_coordinator_1" placeholder="first camp coordinator " data-parsley-required="true"   >
- 							<option selected disabled > select first coordinator  </option>
- 							<?php if ($result):?>
- 								<?php foreach ($result as $key => $value): ?>
 
 
- 									<option value="<?php echo $value['vol_id']; ?>"><?php echo ''.$value['name'] . ' ' . $value['admissionno']. ' ' . $value['courseid']. '-' . $value['branch_or_specialisation']; ?></option>
- 									
 
 
- 								<?php endforeach;?>
- 							<?php endif; ?>
- 							<?php ?>
- 							<?php ?>
+		$stmnt=" SELECT * FROM nss_camp_reg WHERE cp_name= '" . $cp_name ."' OR cp_key= '" . $cp_id ."' ";
 
- 							
- 						</select> 
- 					</div>
- 				</div>
 
 
 
 
- 				<div class="form-group row">
- 					<label for="exampleInputcoordinator22" class="col-sm-3 col-form-label">coordinator 2:</label>
- 					<div class="col-sm-9">
+		$result = $db->display( $stmnt);
+		if( $result ){
 
+			$message [0] = 2;
+			$message [1] = ' cmap name or camp id is already exists'; 
 
- 						<select  id="exampleInputcoordinator22" type="textarea" class="form-control select2" name="cp_coordinator_2" placeholder="second camp coordinator " data-parsley-required="true"   >
- 							<option selected disabled > select second coordinator  </option>
- 							<?php if ($result):?>
- 								<?php foreach ($result as $key => $value): ?>
+		} else {
 
 
- 									<option value="<?php echo $value['vol_id']; ?>"><?php echo ''.$value['name'] . ' ' . $value['admissionno']. ' ' . $value['courseid']. '-' . $value['branch_or_specialisation']; ?></option>
- 									
+			$stmnt =  'insert into nss_camp_reg(cp_key, cp_name,cp_date_frm,cp_date_to,cp_details) values(:cp_id, :cp_name,:cp_date_frm,:cp_date_to,:cp_details)';
 
 
- 								<?php endforeach;?>
- 							<?php endif; ?>
- 							<?php ?>
- 							<?php ?>
 
- 							
- 						</select> 
- 					</div>
- 				</div>
 
 
+			$params=array(
 
+				':cp_key' 	=> $cp_id,
+				':cp_name'        =>  $cp_name,
+				':cp_date_frm'       =>  $cp_date_frm,
+				':cp_date_to'         =>  $cp_date_to,
+				':cp_details'            =>  $cp_details
 
- 				<button type="submit"  class="btn btn-success mr-2 float-right"  name="submit-btn">Submit
- 				</button>
+			);
 
 
+			$istrue=$db->execute_query_return_id($stmnt,$params);
 
+			if($istrue){
+					//$message=' added!';
 
+				$message [0] = 1;
+				$message [1] = ' camp added '; 
 
 
- 			</form>
 
- 		</div>
+				$params=array( 
+					'cmp_id' 	=> $istrue,
+					'cmp_cd_id1'        =>  $cp_coordinator_1,
+					'cmp_cd_id2'       =>  $cp_coordinator_2  
+				);
 
- 	</div>
 
- 	<?php   include_once('includes/footer.php'); ?>
+				$result = insertInToTable('nss_camp_cordntrs', $params, $db);
+
+				if ($result) {
+
+					$message [0] = 1;
+					$message [1] = ' camp and coordinators are added '; 
+				}
+
+
+			}
+			else
+			{
+			//$message=$istrue;	
+
+		// $message=' value already exists';
+
+				$message [0] = 3;
+				$message [1] = ' something is wrong'; 
+			}
+
+		}
+
+
+	} else  {
+
+		$message [0] = 4;
+		$message [1] = ' end date should not be less than start date '; 
+	}
+
+
+
+}
+
+
+
+?>
+
+
+
+
+
+<div class="card">
+	<div class="card-body">
+
+		<form  id="addcampa"  action="" method="post" class="form-horizontal borderd-row" align="center" data-parsley-validate >
+
+			<h3 class="h3 mb-3 font-weight-normal danger-text">Add Camp Activities</h3>
+
+
+
+
+			<?php echo show_error($message); ?>
+
+			<div class="form-group row">
+				<label for="exampleInputName2" class="col-sm-3 col-form-label">Camp ID</label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control text-success" name="cp_id" placeholder="Camp ID" data-parsley-required="true"   value="<?php
+
+					try {
+						$keyge = "CAMP_" . Date('Y') . "_"; 
+						$keyge .= rand(100,999)."";
+
+						$result = selectFromTable( 'COUNT(*) AS count ', 'nss_camp_reg' , "1", $db);
+						if( isset($result[0]['count'])){
+							$keyge  .=  $result[0]['count'];
+						}
+
+
+						echo $keyge ;
+						} catch(Exception $e){
+
+						}
+						?>">
+					</div>
+				</div>
+
+
+
+
+				<div class="form-group row">
+					<label for="exampleInputName2" class="col-sm-3 col-form-label">Camp Name</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control" name="cp_name" placeholder="Camp Name" data-parsley-required="true"  required>
+					</div>
+				</div>
+
+
+
+				<div class="form-group row">
+					<label for="exampleInputName2" class="col-sm-3 col-form-label">Start On</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control datetimepicker" data-date-format="YYYY-M-D" name="cp_date_frm" placeholder=" Start On" data-parsley-required="true"  >
+
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="exampleInputName2" class="col-sm-3 col-form-label">End On</label>
+					<div class="col-sm-9">
+						<input type="text" class="form-control datetimepicker" data-date-format="YYYY-M-D" name="cp_date_to"  placeholder=" End On" data-parsley-required="true"  >
+
+
+					</div>
+				</div>
+
+
+
+
+				<div class="form-group row">
+					<label for="exampleInputName2" class="col-sm-3 col-form-label">Objectives</label>
+					<div class="col-sm-9">
+
+						<textarea type="textarea" class="form-control" name="cp_details" placeholder="Objective Of Camp" data-parsley-required="true"   style="height: 100px"></textarea>
+
+					</div>
+				</div>
+
+
+
+
+				<h5  class="text-capitalize mt-3 text-left">camp coordinator</h5>
+
+
+				<?php  
+				$result = selectFromTable( ' * ', '  `nss_vol_reg` v LEFT JOIN stud_details s ON v.admnno = s.admissionno   ' , "1  ORDER BY s.courseid, s.branch_or_specialisation , s.name ", $db); ?>
+
+
+				<div class="form-group row">
+					<label for="exampleInputcoordinator12" class="col-sm-3 col-form-label">coordinator 1:</label>
+					<div class="col-sm-9">
+
+
+						<select  id="exampleInputcoordinator12" type="textarea" class="form-control select2" name="cp_coordinator_1" placeholder="first camp coordinator " data-parsley-required="true"   >
+							<option selected disabled > select first coordinator  </option>
+							<?php if ($result):?>
+								<?php foreach ($result as $key => $value): ?>
+
+
+									<option value="<?php echo $value['vol_id']; ?>"><?php echo ''.$value['name'] . ' ' . $value['admissionno']. ' ' . $value['courseid']. '-' . $value['branch_or_specialisation']; ?></option>
+
+
+
+								<?php endforeach;?>
+							<?php endif; ?>
+							<?php ?>
+							<?php ?>
+
+
+						</select> 
+					</div>
+				</div>
+
+
+
+
+				<div class="form-group row">
+					<label for="exampleInputcoordinator22" class="col-sm-3 col-form-label">coordinator 2:</label>
+					<div class="col-sm-9">
+
+
+						<select  id="exampleInputcoordinator22" type="textarea" class="form-control select2" name="cp_coordinator_2" placeholder="second camp coordinator " data-parsley-required="true"   >
+							<option selected disabled > select second coordinator  </option>
+							<?php if ($result):?>
+								<?php foreach ($result as $key => $value): ?>
+
+
+									<option value="<?php echo $value['vol_id']; ?>"><?php echo ''.$value['name'] . ' ' . $value['admissionno']. ' ' . $value['courseid']. '-' . $value['branch_or_specialisation']; ?></option>
+
+
+
+								<?php endforeach;?>
+							<?php endif; ?>
+							<?php ?>
+							<?php ?>
+
+
+						</select> 
+					</div>
+				</div>
+
+
+
+
+				<button type="submit"  class="btn btn-success mr-2 float-right"  name="submit-btn">Submit
+				</button>
+
+
+
+
+
+
+			</form>
+
+		</div>
+
+	</div>
+
+	<?php   include_once('includes/footer.php'); ?>

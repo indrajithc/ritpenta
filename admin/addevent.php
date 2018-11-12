@@ -1,49 +1,34 @@
-
-
-
-
-
-
-
- <?php
- include_once('../global.php')?>
- <?php include_once('../root/functions.php')?>
- <?php
- auth_login();
- include_once('includes/header.php'); ?>
+ <?php  include_once('includes/header.php'); ?>
 
 
 
 
  <?php
- include_once('../root/connection.php');
- $db=  new Database();
- $message=array(null,null);
-//$message='';
+
+
+
  if(isset($_POST['submit-btn'])){
  	$event_name        =  $_POST['event_name'];
  	$event_date        =  $_POST['event_date'];
  	$event_hrs      =  $_POST['event_hrs'];
  	$event_dtls         =  $_POST['event_dtls'];
  	$event_id = $_POST['event_id'];
-
-
- 	$eve_coordinator_1 = $_POST[' eve_coordinator_1'];
+ 	$eve_coordinator_1 = $_POST['eve_coordinator_1'];
  	$eve_coordinator_2= $_POST['eve_coordinator_2'];
  	if ($eve_coordinator_1  ==  $eve_coordinator_2) {
  		$message [0] = 3;
  		$message [1] = ' both coordinators cannot be same '; 
  		
- 	} else  if(strtotime($event_date) <= strtotime($event_hrs)) {
+ 	} else  {
  		$stmnt=" SELECT * FROM nss_event_reg WHERE event_name= '" . $event_name ."' OR event_key= '" . $event_id ."' ";
  		$result = $db->display( $stmnt);
  		if( $result ){
  			$message [0] = 2;
  			$message [1] = ' cmap name or camp id is already exists'; 
  		} else {
- 			$stmnt =  'insert into nss_event_reg(event_key, event_name,event_date,event_hrs,event_dtls) values(:event_id, :event_name,:event_date,:event_hrs,:event_dtls)';
+ 			$stmnt =  'insert into nss_event_reg(event_key, event_name,event_date,event_hrs,event_dtls) values(:event_key, :event_name,:event_date,:event_hrs,:event_dtls)';
  			$params=array(
- 				':event_id' 	=> $event_id,
+ 				':event_key' 	=> $event_id,
  				':event_name'        =>  $event_name,
  				':event_date'       =>  $event_date,
  				':event_hrs'         =>  $event_hrs,
@@ -73,10 +58,12 @@
  				$message [1] = ' something is wrong'; 
  			}
  		}
- 	} else  {
- 		$message [0] = 4;
- 		$message [1] = ' end date should not be less than start date '; 
  	}
+
+ 	//  else  {
+ 	// 	$message [0] = 4;
+ 	// 	$message [1] = ' end date should not be less than start date '; 
+ 	// }
  }
  ?>
 
@@ -89,7 +76,7 @@
 
  		<form  id="addevent"  action="" method="post" class="form-horizontal borderd-row" align="center" data-parsley-validate >
 
- 		<center>	<h3 class="h3 mb-3 font-weight-normal danger-text">Add Regular Activities</h3></center>
+ 			<center>	<h3 class="h3 mb-3 font-weight-normal danger-text">Add Regular Activities</h3></center>
 
 
 
@@ -137,9 +124,8 @@
  				<div class="form-group row">
  					<label for="exampleInputName2" class="col-sm-3 col-form-label">Total Hours</label>
  					<div class="col-sm-9">
- 						<input type="text" class="form-control"  name="event_hrs"  placeholder=" Total Hours" data-parsley-required="true"  >
 
-
+ 						<input type="text" class="form-control datetimepicker" data-date-format="H:mm" name="event_hrs" placeholder=" Event Hours" data-parsley-required="true"  >
  					</div>
  				</div>
 
@@ -158,82 +144,82 @@
 
 
 
- 			<center ><h5  class="text-capitalize mt-3 ">event coordinators</h5> </center>
- 		</br>
+ 				<center ><h5  class="text-capitalize mt-3 ">event coordinators</h5> </center>
+ 			</br>
 
 
- 				<?php  
- 				$result = selectFromTable( ' * ', '  `nss_vol_reg` v LEFT JOIN stud_details s ON v.admnno = s.admissionno   ' , "1  ORDER BY s.courseid, s.branch_or_specialisation , s.name ", $db); ?>
+ 			<?php  
+ 			$result = selectFromTable( ' * ', '  `nss_vol_reg` v LEFT JOIN stud_details s ON v.admnno = s.admissionno   ' , "1  ORDER BY s.courseid, s.branch_or_specialisation , s.name ", $db); ?>
 
 
- 				<div class="form-group row">
- 					<label for="exampleInputcoordinator12" class="col-sm-3 col-form-label">coordinator 1:</label>
- 					<div class="col-sm-9">
+ 			<div class="form-group row">
+ 				<label for="exampleInputcoordinator12" class="col-sm-3 col-form-label">coordinator 1:</label>
+ 				<div class="col-sm-9">
 
 
- 						<select  id="exampleInputcoordinator12" type="textarea" class="form-control select2" name=" eve_coordinator_1" placeholder="first event coordinator " data-parsley-required="true"   >
- 							<option selected disabled > select first coordinator  </option>
- 							<?php if ($result):?>
- 								<?php foreach ($result as $key => $value): ?>
+ 					<select  id="exampleInputcoordinator12" type="textarea" class="form-control select2" name="eve_coordinator_1" placeholder="first event coordinator " data-parsley-required="true"   >
+ 						<option selected disabled > select first coordinator  </option>
+ 						<?php if ($result):?>
+ 							<?php foreach ($result as $key => $value): ?>
 
 
- 									<option value="<?php echo $value['vol_id']; ?>"><?php echo ''.$value['name'] . ' ' . $value['admissionno']. ' ' . $value['courseid']. '-' . $value['branch_or_specialisation']; ?></option>
- 									
+ 								<option value="<?php echo $value['vol_id']; ?>"><?php echo ''.$value['name'] . ' ' . $value['admissionno']. ' ' . $value['courseid']. '-' . $value['branch_or_specialisation']; ?></option>
 
 
- 								<?php endforeach;?>
- 							<?php endif; ?>
- 							<?php ?>
- 							<?php ?>
 
- 							
- 						</select> 
- 					</div>
+ 							<?php endforeach;?>
+ 						<?php endif; ?>
+ 						<?php ?>
+ 						<?php ?>
+
+
+ 					</select> 
  				</div>
+ 			</div>
 
 
 
 
- 				<div class="form-group row">
- 					<label for="exampleInputcoordinator22" class="col-sm-3 col-form-label">coordinator 2:</label>
- 					<div class="col-sm-9">
+ 			<div class="form-group row">
+ 				<label for="exampleInputcoordinator22" class="col-sm-3 col-form-label">coordinator 2:</label>
+ 				<div class="col-sm-9">
 
 
- 						<select  id="exampleInputcoordinator22" type="textarea" class="form-control select2" name="eve_coordinator_2" placeholder="second event coordinator " data-parsley-required="true"   >
- 							<option selected disabled > select second coordinator  </option>
- 							<?php if ($result):?>
- 								<?php foreach ($result as $key => $value): ?>
+ 					<select  id="exampleInputcoordinator22" type="textarea" class="form-control select2" name="eve_coordinator_2" placeholder="second event coordinator " data-parsley-required="true"   >
+ 						<option selected disabled > select second coordinator  </option>
+ 						<?php if ($result):?>
+ 							<?php foreach ($result as $key => $value): ?>
 
 
- 									<option value="<?php echo $value['vol_id']; ?>"><?php echo ''.$value['name'] . ' ' . $value['admissionno']. ' ' . $value['courseid']. '-' . $value['branch_or_specialisation']; ?></option>
- 									
+ 								<option value="<?php echo $value['vol_id']; ?>"><?php echo ''.$value['name'] . ' ' . $value['admissionno']. ' ' . $value['courseid']. '-' . $value['branch_or_specialisation']; ?></option>
 
 
- 								<?php endforeach;?>
- 							<?php endif; ?>
- 							<?php ?>
- 							<?php ?>
 
- 							
- 						</select> 
- 					</div>
+ 							<?php endforeach;?>
+ 						<?php endif; ?>
+ 						<?php ?>
+ 						<?php ?>
+
+
+ 					</select> 
  				</div>
+ 			</div>
 
 
 
 
- 				<button type="submit"  class="btn btn-success mr-2 float-right"  name="submit-btn">Submit
- 				</button>
+ 			<button type="submit"  class="btn btn-success mr-2 float-right"  name="submit-btn">Submit
+ 			</button>
 
 
 
 
 
 
- 			</form>
-
- 		</div>
+ 		</form>
 
  	</div>
 
- 	<?php   include_once('includes/footer.php'); ?>
+ </div>
+
+ <?php   include_once('includes/footer.php'); ?>

@@ -1,69 +1,52 @@
+<?php
+
+/**
+ * @Author: indran
+ * @Date:   2018-11-11 15:19:01
+ * @Last Modified by:   indran
+ * @Last Modified time: 2018-11-11 17:45:42
+ */  
+
+//(?=<!--)(.*)(?=-->)(.*)(?=\n)
 
 
-<?php include_once('../global.php'); ?>
-<?php include_once('../root/functions.php'); ?>
-<?php include_once('../root/connection.php'); ?>
-<?php  
 
-auth_login();
+
+include_once('includes/header.php');
+
 
 $id = -1;
 if (isset($_GET['id'])) {
-$id = $_GET['id'];
+	$id = unIndexMe($_GET['id']);
 
 }
 
 
 if (   $id == -1) {
 
-setLocation("viewvol.php");
+	setLocation("admin/viewvol"); 
 }
 
 
-include_once('includes/header.php');
 
+$stmnt=" SELECT * FROM `nss_vol_reg` v LEFT JOIN  stud_details d ON v.admnno = d.admissionno   WHERE v.vol_id = :id ";
 
- $db=new Database();
-$error='';
-
-$message=array(
-  null,
-  null
+$params = array (
+	':id' => $id
 );
 
+$details = $db->display($stmnt,  $params );
 
- ?>
+if (isset(  $details[0])) {
+	$details =   $details[0];
+}  else {
 
-
-
-
-
-
-
-
-
-  <?php
+	setLocation("admin/viewvol"); 
+}
 
 
-   $stmnt=' SELECT * FROM `nss_vol_reg` WHERE vol_id = :id ';
-  
-  $params = array (
-':id' => $id
-  );
-
-
-  $details = $db->display($stmnt,  $params );
- 
- if (isset(  $details[0])) {
-     $details =   $details[0];
- }  else {
-
-setLocation("viewvol.php");
- }
 
 ?>
- 
-
 
 
 
@@ -73,68 +56,59 @@ setLocation("viewvol.php");
 
 
 <?php
-if(isset($_POST['submit-btn'])){
+if(isset($_POST['submit'])){
 
-
-    
+	$vol_regid         =  $_POST['vol_regid'];
+	$admnno        =  $_POST['admnno'];
 	$vol_bg       =  $_POST['vol_bg'];
 	$vol_mob         =  $_POST['vol_mob'];
 	$vol_alt_mob            =  $_POST['vol_alt_mob'];
 	$vol_emailid      =  $_POST['vol_emailid'];
-	$stmnt='select * from nss_vol_reg where vol_= :id';
+
+
+	$stmnt='select * from nss_vol_reg where (  admnno= :admnno  AND  vol_regid = :vol_regid ) OR (  admnno= :admnno1  AND  vol_regid != :vol_regid1  ) ';
+
+
+	$params=array( 
+		':admnno'   =>  $admnno  ,
+		':admnno1'   =>  $admnno  ,
+		':vol_regid'   =>  $vol_regid  ,
+		':vol_regid1'   =>  $vol_regid  
+	);  
+
+	if($db->display($stmnt,$params)){
 
 
 
 
-	$params=array(
+		$params=array(
 
 
-		':id'        =>  $id
+			'vol_regid'        =>  $vol_regid,
+			'admnno'       =>  $admnno,
+			'vol_bg'         =>  $vol_bg,
+			'vol_mob'            =>  $vol_mob,
+			'vol_alt_mob'         =>  $vol_alt_mob,
+			'vol_emailid'         =>  $vol_emailid
 
-	);
+		);
 
-
-
-
-
-	if(!$db->display($stmnt,$params)){
-
-
-
-
-	$params=array(
-
-
-		':vol_bg'         =>  $vol_bg,
-		':vol_mob'            =>  $vol_mob,
-		':vol_alt_mob'         =>  $vol_alt_mob,
-		':vol_emailid'         =>  $vol_emailid,
-		':id'        =>  $id
-
-	);
-
-		$stmnt = 'UPDATE `nss_vol_reg` SET vol_bg =:vol_bg, vol_mob=:vol_mob, vol_alt_mob=:vol_alt_mob, vol_emailid=:vol_emailid WHERE vol_id=:id';
-		$istrue=$db->execute_query($stmnt,$params);
-
+		$istrue= updateTable( ' nss_vol_reg ', $params, " vol_id = $id  " ,  $db );
 		if($istrue){
 
-					// $message=' UPDATED!';
+			$message [0] = 1;
+			$message [1] = ' updated ';  
 
-					   $message [0] = 1;
-   $message [1] = ' UPDATED '; 
+		}  else {
 
-
-
-				}else{
-
-			// $message=$istrue;
-
-				}	
+			$message [0] = 4;
+			$message [1] = ' update error ';  
+		}
 	}else{
 		// $message=' value already exists';
 
-		   $message [0] = 3;
-   $message [1] = ' value already exists'; 
+		$message [0] = 3;
+		$message [1] = ' id doesn`t exists or duplicate vol id'; 
 
 
 	}
@@ -144,123 +118,217 @@ if(isset($_POST['submit-btn'])){
 
 
 
+<div class="row">
+	<div class="col-sm-12 p-3  bg-white ">
+
+
+
+		<div class="page-header">
+			<div class="h3 mb-3 bg-primary text-white"><h1> Edit Details</h1>
+			</div>
+		</div>
 
 
 
 
+		<?php
 
 
+		$stmnt=" SELECT * FROM `nss_vol_reg` v LEFT JOIN  stud_details d ON v.admnno = d.admissionno   WHERE v.vol_id = :id ";
+
+		$params = array (
+			':id' => $id
+		);
 
 
+		$details = $db->display($stmnt,  $params );
 
-
-
-
-
-
-
-
-
-     <div class="container mt-4">
-       <div class="darken-grey-text mb-4"">
-          <div class="row">
-           <div class="col-md-8 mb-4">
-             <div class="card">
-             	<div class="card-body">
-             		
-			<form  id="edit_vol"  action="" method="post" data-parsley-validate class="form-horizontal borderd-row" align="center">
-							
-							
-
-   <div class="page-header">
-   <h3 class="h3 mb-3 font-weight-normal danger-text">Update Volunteer Details</h3>
-  </div>
-						
-
-					
-		<?php 
-
-
-  
- echo show_error($message); ?>
-
-
-                  <div class="form-group">
-					<div class="input-group">
-						<input type="text" class="form-control text-danger"  placeholder="Admission No" name="admnno"  style=" "data-parsley-type="text"
-						disabled value="<?php if(isset($details['admnno'])) echo $details['admnno'];  ?>" >
-
-					</div>
-				 </div>
-                  <div class="form-group">
-					<div class="input-group">
-
-	            	<input id="vol_id" type="text" class="form-control text-danger"  placeholder="Volunteer Id..." name="vol_id"   data-parsley-type="number" disabled value="<?php if(isset($details['vol_id'])) echo $details['vol_id'];  ?>" >
-					</div>	
-					</div>
+		if (isset(  $details[0])) {
+			$details =   $details[0];
+		}  else {
 
 			
-                           
-                
+			setLocation("admin/viewvol");
+		}
 
-					<div class="form-group"> 
-                         <div class="input-group">
-                           <input type="text" class="form-control" name="vol_mob" placeholder="  Mobile No" data-parsley-required="true" data-parsley-type="true" value="<?php if(isset($details['vol_mob'])) echo $details['vol_mob'];  ?>">
-                  </div>
-                </div>
-	            		
+		?>
 
 
-					<div class="form-group"> 
-                         <div class="input-group">
-                           <input type="text" class="form-control" name="vol_alt_mob" placeholder=" Alternative Mobile No" data-parsley-required="true" data-parsley-type="true" value="<?php if(isset($details['vol_alt_mob'])) echo $details['vol_alt_mob'];  ?>">
-                  </div>
-                </div>
+
+		<div class="row">
+			<div class="col">
+
+				<?php 
 
 
 
 
 
-					<div class="form-group"> 
-                         <div class="input-group">
-                           <input type="text" class="form-control " name="vol_emailid" placeholder=" Email ID" data-parsley-required="true" data-parsley-type="true" value="<?php if(isset($details['vol_emailid'])) echo $details['vol_emailid'];  ?>">
-                  </div>
-                </div>
-
-	            		
-    <div class="form-group">
-						
-						<div class="input-group">
-							<select name="vol_bg" class="form-control"   required>
-								<option selected disabled > select Bloodgroup </option>
-				
-								<option  value="O+" <?php if( strtolower( $details['vol_bg'] ) == "a" ) echo " selected "; ?> >O+ve</option>
-								<option  value="O-" <?php if( strtolower( $details['vol_bg'] ) == "a" ) echo " selected "; ?> >O-ve</option>
-								<option  value="B+" <?php if( strtolower( $details['vol_bg'] ) == "a" ) echo " selected "; ?> >B+ve</option>
-								<option  value="B-" <?php if( strtolower( $details['vol_bg'] ) == "a" ) echo " selected "; ?> >B-ve</option>
-								<option  value="A+" <?php if( strtolower( $details['vol_bg'] ) == "a" ) echo " selected "; ?> >A+ve</option>
-								<option  value="A-" <?php if( strtolower( $details['vol_bg'] ) == "a" ) echo " selected "; ?> >A-ve</option>
-								<option  value="AB+" <?php if( strtolower( $details['vol_bg'] ) == "a" ) echo " selected "; ?> >AB+ve</option>
-								<option  value="AB-" <?php if( strtolower( $details['vol_bg'] ) == "a" ) echo " selected "; ?> >AB-ve</option>
+				echo show_error($message); ?>
 
 
-							</select>
-					</div>
-					<br>
-					<br>
+			</div>
+		</div>
 
-                      <div class="container">
-							     <button class="btn btn-dark btn-block btn btn-outline-dark" name="submit-btn">Save
-							     </button>
-                      </div>
-	            		
-</form>
-</div></div>
+
+		<div class="row">
+			<div class="col-sm-12 col-md-8 offset-md-2">
+
+
+
+
+				<?php   if( !empty($details)): ?>
+
+					<form class="form-horizontal bordered-row" id="add-volunteer-01"  action="" method="post" >
+
+						<div class="row">
+							<div class="col-md-6 col-sm-12">
+
+								<div class="form">
+
+
+									<div class="form-group">
+										<label class="bmd-label-floating">Admission No</label>
+										<div class="">
+
+											<input type="text" class="form-control text-danger" name="admnno"  disabled value="<?php echo  isit( 'admnno', $details); ?>">
+											<input type="hidden" name="admnno"  value="<?php echo  isit( 'admnno', $details); ?>">
+
+
+
+
+
+										</div>
+									</div>
+
+
+
+									<div class="form-group">
+										<label for="vol_regid" class="bmd-label-floating">Volunteer Id</label>
+										<div class="">
+											<input id="vol_regid" type="text" class="form-control"  placeholdera="Volunteer Id..." name="vol_regid"   data-parsley-type="number"
+
+											value="<?php echo  isit( 'vol_regid', $details); ?>"
+											required>
+										</div>
+									</div>
+
+
+
+
+									<div class="form-group">
+										<label class="bmd-label-floating">Blood Group</label>
+										<div class="">
+											<select name="vol_bg" class="form-control"   required>
+
+												<option  value=""  selected  >Select</option>
+												<option  value="O+" <?php if( strtolower( $details['vol_bg'] ) ==strtolower( "O+" )) echo " selected "; ?> >O+ve</option>
+												<option  value="O-" <?php if( strtolower( $details['vol_bg'] ) ==strtolower( "O-" )) echo " selected "; ?> >O-ve</option>
+												<option  value="B+" <?php if( strtolower( $details['vol_bg'] ) ==strtolower( "B+" )) echo " selected "; ?> >B+ve</option>
+												<option  value="B-" <?php if( strtolower( $details['vol_bg'] ) ==strtolower( "B-" )) echo " selected "; ?> >B-ve</option>
+												<option  value="A+" <?php if( strtolower( $details['vol_bg'] ) ==strtolower( "A+" )) echo " selected "; ?> >A+ve</option>
+												<option  value="A-" <?php if( strtolower( $details['vol_bg'] ) ==strtolower( "A-" )) echo " selected "; ?> >A-ve</option>
+												<option  value="AB+" <?php if( strtolower( $details['vol_bg'] ) == strtolower("AB+" )) echo " selected "; ?> >AB+ve</option>
+												<option  value="AB-" <?php if( strtolower( $details['vol_bg'] ) == strtolower("AB-" )) echo " selected "; ?> >AB-ve</option>
+
+
+
+											</select>
+										</div>
+									</div>
+
+
+
+
+
+								</div>
+
+
+							</div>
+							<div class="col-md-6 col-sm-12">
+
+								<div class="form">
+
+
+
+
+									<div class="form-group">
+										<label class="bmd-label-floating">Phone No</label>
+										<div class="">
+											<input type="text" class="form-control"  placeholdera="Phone No" name="vol_mob"   data-parsley-type="number" value="<?php if(isset($details['vol_mob'])) echo $details['vol_mob'];  ?>" required>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="bmd-label-floating">Alternate Phone No</label>
+										<div class="">
+											<input type="text" class="form-control"  placeholdera="Alternate Phone No" name="vol_alt_mob"   data-parsley-type="number" 
+											value="<?php echo  isit( 'vol_alt_mob', $details); ?>"
+											required >
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="bmd-label-floating">Email Id</label>
+										<div class="">
+											<input type="email" class="form-control"  placeholdera="Email Id" name="vol_emailid"      value="<?php if(isset($details['vol_emailid'])) echo $details['vol_emailid'];  ?>" required>
+										</div>
+									</div>	
+									<div class="btn-group" role="group">
+										<div class="content-box text-center">
+											<button type="submit" name="submit" value="" class="btn btn-lg btn-outline-primary">update</button>
+											<!-- <button type="button" name="submit1" value="" class="btn btn-lg btn-outline-primary">Upload</button> -->
+										</div>
+									</div>
+
+
+
+
+								</div>
+
+
+
+
+
+
+
+							</div>
+
+						</div>
+
+
+					</form>		 
+
+
+				<?php  endif; ?>
+
+
+
+
+
+
+
+			</div>
+		</div>
+
+
+	</div> 
 </div>
-</div>
-</div>
-</div>
-	 <?php
-  include_once('includes\footer.php');
-  ?>       		
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php include_once('includes/footer.php'); ?>
