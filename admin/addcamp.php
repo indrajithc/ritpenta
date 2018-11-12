@@ -68,7 +68,7 @@ if(isset($_POST['submit-btn'])){
 		} else {
 
 
-			$stmnt =  'insert into nss_camp_reg(cp_key, cp_name,cp_date_frm,cp_date_to,cp_details) values(:cp_id, :cp_name,:cp_date_frm,:cp_date_to,:cp_details)';
+			$stmnt =  'insert into nss_camp_reg(cp_key, cp_name,cp_date_frm,cp_date_to,cp_details) values(:cp_key, :cp_name,:cp_date_frm,:cp_date_to,:cp_details)';
 
 
 

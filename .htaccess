@@ -59,9 +59,35 @@ RewriteRule ^admin/vol_select$ admin/vol_select.php [L]
 
 
 
+RewriteRule ^admin/feedback$ admin/feedback.php [L] 
+RewriteRule ^admin/change_password$ admin/change_password.php [L] 
 
 
 
+
+
+
+
+# ========================= volunteer ===========================================================
+RewriteRule ^volunteer$ volunteer/dashboard [L] 
+
+RewriteRule ^volunteer/dashboard$	 volunteer/index.php [L]  
+
+
+RewriteRule ^volunteer/change_password$ volunteer/change_password.php [L] 
+RewriteRule ^volunteer/profile$	 volunteer/profile.php [L]  
+
+
+
+RewriteRule ^volunteer/viewcamp$ volunteer/viewcamp.php [L] 
+RewriteRule ^volunteer/viewcamp/([^/]+)$ volunteer/viewsingecamp.php?id=$1 [L] 
+RewriteRule ^volunteer/editcamp/([^/]+)$ volunteer/editcamp.php?id=$1 [L] 
+
+
+
+RewriteRule ^volunteer/viewevent$ volunteer/viewevent.php [L] 
+RewriteRule ^volunteer/viewevent/([^/]+)$ volunteer/viewsingeevent.php?id=$1 [L] 
+RewriteRule ^volunteer/editevent/([^/]+)$ volunteer/editevent.php?id=$1 [L] 
 
 
 #================ ======================================= ==================================

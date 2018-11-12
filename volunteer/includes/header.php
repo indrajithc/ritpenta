@@ -4,11 +4,37 @@
  * @Author: indran
  * @Date:   2018-10-17 16:48:54
  * @Last Modified by:   indran
- * @Last Modified time: 2018-10-17 17:28:49
+ * @Last Modified time: 2018-11-12 22:14:47
  */
+
+include_once('../global.php'); ?>
+<?php include_once('../root/functions.php'); ?>
+<?php include_once('../root/connection.php'); ?>
+<?php  
+
+auth_login();  
+
+$db=  new Database();
+$message=array(null,null);
+
+?>
+
+
+
+<?php  
+
+//SELECT * FROM `nss_log` l LEFT JOIN nss_vol_reg v ON l.user_id = v.vol_emailid WHERE 
+
+$sudo  = selectFromTable("*", "   `nss_log` l LEFT JOIN nss_vol_reg v ON l.user_id = v.vol_emailid LEFT JOIN stud_details d ON v.vol_emailid = d.email  ", " user_type = 'vsecretary' AND  usr_id =" . $_SESSION[SYSTEM_NAME."userid0"] , $db);
+
+if (isset($sudo[0] )) {
+	$sudo = $sudo[0]; 
+} 
+
+
 ?>
 <!DOCTYPE html>
-<html lang="en"  ng-app="app-admin">
+<html lang="en"  ng-app="app-volunteer">
 
 <head>
 	<meta charset="utf-8">
@@ -34,8 +60,8 @@
 
 
 
-	<link rel="stylesheet" href="admin/css/style.css">  
-	<link rel="stylesheet" href="admin/css/style_01.css">
+	<link rel="stylesheet" href="volunteer/css/style.css">  
+	<link rel="stylesheet" href="volunteer/css/style_01.css">
 
 
 
@@ -66,7 +92,7 @@
 					<img src="assets/image/logob.jpg" alt="logo" />
 					<span class="text-primary px-2 py-1"><?php  echo DISPLAY_NAME; ?></span> 
 				</a>
-				<a class="navbar-brand brand-logo-mini" href="admin/dashboard">
+				<a class="navbar-brand brand-logo-mini" href="volunteer/dashboard">
 					<img src="assets/image/logob.jpg" alt="logo" /> 
 				</a>
 			</div>
@@ -81,15 +107,15 @@
 					<li class="nav-item dropdown">
 						<a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
 							<i class="mdi mdi-file-outline"></i>
-							<span class="count">7</span>
+							<span class="count">0</span>
 						</a>
 						<div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="messageDropdown">
 							<a class="dropdown-item py-3">
-								<p class="mb-0 font-weight-medium float-left">You have 7 unread mails </p>
+								<p class="mb-0 font-weight-medium float-left">You have 0 unread mails </p>
 								<span class="badge badge-pill badge-primary float-right">View all</span>
 							</a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item preview-item">
+							<!-- <a class="dropdown-item preview-item">
 								<div class="preview-thumbnail">
 									<img src="assets/image/default/user.png" alt="image" class="img-sm profile-pic"> </div>
 									<div class="preview-item-content flex-grow py-2">
@@ -112,20 +138,20 @@
 												<p class="preview-subject ellipsis font-weight-medium text-dark">Travis Jenkins </p>
 												<p class="font-weight-light small-text"> The meeting is cancelled </p>
 											</div>
-										</a>
+										</a> -->
 									</div>
 								</li>
 								<li class="nav-item dropdown ml-4">
 									<a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
 										<i class="mdi mdi-bell-outline"></i>
-										<span class="count bg-success">4</span>
+										<span class="count bg-success">0</span>
 									</a>
 									<div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="notificationDropdown">
 										<a class="dropdown-item py-3 border-bottom">
-											<p class="mb-0 font-weight-medium float-left">You have 4 new notifications </p>
+											<p class="mb-0 font-weight-medium float-left">You have 0 new notifications </p>
 											<span class="badge badge-pill badge-primary float-right">View all</span>
 										</a>
-										<a class="dropdown-item preview-item py-3">
+										<!-- <a class="dropdown-item preview-item py-3">
 											<div class="preview-thumbnail">
 												<i class="mdi mdi-alert m-auto text-primary"></i>
 											</div>
@@ -151,16 +177,16 @@
 												<h6 class="preview-subject font-weight-normal text-dark mb-1">New user registration</h6>
 												<p class="font-weight-light small-text mb-0"> 2 days ago </p>
 											</div>
-										</a>
+										</a> -->
 									</div>
 								</li>
 
 								<li class="nav-item dropdown d-none d-xl-inline-block">
 									<a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-										<span class="profile-text">Hello, Richard V.Welsh !</span>
+										
 										<img class="img-xs rounded-circle" src="assets/image/default/user.png" alt="Profile image"> </a>
 										<div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-											<a class="dropdown-item p-0">
+									<!-- 		<a class="dropdown-item p-0">
 												<div class="d-flex border-bottom">
 													<div class="py-3 px-4 d-flex align-items-center justify-content-center">
 														<i class="mdi mdi-bookmark-plus-outline mr-0 text-gray"></i>
@@ -172,10 +198,10 @@
 														<i class="mdi mdi-alarm-check mr-0 text-gray"></i>
 													</div>
 												</div>
-											</a>
-											<a class="dropdown-item mt-2"> Manage Accounts </a>
-											<a class="dropdown-item"> Change Password </a>
-											<a class="dropdown-item"> Check Inbox </a>
+											</a> -->
+											<a class="dropdown-item mt-2" href="volunteer/profile"> Manage Accounts </a>
+											<a class="dropdown-item" href="volunteer/change_password"> Change Password </a>
+											<!-- <a class="dropdown-item"> Check Inbox </a> -->
 											<a class="dropdown-item" href="exit"> Sign Out </a>
 										</div>
 									</li>
@@ -197,24 +223,48 @@
 
 							<nav class="sidebar sidebar-offcanvas" id="sidebar">
 								<ul class="nav">
+
+
+
 									<li class="nav-item nav-profile">
+										
+
 										<div class="nav-link">
 											<div class="user-wrapper">
 												<div class="profile-image">
 													<img src="assets/image/default/user.png" alt="profile image"> </div>
 													<div class="text-wrapper">
-														<p class="profile-name">Richard V.Welsh</p>
+														<p class="profile-name"><?php echo isit( 'name' , $sudo); ?></p>
 														<div>
-															<small class="designation text-muted">Manager</small>
+															<small class="designation text-muted ">Volunteer Secretary</small>
 															<span class="status-indicator online"></span>
+															<br>
+															<small class="designation text-warning mt-2 "><strong class="text-muted">ID: </strong><?php echo isit( 'vol_regid' , $sudo); ?></small>
+
 														</div>
 													</div>
 												</div> 
 											</div>
+
+
 										</li>
+
+
+
 										
 										<?php  include_once('navbar.php'); ?>
 									</ul>
 								</nav>
 
 								<div class="main-panel">
+
+									<div class="content-wrapper">
+
+										<?php
+										if (isset($_SESSION['message'])) {
+											$message = $_SESSION['message'];
+											unset($_SESSION['message']);
+										}
+
+										?>
+

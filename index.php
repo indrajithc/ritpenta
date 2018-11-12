@@ -4,7 +4,7 @@
  * @Author: indran
  * @Date:   2018-10-17 12:51:35
  * @Last Modified by:   indran
- * @Last Modified time: 2018-10-17 17:08:44
+ * @Last Modified time: 2018-11-12 22:33:30
  */
 ?>
 <!DOCTYPE html>
@@ -14,7 +14,7 @@
 </head>
 <body>
 	<script type="text/javascript">
-		location.href="home.php";
+		location.href="public/";
 	</script>
 </body>
 </html>

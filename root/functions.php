@@ -4,7 +4,7 @@
  * @Author: indran
  * @Date:   2018-08-21 18:45:04
  * @Last Modified by:   indran
- * @Last Modified time: 2018-10-17 13:43:22
+ * @Last Modified time: 2018-11-12 21:57:24
  */
 function auth_login() {
 
@@ -32,13 +32,12 @@ function auth_login() {
 	}  
 	
 	$flag = true;
-
-
-	if( decrypt($_SESSION[ SYSTEM_NAME . 'type']) == 'admin' && dirname($_SERVER['SCRIPT_NAME']) . '/' !=  DIRECTORY_ADMIN ) 
+	
+	if($_SESSION[ SYSTEM_NAME . 'type'] == 'admin' && dirname($_SERVER['SCRIPT_NAME']) !=  DIRECTORY . ADMIN ) 
+		$flag = false;   
+	if($_SESSION[ SYSTEM_NAME . 'type'] == 'vsecretary' && dirname($_SERVER['SCRIPT_NAME'])   !=  DIRECTORY . VOLUNTEER ) 
 		$flag = false;  
 
-	
-	
 	if(!$flag ) {
 		auth_use();
 		exit();
@@ -64,6 +63,10 @@ function auth_use() {
 			setLocation(DIRECTORY_ADMIN);
 			break; 
 
+			case 'vsecretary':
+			setLocation(DIRECTORY_VOLUNTEER);
+			break; 
+
 
 			default:
 		 		# code...
@@ -75,7 +78,7 @@ function auth_use() {
 }
 	// get logged user type
 function user_type() {
-	return decrypt($_SESSION[SYSTEM_NAME . 'type']);
+	return  $_SESSION[SYSTEM_NAME . 'type'];
 }
 
 

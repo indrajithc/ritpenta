@@ -116,38 +116,44 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
 <li class="nav-item">
-	<a class="nav-link" data-toggle="collapse" href="#dashboard-dropdown" aria-expanded="false" aria-controls="dashboard-dropdown">
-		<i class="menu-icon mdi mdi-television"></i>
-		<span class="menu-title">Dashboard</span>
-		<i class="menu-arrow"></i>
+	<a class="nav-link" href="admin/feedback">
+		<i class="menu-icon mdi mdi-trackpad"></i>
+		<span class="menu-title">Feedback</span>
 	</a>
-	<div class="collapse" id="dashboard-dropdown">
-		<ul class="nav flex-column sub-menu">
-			<li class="nav-item">
-				<a class="nav-link" href="admin/dashboard">Dashboard 1</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="admin/#">Dashboard 2</a>
-			</li>
-		</ul>
-	</div>
 </li>
--->
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!--
+		<li class="nav-item">
+			<a class="nav-link" data-toggle="collapse" href="#dashboard-dropdown" aria-expanded="false" aria-controls="dashboard-dropdown">
+				<i class="menu-icon mdi mdi-television"></i>
+				<span class="menu-title">Dashboard</span>
+				<i class="menu-arrow"></i>
+			</a>
+			<div class="collapse" id="dashboard-dropdown">
+				<ul class="nav flex-column sub-menu">
+					<li class="nav-item">
+						<a class="nav-link" href="admin/dashboard">Dashboard 1</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="admin/#">Dashboard 2</a>
+					</li>
+				</ul>
+			</div>
+		</li>
+	-->
 
 
 
