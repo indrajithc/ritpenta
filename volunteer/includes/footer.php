@@ -4,11 +4,11 @@
  * @Author: indran
  * @Date:   2018-10-17 16:49:19
  * @Last Modified by:   indran
- * @Last Modified time: 2018-10-17 16:57:33
+ * @Last Modified time: 2018-11-12 22:00:39
  */
 ?>
 
-
+</div>
 <footer class="footer">
 	<div class="container-fluid clearfix">
 		<span class="text-muted d-block text-center text-sm-left d-sm-inline-block"> Copyright © <?php echo THEME_OWN_BY; ?>

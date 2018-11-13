@@ -4,7 +4,7 @@
  * @Author: indran
  * @Date:   2018-10-17 16:48:54
  * @Last Modified by:   indran
- * @Last Modified time: 2018-11-11 15:16:23
+ * @Last Modified time: 2018-11-12 21:39:45
  */
 
 
@@ -206,8 +206,8 @@ $message=array(null,null);
 												</div>
 											</a> -->
 											<a class="dropdown-item mt-2"> Manage Accounts </a>
-											<a class="dropdown-item"> Change Password </a>
-											<a class="dropdown-item"> Check Inbox </a>
+											<a class="dropdown-item" href="admin/change_password"> Change Password </a>
+											<!-- <a class="dropdown-item"> Check Inbox </a> -->
 											<a class="dropdown-item" href="exit"> Sign Out </a>
 										</div>
 									</li>
