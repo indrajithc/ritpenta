@@ -7,10 +7,10 @@
 include_once('../global.php'); 
 
 
- include_once('../root/functions.php'); 
- include_once('../root/connection.php'); 
+include_once('../root/functions.php'); 
+include_once('../root/connection.php'); 
 
- $db=new Database();
+$db=new Database();
 $error='';
 
 $message=array(
@@ -19,20 +19,11 @@ $message=array(
 );
 
 
- 
 
 
 
-if( isset( $_SESSION[SYSTEM_NAME . 'userid'] ) ) {
-  if( $_SESSION['type'] == 'admin' ) {
-    header('Location: ' . PATH . 'admin');
-  }         
-  if( $_SESSION['type'] == 'volunteer' ) {
-    header('Location: ' . PATH . 'volunteer' );
-  }         
-  exit();
-}
 
+auth_use();
 
 
 if(isset($_POST['login'])){
@@ -41,7 +32,7 @@ if(isset($_POST['login'])){
   $password = $_POST['password'];
   
 
-   $stmnt='select * from nss_log where user_id = :username and user_pwd = :password';
+  $stmnt='select * from nss_log where user_id = :username and user_pwd = :password';
   $params=array( 
    ':username'  =>  $username,
    ':password'  =>  $password
@@ -49,36 +40,37 @@ if(isset($_POST['login'])){
 
   $user = $db->display($stmnt,$params);
   if($user){
-    
+
    $_SESSION[SYSTEM_NAME . 'userid']=$username;
-
- 
-        if($user[0]['user_type'] == 'admin'){
-
-           $_SESSION[SYSTEM_NAME . 'type']='admin'; 
-          setLocation(  DIRECTORY_ADMIN );
-
-        } else {
-
-            $_SESSION[SYSTEM_NAME . 'type']='volunteer'; 
-          setLocation(  DIRECTORY_VOLUNTEER );
-
-        }
+   $_SESSION[SYSTEM_NAME . 'userid0']=$db->display($stmnt,$params)[0]['usr_id'];
 
 
+   if($user[0]['user_type'] == 'admin'){
 
- 
+     $_SESSION[SYSTEM_NAME . 'type']='admin'; 
+     setLocation(  DIRECTORY_ADMIN );
 
-   exit();
- } else{ 
+   } else {
 
-      $message [0] = 3;
-   $message [1] = 'Incorrect username or password'; 
+    $_SESSION[SYSTEM_NAME . 'type']='vsecretary'; 
+    setLocation(  DIRECTORY_VOLUNTEER );
+
+  }
 
 
- }
 
- 
+
+
+  exit();
+} else{ 
+
+  $message [0] = 3;
+  $message [1] = 'Incorrect username or password'; 
+
+
+}
+
+
 }
 
 
@@ -95,7 +87,7 @@ if(isset($_POST['login'])){
   <meta name="author" content="Indran">
   <meta name="github" content="https://github.com/indrajithc">
   <meta name="viewport" content="width=device-width, initial-scale=1">
- 
+
 
 
   <base href="<?php echo DIRECTORY ; ?>">
@@ -105,7 +97,7 @@ if(isset($_POST['login'])){
 
   <meta name="csrf-token" content="<?php echo $_SESSION[ SYSTEM_NAME . '_token']; ?>">
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -138,8 +130,8 @@ if(isset($_POST['login'])){
 
 
 <body class="text-center">
-  
-    
+
+
 
   <div class="container-scroller">
     <div class="container-fluid page-body-wrapper full-page-wrapper">
@@ -149,8 +141,8 @@ if(isset($_POST['login'])){
             <div class="auto-form-wrapper">
               <form action="" method="post" class="parsley" data-parsley-validate>
                 <img class="mb-4" src="assets/image/logob.jpg" alt="" width="72" height="72">
-                 <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-     
+                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
                 <div class="form-group">
                   <label class="label">Username</label>
                   <div class="input-group">
@@ -192,35 +184,35 @@ if(isset($_POST['login'])){
 
 
 
-<?php 
+                <?php 
 
 
 
 
 
- echo show_error($message); ?>
+                echo show_error($message); ?>
 
 
                 <div class="form-group">
                   <button class="btn btn-dark submit-btn btn-block" name="login">Login</button>
                 </div>
-               
-                  </form>
-                </div>
-            
-                
 
-
-                <span class="text-muted pt-5 mt-5 d-block text-center text-sm-left d-sm-inline-block"> Copyright © <?php echo THEME_OWN_BY; ?>
-                <a href="<?php echo TERMS__CONDITIONS; ?>" target="_blank">read</a>. All rights reserved.</span>
-
-
-
-              </div>
+              </form>
             </div>
-          </div> 
-        </div> 
-      </div>
+            
+
+
+
+            <span class="text-muted pt-5 mt-5 d-block text-center text-sm-left d-sm-inline-block"> Copyright © <?php echo THEME_OWN_BY; ?>
+            <a href="<?php echo TERMS__CONDITIONS; ?>" target="_blank">read</a>. All rights reserved.</span>
+
+
+
+          </div>
+        </div>
+      </div> 
+    </div> 
+  </div>
 
 
 
@@ -229,43 +221,43 @@ if(isset($_POST['login'])){
 
 
 
-      <script src="assets/js/popper.min.js"></script>  
-      <script src="assets/js/bootstrap-material-design.min.js"></script> 
-      <script src="assets/js/jquery.slimscroll.min.js"></script> 
-      <script src="assets/js/parsley.min.js"></script>
-      <script src="assets/js/lobibox.min.js"></script>  
+  <script src="assets/js/popper.min.js"></script>  
+  <script src="assets/js/bootstrap-material-design.min.js"></script> 
+  <script src="assets/js/jquery.slimscroll.min.js"></script> 
+  <script src="assets/js/parsley.min.js"></script>
+  <script src="assets/js/lobibox.min.js"></script>  
 
 
-      <script src="admin/js/main.js"></script>
-
-
-
-      <script type="text/javascript">
-        $(document).ready(function($) {
-          $('body').bootstrapMaterialDesign();
-
-
-          $("form.parsley").parsley({
-            errorClass: 'has-danger',
-            successClass: 'has-success',
-            classHandler: function(ParsleyField) {
-              return ParsleyField.$element.parents('.form-group');
-            },
-            errorsContainer: function(ParsleyField) {
-              return ParsleyField.$element.parents('.form-group');
-            },
-            errorsWrapper: '<span class="invalid-feedback d-block">',
-            errorTemplate: '<div></div>',
-            trigger: 'change'
-          });
+  <script src="admin/js/main.js"></script>
 
 
 
+  <script type="text/javascript">
+    $(document).ready(function($) {
+      $('body').bootstrapMaterialDesign();
 
 
-        });
-      </script>
+      $("form.parsley").parsley({
+        errorClass: 'has-danger',
+        successClass: 'has-success',
+        classHandler: function(ParsleyField) {
+          return ParsleyField.$element.parents('.form-group');
+        },
+        errorsContainer: function(ParsleyField) {
+          return ParsleyField.$element.parents('.form-group');
+        },
+        errorsWrapper: '<span class="invalid-feedback d-block">',
+        errorTemplate: '<div></div>',
+        trigger: 'change'
+      });
 
-    </body>
 
-    </html>
+
+
+
+    });
+  </script>
+
+</body>
+
+</html>

@@ -68,6 +68,7 @@ $message=array(
 <?php foreach ($details as $key => $value): ?>
 
       <tr>
+        
         <td><?php echo $value['event_name']; ?></td>
 
         <td><?php echo $value['event_date']; ?></td>
@@ -78,8 +79,9 @@ $message=array(
         
 
 
-<!--<td><a href="admin/fulviewvol.php?id=<?php echo $value['vol_id']; ?>" class="btn btn-primary btn-sm">view</a>
-      </td>-->
+
+  <td><a href="admin/edit_event.php?id=<?php echo $value['event_id']; ?>"   class="btn btn-sm btn-primary "  ><i class="far fa-edit"></i></a>
+      </td>
     </tr>
 
 

@@ -4,20 +4,20 @@
  * @Author: indran
  * @Date:   2018-10-17 17:28:08
  * @Last Modified by:   indran
- * @Last Modified time: 2018-10-17 17:29:00
+ * @Last Modified time: 2018-11-12 22:25:44
  */
 ?>
 
 
 
- 
+
 
 
 
 <!--
 
 <li class="nav-item">
-	<a class="nav-link" href="admin/dashboard">
+	<a class="nav-link" href="volunteer/dashboard">
 		<i class="menu-icon mdi mdi-television"></i>
 		<span class="menu-title">Dashboard</span>
 	</a>
@@ -26,7 +26,7 @@
 
 
 <li class="nav-item">
-	<a class="nav-link" href="admin/new">
+	<a class="nav-link" href="volunteer/new">
 		<i class="fas fa-tachometer-alt  pr-4"></i>
 		<span class="menu-title">New</span>
 	</a>
@@ -35,17 +35,17 @@
 -->
 
 <li class="nav-item">
-	<a class="nav-link" href="admin/addcamp">
+	<a class="nav-link" href="volunteer/viewcamp">
 		<i class="fas fa-tachometer-alt  pr-4"></i>
-		<span class="menu-title">Add Camp</span>
+		<span class="menu-title">View Camp</span>
 	</a>
 </li>
-      
+
 
 <li class="nav-item">
-	<a class="nav-link" href="admin/addevent">
+	<a class="nav-link" href="volunteer/viewevent">
 		<i class="fas fa-tachometer-alt  pr-4"></i>
-		<span class="menu-title">Add Event</span>
+		<span class="menu-title">View Event</span>
 	</a>
 </li>
 
@@ -66,10 +66,10 @@
 	<div class="collapse" id="dashboard-dropdown">
 		<ul class="nav flex-column sub-menu">
 			<li class="nav-item">
-				<a class="nav-link" href="admin/addvol.php">Add</a>
+				<a class="nav-link" href="volunteer/addvol.php">Add</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="admin/viewvol.php">View</a>
+				<a class="nav-link" href="volunteer/viewvol.php">View</a>
 			</li>
 		</ul>
 	</div>
@@ -100,10 +100,10 @@
 	<div class="collapse" id="dashboard-dropdown">
 		<ul class="nav flex-column sub-menu">
 			<li class="nav-item">
-				<a class="nav-link" href="admin/dashboard">Dashboard 1</a>
+				<a class="nav-link" href="volunteer/dashboard">Dashboard 1</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="admin/#">Dashboard 2</a>
+				<a class="nav-link" href="volunteer/#">Dashboard 2</a>
 			</li>
 		</ul>
 	</div>
@@ -123,10 +123,10 @@
 	<div class="collapse" id="dashboard-dropdown">
 		<ul class="nav flex-column sub-menu">
 			<li class="nav-item">
-				<a class="nav-link" href="admin/dashboard">Dashboard 1</a>
+				<a class="nav-link" href="volunteer/dashboard">Dashboard 1</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="admin/#">Dashboard 2</a>
+				<a class="nav-link" href="volunteer/#">Dashboard 2</a>
 			</li>
 		</ul>
 	</div>
@@ -140,7 +140,7 @@
 
 
 <li class="nav-item">
-	<a class="nav-link" href="admin/#">
+	<a class="nav-link" href="volunteer/#">
 		<i class="menu-icon mdi mdi-trackpad"></i>
 		<span class="menu-title">Widgets</span>
 	</a>

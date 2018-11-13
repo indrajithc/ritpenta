@@ -1,117 +1,113 @@
-
-<?php
- 
-//(?=<!--)(.*)(?=-->)(.*)(?=\n)
-
-include_once('../global.php'); ?>
-<?php include_once('../root/functions.php'); ?>
-<?php include_once('../root/connection.php'); ?>
-<?php  
-
-auth_login();
-
-include_once('includes/header.php');
-
-
- $db=new Database();
-$error='';
-
-$message=array(
-  null,
-  null
-);
-
-
- ?>
-
-
-
-<div class="content-wrapper">
-
-
-
-<div class="row">
-  <div class="col-sm-12">
-
-
-
-<div class="page-header">
-  <div class="h3 mb-3 bg-primary text-white"><h1>Camp Details</h1>
-    </div>
-  </div>
-
-
-<table class="table table-hover bg-white">
-  <thead>
-    <tr>
-      <th scope="col">Camp name</th>
-      <th scope="col">Camp start date</th>
-      <th scope="col">Camp end date</th>
-      <th scope="col">Camp details</th>
-    </tr>
-  </thead>
-     
-     <tbody>
-
 <?php
 
 
-   $stmnt=' SELECT * FROM `nss_camp_reg` ';
-  
+include_once('includes/header.php'); ?>
 
 
-  $details = $db->display($stmnt);
- 
+
+
+<?php 
+$data = array();
+$data = selectFromTable('*' , 'nss_camp_cordntrs' , ' 1 ', $db);
 
 ?>
 
-<?php foreach ($details as $key => $value): ?>
-
-      <tr>
-        <td><?php echo $value['cp_name']; ?></td>
-
-        <td><?php echo $value['cp_date_frm']; ?></td>
-
-        <td><?php echo $value['cp_date_to']; ?></td>
-        
-        <td><?php echo $value['cp_details']; ?></td>
-        
-
-
-<!--<td><a href="admin/fulviewvol.php?id=<?php echo $value['vol_id']; ?>" class="btn btn-primary btn-sm">view</a>
-      </td>-->
-    </tr>
-
-
-<?php endforeach; ?>
-  </tbody>
-</table>
 
 
 
- 
-
-  </div> 
-</div>
+<div class="row flex-grow mt-3">
+	<div class="col-12">
 
 
 
+		<div class="card">
+			<div class="card-body"> 
 
 
- 
+				<h4 class="card-title">Existing Departments</h4>
+				<p class="card-description"> view all departments </p>
+
+
+				<?php if($data): ?>
+					<div class="table-responsive">
+
+						<table class="table  table-hover">
+							<tr>
+								<th class="text-uppercase">name</th>
+								<th class="text-uppercase">caption</th>
+								<th class="text-uppercase">description</th>
+								<th class="text-uppercase">added time</th>
+								<th class="text-uppercase">public</th>
+								<th class="text-uppercase">delete</th>
+								<th class="text-uppercase">more</th>
+							</tr>
+							<?php foreach ($data as $key => $value): ?>
+
+
+								<tr>
+									<td ><?php echo isit('dpt_name', $value); ?></td>
+									<td ><?php echo isit('dpt_caption', $value); ?></td>
+									<td ><?php echo isit('dpt_description', $value); ?></td>
+									<td ><?php echo isit('dpt_date', $value); ?></td>
+									<td > 
+										<form accept="" method="post">
+											<input type="hidden" name="id" value="<?php echo indexMe(isit('dpt_id', $value)); ?>">
+											<?php if( isit('dpt_public', $value) == 0 ): ?>
+												<button class="btn btn-sm btn-success" name="make_public" value="1">make public</button>
+												<?php else: ?>
+													<button class="btn btn-sm btn-danger" name="make_public" value="0">hide</button>
+												<?php endif; ?>
+											</form>
+
+
+										</td>
+										<td >
+											<form accept="" method="post">
+												<input type="hidden" name="id" value="<?php echo indexMe(isit('dpt_id', $value)); ?>">
+												<?php if( isit('dpt_delete', $value) == 0 ): ?>
+													<button class="btn btn-sm btn-danger" name="make_delete" value="1">delete</button>
+													<?php else: ?>
+														<button class="btn btn-sm btn-success" name="make_delete" value="0">active</button>
+													<?php endif; ?>
+												</form>
+
+
+											</td>
+											<td>
+												<a title="edit" href="admin/department/<?php echo indexMe(isit('dpt_id', $value)); ?>" class="btn btn-sm btn-info ">
+													<i class="ti-pencil-alt"></i>
+												</a>
+											</td>
+										</tr>
+
+
+
+									<?php endforeach; ?>
+
+								</table>
+
+							</div>
+							<?php else: ?>
+								<div class="alert alert-warning text-center text-capitalize">
+									<p>no department added</p>
+								</div>
+
+
+							<?php endif; ?>
 
 
 
 
-
-
-        </div>
-
-
+						</div>
+					</div>
 
 
 
+				</div>
+
+			</div>
 
 
 
-        <?php include_once('includes/footer.php'); ?>
+
+			<?php include_once('includes/footer.php'); ?>
