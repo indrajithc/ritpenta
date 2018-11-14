@@ -82,6 +82,7 @@ RewriteRule ^volunteer/profile$	 volunteer/profile.php [L]
 RewriteRule ^volunteer/viewcamp$ volunteer/viewcamp.php [L] 
 RewriteRule ^volunteer/viewcamp/([^/]+)$ volunteer/viewsingecamp.php?id=$1 [L] 
 RewriteRule ^volunteer/editcamp/([^/]+)$ volunteer/editcamp.php?id=$1 [L] 
+RewriteRule ^volunteer/imagecamp/([^/]+)$ volunteer/imagecamp.php?id=$1 [L] 
 
 
 
@@ -93,8 +94,6 @@ RewriteRule ^volunteer/editevent/([^/]+)$ volunteer/editevent.php?id=$1 [L]
 #================ ======================================= ==================================
 
 
-
-RewriteRule ^files/(.*) files_p9DFyy/$1
 
 
 
@@ -120,8 +119,8 @@ RewriteRule ^global.php$ index.php [L]
 RewriteRule ^uploads/$ index.php [L]  
 RewriteRule ^root/$ index.php [L]  
 RewriteRule ^root/(.*) index.php [L]  
-RewriteRule ^files/$ index.php [L]  
-RewriteRule ^files/(.*) index.php [L]  
+#RewriteRule ^files/$ index.php [L]  
+#RewriteRule ^files/(.*) index.php [L]  
 RewriteRule ^assets/$ index.php [L]   
 
 
@@ -133,6 +132,7 @@ RewriteRule ^exit$ logout.php [L]
 
 
 
+RewriteRule ^ajax$ ajax.php [L]   
 
 ErrorDocument 400 /ritpenta/public/error.php?key=400
 ErrorDocument 401 /ritpenta/public/error.php?key=401

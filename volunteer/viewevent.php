@@ -4,7 +4,7 @@
  * @Author: indran
  * @Date:   2018-11-11 19:17:02
  * @Last Modified by:   indran
- * @Last Modified time: 2018-11-12 22:31:26
+ * @Last Modified time: 2018-11-13 06:08:50
  */ 
 
 //(?=<!--)(.*)(?=-->)(.*)(?=\n)
@@ -55,7 +55,6 @@ include_once('includes/header.php');
 							<th scope="col">Event date</th>
 							<th scope="col">Event working hours</th> 
 							<th class="text-uppercase">added time</th> 
-							<th class="text-uppercase">delete</th>
 							<th class="text-uppercase">more</th>
 
 						</tr>
