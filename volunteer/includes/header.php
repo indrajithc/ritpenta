@@ -4,7 +4,7 @@
  * @Author: indran
  * @Date:   2018-10-17 16:48:54
  * @Last Modified by:   indran
- * @Last Modified time: 2018-11-12 22:14:47
+ * @Last Modified time: 2018-11-13 06:32:14
  */
 
 include_once('../global.php'); ?>
@@ -60,8 +60,12 @@ if (isset($sudo[0] )) {
 
 
 
-	<link rel="stylesheet" href="volunteer/css/style.css">  
-	<link rel="stylesheet" href="volunteer/css/style_01.css">
+	<link rel="stylesheet" href="volunteer/css/style_01.css"> 
+	<link rel="stylesheet" href="volunteer/css/style.css"> 
+	<link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css">
+	<link rel="stylesheet" href="assets/css/select2.min.css">
+	<link rel="stylesheet" href="assets/css/datatables.min.css">
+	<link rel="stylesheet" href="assets/css/cropper.min.css">
 
 
 
@@ -75,6 +79,21 @@ if (isset($sudo[0] )) {
 
 
 <link rel="shortcut icon" href="assets/image/favicon/favicon.ico" /> 
+
+
+<style type="text/css">
+
+.select2-container .select2-selection--single { 
+	height: 40px !important; 
+}
+
+.asColorPicker-input, .dataTables_wrapper select, .jsgrid .jsgrid-table .jsgrid-filter-row input[type=text], .jsgrid .jsgrid-table .jsgrid-filter-row select, .jsgrid .jsgrid-table .jsgrid-filter-row input[type=number], .select2-container--default .select2-selection--single, .select2-container--default .select2-selection--single .select2-search__field, .tt-hint, .tt-query, .typeahead {
+	padding: .5rem 1rem 2rem !important; 
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+	height: 40px; 
+}
+</style>
 <script src="assets/js/jquery.min.js"></script> 
 
 </head>

@@ -4,7 +4,7 @@
  * @Author: indran
  * @Date:   2018-11-07 06:51:37
  * @Last Modified by:   indran
- * @Last Modified time: 2018-11-11 19:13:52
+ * @Last Modified time: 2018-11-13 06:06:30
  */
 
 //(?=<!--)(.*)(?=-->)(.*)(?=\n)
@@ -110,12 +110,7 @@ if(isset($_POST['submit-btn'])){
 
 
 
-			$params=array(
-
-				'cp_key' 	=> $cp_id,
-				'cp_name'        =>  $cp_name,
-				'cp_date_frm'       =>  $cp_date_frm,
-				'cp_date_to'         =>  $cp_date_to,
+			$params=array( 
 				'cp_details'            =>  $cp_details
 
 			);
@@ -245,7 +240,8 @@ if(isset($_POST['submit-btn'])){
 						<div class="form-group row">
 							<label for="exampleInputName2" class="col-sm-3 col-form-label">Camp ID</label>
 							<div class="col-sm-9">
-								<input type="text" class="form-control text-success" name="cp_id" placeholder="Camp ID" data-parsley-required="true"   value="<?php echo  isit( 'cp_key', $details); ?>" >
+								<input type="hidden" class="form-control text-success" name="cp_id" placeholder="Camp ID" data-parsley-required="true"   value="<?php echo  isit( 'cp_key', $details); ?>" >
+								<input type="text" disabled class="form-control text-success" name="cp_id" placeholder="Camp ID" data-parsley-required="true"   value="<?php echo  isit( 'cp_key', $details); ?>" >
 							</div>
 						</div>
 
@@ -255,7 +251,8 @@ if(isset($_POST['submit-btn'])){
 						<div class="form-group row">
 							<label for="exampleInputName2" class="col-sm-3 col-form-label">Camp Name</label>
 							<div class="col-sm-9">
-								<input type="text" class="form-control" name="cp_name" placeholder="Camp Name" data-parsley-required="true" value="<?php echo  isit( 'cp_name', $details); ?>" required>
+								<input type="hidden" class="form-control" name="cp_name" placeholder="Camp Name" data-parsley-required="true" value="<?php echo  isit( 'cp_name', $details); ?>" required>
+								<input type="text" disabled class="form-control" name="cp_name" placeholder="Camp Name" data-parsley-required="true" value="<?php echo  isit( 'cp_name', $details); ?>" required>
 							</div>
 						</div>
 
@@ -264,7 +261,8 @@ if(isset($_POST['submit-btn'])){
 						<div class="form-group row">
 							<label for="exampleInputName2" class="col-sm-3 col-form-label">Start On</label>
 							<div class="col-sm-9">
-								<input type="text" class="form-control datetimepicker" data-date-format="YYYY-M-D" name="cp_date_frm" placeholder=" Start On" data-parsley-required="true" value="<?php echo  isit( 'cp_date_frm', $details); ?>" >
+								<input type="text" disabled class="form-control datetimepicker" data-date-format="YYYY-M-D" name="cp_date_frm" placeholder=" Start On" data-parsley-required="true" value="<?php echo  isit( 'cp_date_frm', $details); ?>" >
+								<input type="hidden" class="form-control datetimepicker" data-date-format="YYYY-M-D" name="cp_date_frm" placeholder=" Start On" data-parsley-required="true" value="<?php echo  isit( 'cp_date_frm', $details); ?>" >
 
 							</div>
 						</div>
@@ -272,7 +270,8 @@ if(isset($_POST['submit-btn'])){
 						<div class="form-group row">
 							<label for="exampleInputName2" class="col-sm-3 col-form-label">End On</label>
 							<div class="col-sm-9">
-								<input type="text" class="form-control datetimepicker" data-date-format="YYYY-M-D" name="cp_date_to"  placeholder=" End On" data-parsley-required="true" value="<?php echo  isit( 'cp_date_to', $details); ?>" >
+								<input type="text" disabled class="form-control datetimepicker" data-date-format="YYYY-M-D" name="cp_date_to"  placeholder=" End On" data-parsley-required="true" value="<?php echo  isit( 'cp_date_to', $details); ?>" >
+								<input type="hidden" class="form-control datetimepicker" data-date-format="YYYY-M-D" name="cp_date_to"  placeholder=" End On" data-parsley-required="true" value="<?php echo  isit( 'cp_date_to', $details); ?>" >
 
 
 							</div>

@@ -4,7 +4,7 @@
  * @Author: indran
  * @Date:   2018-11-11 19:17:02
  * @Last Modified by:   indran
- * @Last Modified time: 2018-11-12 22:31:26
+ * @Last Modified time: 2018-11-15 06:33:06
  */ 
 
 //(?=<!--)(.*)(?=-->)(.*)(?=\n)
@@ -55,7 +55,6 @@ include_once('includes/header.php');
 							<th scope="col">Event date</th>
 							<th scope="col">Event working hours</th> 
 							<th class="text-uppercase">added time</th> 
-							<th class="text-uppercase">delete</th>
 							<th class="text-uppercase">more</th>
 
 						</tr>
@@ -94,6 +93,10 @@ include_once('includes/header.php');
 
 
 								<td>
+
+									<a title="edit" href="volunteer/imageevent/<?php echo indexMe((int)isit('event_id', $value, 0)); ?>" class="btn btn-sm btn-success ">
+										<i class="ti-image"></i>
+									</a>
 									<a title="edit" href="volunteer/viewevent/<?php echo indexMe((int)isit('event_id', $value, 0)); ?>" class="btn btn-sm btn-info ">
 										<i class="ti-eye"></i>
 									</a>
