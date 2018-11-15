@@ -4,7 +4,7 @@
  * @Author: indran
  * @Date:   2018-11-12 22:20:20
  * @Last Modified by:   indran
- * @Last Modified time: 2018-11-12 22:31:11
+ * @Last Modified time: 2018-11-13 06:37:41
  */
 
 include_once('includes/header.php'); ?>
@@ -85,6 +85,9 @@ $data = selectFromTable('*' , 'nss_camp_reg ' , '  cp_delete = 0 ', $db);
 										</td>
 
 										<td>
+											<a title="edit" href="volunteer/imagecamp/<?php echo indexMe((int)isit('cp_id', $value, 0)); ?>" class="btn btn-sm btn-success ">
+												<i class="ti-image"></i>
+											</a>
 											<a title="edit" href="volunteer/viewcamp/<?php echo indexMe((int)isit('cp_id', $value, 0)); ?>" class="btn btn-sm btn-info ">
 												<i class="ti-eye"></i>
 											</a>

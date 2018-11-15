@@ -466,3 +466,18 @@
     outline: 1px solid slategrey; }
 
 /*# sourceMappingURL=style.css.map */
+
+
+
+.progress {
+  display: block;
+  text-align: center;
+  width: 0;
+  height: 3px;
+  background-color: #2196f3 !important;
+  transition: width .3s;
+}
+.progress.hide {
+  opacity: 0;
+  transition: opacity 1.3s;
+}
