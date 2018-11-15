@@ -4,7 +4,7 @@
  * @Author: indran
  * @Date:   2018-10-17 17:28:08
  * @Last Modified by:   indran
- * @Last Modified time: 2018-11-12 22:25:44
+ * @Last Modified time: 2018-11-15 05:47:46
  */
 ?>
 
@@ -66,10 +66,10 @@
 	<div class="collapse" id="dashboard-dropdown">
 		<ul class="nav flex-column sub-menu">
 			<li class="nav-item">
-				<a class="nav-link" href="volunteer/addvol.php">Add</a>
+				<a class="nav-link" href="volunteer/addvol">Add</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="volunteer/viewvol.php">View</a>
+				<a class="nav-link" href="volunteer/viewvol">View</a>
 			</li>
 		</ul>
 	</div>

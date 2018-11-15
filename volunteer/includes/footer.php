@@ -4,7 +4,7 @@
  * @Author: indran
  * @Date:   2018-10-17 16:49:19
  * @Last Modified by:   indran
- * @Last Modified time: 2018-11-14 07:17:40
+ * @Last Modified time: 2018-11-15 06:51:52
  */
 ?>
 
@@ -163,12 +163,12 @@ $(document).on('submit', '#submit_me_image_upload', function(event) {
 	// result = $image.cropper(data.method, data.option, data.secondOption);
 
 
+	$('#selectedImg').prop('disabled', true);
 
 	$image.cropper('getCroppedCanvas').toBlob(function (blob) {
 		var formData = new FormData( $('#submit_me_image_upload')[0] );
 
 		formData.append('croppedImage', blob);
-		formData.append('action', 'image-to-camp'); 
 
 		$.ajax('ajax', {
 			xhr: function () {
@@ -202,6 +202,8 @@ $(document).on('submit', '#submit_me_image_upload', function(event) {
 			contentType: false,
 			success: function (response) {
 
+				
+				$('#selectedImg').prop('disabled', false);
 				data  = jQuery.parseJSON(response);
 				console.log(data.success);
 				if (data.success == -1 ) {
@@ -209,7 +211,6 @@ $(document).on('submit', '#submit_me_image_upload', function(event) {
 				} else if (data.success == 0 ) {
 					console.log(' server error ');
 				} else if (data.success == 1 ) {
-					
 
 					$image.cropper('clear');
 					$('#hide-imageup').addClass('d-none');
@@ -225,6 +226,8 @@ $(document).on('submit', '#submit_me_image_upload', function(event) {
 
 			},
 			error: function () {
+				
+				$('#selectedImg').prop('disabled', false);
 				console.log('Upload error');
 			}
 		});

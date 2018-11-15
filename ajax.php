@@ -4,7 +4,7 @@
  * @Author: indran
  * @Date:   2018-11-14 04:50:37
  * @Last Modified by:   indran
- * @Last Modified time: 2018-11-14 06:07:31
+ * @Last Modified time: 2018-11-15 06:15:26
  */
 ?><?php 
 
@@ -21,15 +21,20 @@ if( isset( $_SESSION[ SYSTEM_NAME . 'userid'] )   ) {
 		include_once('root/process.php');
 
 		switch ($_POST['action']) {
-			case 'image-to-camp':
 
 
+			case 'image-to-camp': 
 			$flag = imageToCamp($_POST, $_FILES);	
-			echo json_encode(array('success'=>$flag));	
-
-
-
+			echo json_encode(array('success'=>$flag));	 
 			break;
+
+			case 'image-to-event': 
+			$flag = imageToEvent($_POST, $_FILES);	
+			echo json_encode(array('success'=>$flag));	 
+			break;
+
+
+
 
 			default: 
 			break;

@@ -1,13 +1,11 @@
 <?php
 
 /**
- * @Author: indran
- * @Date:   2018-11-13 06:37:47
- * @Last Modified by:   indran
- * @Last Modified time: 2018-11-15 07:02:05
- */ 
-
-
+* @Author: indran
+* @Date:   2018-11-15 06:05:13
+* @Last Modified by:   indran
+* @Last Modified time: 2018-11-15 06:05:28
+*/  
 
 include_once('includes/header.php');
 
@@ -21,7 +19,7 @@ if (isset($_GET['id'])) {
 
 if (   $id == -1) {
 
-	setLocation("volunteer/viewcamp"); 
+	setLocation("volunteer/viewevent"); 
 }
 
 
@@ -45,21 +43,19 @@ if (isset($_POST['make_delete'])) {
 
 
 	$params = array(
-		'cp_delete' => $action
+		'ev_delete' => $action
 	); 
-
-	$istrue = $db->display( " SELECT * FROM nss_camp_photo WHERE cp_pht_slno =  " . $idIN );
+	$istrue = $db->display( " SELECT * FROM nss_event_photo WHERE ev_pht_slno =  " . $idIN );
 	$pathName = "";
 
 	if (isset($istrue[0])) {
-		$pathName = "../" . $istrue[0]['cp_pht_path']. "/" .  $istrue[0]['cp_pht_name'];
+		$pathName = "../" . $istrue[0]['ev_pht_path']. "/" .  $istrue[0]['ev_pht_name'];
 	}
 
 
-	$istrue = $db->execute_query( " DELETE FROM nss_camp_photo WHERE cp_pht_slno =  " . $idIN );
+	$istrue = $db->execute_query( " DELETE FROM nss_event_photo WHERE ev_pht_slno =  " . $idIN );
 
 	if($istrue){
-
 		try {
 			if (file_exists( $pathName)  && $pathName != '') { 
 				unlink($pathName);
@@ -67,7 +63,6 @@ if (isset($_POST['make_delete'])) {
 		} catch (Exception $e) {
 
 		}
-
 		$message [0] = 1;
 		$message [1] = ' updated ';  
 
@@ -130,7 +125,7 @@ if (isset($_POST['image-up'])) {
 		<?php
 
 
-		$stmnt=" SELECT * FROM `nss_camp_reg`  c LEFT JOIN nss_camp_cordntrs d  ON c.cp_id = d.cmp_id WHERE c.cp_id = :id ";
+		$stmnt=" SELECT * FROM `nss_event_reg`  c LEFT JOIN nss_eve_cordntrs d  ON c.event_id = d.eve_id WHERE c.event_id = :id ";
 
 		$params = array (
 			':id' => $id
@@ -144,7 +139,7 @@ if (isset($_POST['image-up'])) {
 		}  else {
 
 
-			setLocation("volunteer/viewcamp");
+			setLocation("volunteer/viewevent");
 		}
 
 		?>
@@ -163,24 +158,24 @@ if (isset($_POST['image-up'])) {
 							<tr>
 								<th scope="col">Camp key</th>
 								<td>
-									<?php echo  isit( 'cp_key', $details); ?>
+									<?php echo  isit( 'ev_key', $details); ?>
 								</td>
 
 								<th scope="col">Name</th>
 								<td> 
-									<?php echo  isit( 'cp_name', $details); ?>
+									<?php echo  isit( 'ev_name', $details); ?>
 								</td>
 							</tr> 
 
 							<tr>
 								<th scope="col">Date From</th>
 								<td> 
-									<?php echo  isit( 'cp_date_frm', $details); ?>
+									<?php echo  isit( 'ev_date_frm', $details); ?>
 								</td>
 
 								<th scope="col">Date To</th>
 								<td> 
-									<?php echo  isit( 'cp_date_to', $details); ?>
+									<?php echo  isit( 'ev_date_to', $details); ?>
 								</td>
 							</tr>
 							<tr>
@@ -188,10 +183,10 @@ if (isset($_POST['image-up'])) {
 								<td></td>
 								<th scope="col"></th>
 								<td> 
-									<a title="edit" href="volunteer/viewcamp/<?php echo indexMe((int)isit('cp_id', $details, 0)); ?>" class="btn btn-sm btn-info ">
+									<a title="edit" href="volunteer/viewevent/<?php echo indexMe((int)isit('event_id', $details, 0)); ?>" class="btn btn-sm btn-info ">
 										<i class="ti-eye"></i>
 									</a>
-									<a title="edit" href="volunteer/editcamp/<?php echo indexMe((int)isit('cp_id', $details, 0)); ?>" class="btn btn-sm btn-warning ">
+									<a title="edit" href="volunteer/editevent/<?php echo indexMe((int)isit('event_id', $details, 0)); ?>" class="btn btn-sm btn-warning ">
 										<i class="ti-pencil-alt"></i>
 									</a>
 								</td>
@@ -247,8 +242,10 @@ if (isset($_POST['image-up'])) {
 
 
 							<form method="post" action="ajax" class="mt-3" id="submit_me_image_upload">
-								<input type="hidden" name="camp" value="<?php echo indexMe((int)isit('cp_id', $details, 0)); ?>">
-								<input type="hidden" name="action" value="image-to-camp"> 
+								<input type="hidden" name="event" value="<?php echo indexMe((int)isit('event_id', $details, 0)); ?>">
+
+								<input type="hidden" name="action" value="image-to-event"> 
+
 								<input type="file"  class="sr-only d-none" id="inputImage" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
 								<input type="hidden" class="form-control" name="dataX" id="dataX" placeholder="x"> 
 								<input type="hidden" class="form-control" name="dataY" id="dataY" placeholder="y"> 
@@ -284,7 +281,7 @@ if (isset($_POST['image-up'])) {
 					<h4>Uploaded Images</h4>
 					<?php
 
-					$details = selectFromTable( '*' , ' nss_camp_photo ', ' 1  ORDER BY cp_pht_date  DESC ' , $db);
+					$details = selectFromTable( '*' , ' nss_event_photo ', ' 1  ORDER BY ev_pht_date  DESC ' , $db);
 
 					?>
 					<?php if ($details): ?>
@@ -301,20 +298,20 @@ if (isset($_POST['image-up'])) {
 
 									<tr>
 										<td>
-											<img class="img-thumbnail" style=" width: 200px ; height: auto;  border-radius: 0 !important;" src="<?php echo  isit( 'cp_pht_path', $value); ?>/<?php echo  isit( 'cp_pht_name', $value); ?>">
+											<img class="img-thumbnail" style=" width: 200px ; height: auto;  border-radius: 0 !important;" src="<?php echo  isit( 'ev_pht_path', $value); ?>/<?php echo  isit( 'ev_pht_name', $value); ?>">
 										</td>
 										<td> 
-											<?php echo  isit( 'cp_pht_desc', $value); ?>
+											<?php echo  isit( 'ev_pht_desc', $value); ?>
 										</td>
 
 										<td>  
-											<time class="timeago" datetime="<?php echo isit('cp_pht_date', $value); ?>" title="<?php echo isit('cp_pht_date', $value); ?>">1 hour ago</time>
+											<time class="timeago" datetime="<?php echo isit('ev_pht_date', $value); ?>" title="<?php echo isit('ev_pht_date', $value); ?>">1 hour ago</time>
 										</td>
 
 										<td >
 											<form accept="" method="post">
-												<input type="hidden" name="id" value="<?php echo indexMe( (int) isit('cp_pht_slno', $value, 0)); ?>">
-												<?php if( isit('cp_pht_delete', $value) == 0 ): ?>
+												<input type="hidden" name="id" value="<?php echo indexMe( (int) isit('ev_pht_slno', $value, 0)); ?>">
+												<?php if( isit('ev_pht_delete', $value) == 0 ): ?>
 													<button class="btn btn-sm btn-danger" name="make_delete" value="1">delete</button>
 													<?php else: ?>
 														<button class="btn btn-sm btn-success" name="make_delete" value="0">active</button>
