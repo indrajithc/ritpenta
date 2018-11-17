@@ -4,7 +4,7 @@
  * @Author: indran
  * @Date:   2018-11-12 22:20:20
  * @Last Modified by:   indran
- * @Last Modified time: 2018-11-13 06:37:41
+ * @Last Modified time: 2018-11-17 14:12:58
  */
 
 include_once('includes/header.php'); ?>
@@ -93,6 +93,9 @@ $data = selectFromTable('*' , 'nss_camp_reg ' , '  cp_delete = 0 ', $db);
 											</a>
 											<a title="edit" href="volunteer/editcamp/<?php echo indexMe((int)isit('cp_id', $value, 0)); ?>" class="btn btn-sm btn-warning ">
 												<i class="ti-pencil-alt"></i>
+											</a>
+											<a title="edit" href="volunteer/campparticipant/<?php echo indexMe((int)isit('cp_id', $value, 0)); ?>" class="btn btn-sm btn-primary ">
+												<i class="fas fa-user-plus"></i>
 											</a>
 										</td>
 									</tr>
