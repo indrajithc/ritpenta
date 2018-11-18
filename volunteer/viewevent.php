@@ -4,7 +4,7 @@
  * @Author: indran
  * @Date:   2018-11-11 19:17:02
  * @Last Modified by:   indran
- * @Last Modified time: 2018-11-15 06:33:06
+ * @Last Modified time: 2018-11-17 20:01:51
  */ 
 
 //(?=<!--)(.*)(?=-->)(.*)(?=\n)
@@ -102,6 +102,9 @@ include_once('includes/header.php');
 									</a>
 									<a title="edit" href="volunteer/editevent/<?php echo indexMe((int)isit('event_id', $value, 0)); ?>" class="btn btn-sm btn-warning ">
 										<i class="ti-pencil-alt"></i>
+									</a>
+									<a title="edit" href="volunteer/eventparticipant/<?php echo indexMe((int)isit('event_id', $value, 0)); ?>" class="btn btn-sm btn-primary ">
+										<i class="fas fa-user-plus"></i>
 									</a>
 								</td>
 
