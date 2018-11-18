@@ -63,6 +63,18 @@ RewriteRule ^admin/feedback$ admin/feedback.php [L]
 RewriteRule ^admin/change_password$ admin/change_password.php [L] 
 
 
+RewriteRule ^admin/blooddonors$	 admin/blooddonors.php [L]  
+
+
+
+
+RewriteRule ^admin/addaward$ admin/addaward.php [L] 
+RewriteRule ^admin/viewaward$ admin/viewaward.php [L] 
+RewriteRule ^admin/viewaward/([^/]+)$ admin/viewsingeaward.php?id=$1 [L] 
+RewriteRule ^admin/editaward/([^/]+)$ admin/editaward.php?id=$1 [L] 
+RewriteRule ^admin/imageaward/([^/]+)$ admin/imageaward.php?id=$1 [L] 
+
+
 
 
 

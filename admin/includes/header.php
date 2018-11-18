@@ -4,7 +4,7 @@
  * @Author: indran
  * @Date:   2018-10-17 16:48:54
  * @Last Modified by:   indran
- * @Last Modified time: 2018-11-12 21:39:45
+ * @Last Modified time: 2018-11-18 18:50:19
  */
 
 
@@ -53,6 +53,7 @@ $message=array(null,null);
 	<link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css">
 	<link rel="stylesheet" href="assets/css/select2.min.css">
 	<link rel="stylesheet" href="assets/css/datatables.min.css">
+	<link rel="stylesheet" href="assets/css/cropper.min.css">
 
 
 
