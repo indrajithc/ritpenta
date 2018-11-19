@@ -4,7 +4,7 @@
  * @Author: indran
  * @Date:   2018-11-14 04:50:37
  * @Last Modified by:   indran
- * @Last Modified time: 2018-11-15 06:17:31
+ * @Last Modified time: 2018-11-18 18:55:24
  */
 ?><?php 
 
@@ -139,6 +139,62 @@ function imageToEvent ($post, $files) {
 }
 
 
+
+
+function imageToAward ($post, $files) {
+
+	global $db;
+
+	$destination = 'files/award';
+
+	$filename = "no";
+
+	if(!empty($files))
+	{
+		if(is_uploaded_file($files['croppedImage']['tmp_name']))
+		{ 
+			$source_path = $files['croppedImage']['tmp_name'];
+			$filename =  $files['croppedImage']['name'];
+			$filename = md5($filename . microtime());
+			$ext = 'png';
+			if( strtolower( pathinfo( $filename , PATHINFO_EXTENSION) )) {
+				$ext =  strtolower( pathinfo( $filename , PATHINFO_EXTENSION) );
+			}
+			$revFilename = $filename . '.' . $ext;
+			$target_path = $destination.'/' . $revFilename;
+			if(move_uploaded_file($source_path, $target_path)) {
+				$filename =  $revFilename;
+			}
+		}
+	} else  {
+		return -1;
+	}
+
+
+	$awrd_id = unIndexMe( isit('award', $post, 0) );
+	$awrdp_desc =  $post['desc'];
+	$awrdp_path =  $destination;
+	$awrdp_name =  $filename;
+
+	$params = array(
+		'awrd_id' => $awrd_id,
+		'awrdp_desc' => $awrdp_desc,
+		'awrdp_path' => $awrdp_path,
+		'awrdp_name' => $awrdp_name
+	);
+
+	$result = insertIntoTable ('nss_awards_photo', $params, $db);
+
+	if ($result) {
+		return 1;
+	} else {
+		return 0;
+	}
+
+
+
+
+}
 
 
 

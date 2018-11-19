@@ -4,7 +4,7 @@
  * @Author: indran
  * @Date:   2018-11-17 22:01:27
  * @Last Modified by:   indran
- * @Last Modified time: 2018-11-18 10:32:34
+ * @Last Modified time: 2018-11-18 10:47:00
  */ 
 
 
@@ -71,7 +71,7 @@ if (isset($_POST['make_delete'])) {
 	if ($istrue) {
 
 
-		$istrue = $db->execute_query( " UPDATE nss_blood_donation  SET bd_delete = 1  WHERE bd_id =  " . $idIN );
+		$istrue = $db->execute_query( " UPDATE nss_blood_donation  SET bd_delete = $action  WHERE bd_id =  " . $idIN );
 
 		if($istrue){
 
@@ -203,7 +203,7 @@ if(isset($_POST['submit'])){
 </div>
 <form class="form-horizontal bordered-row" id="add-volunteer-0"  action="" method="post" data-parsley-validate>
 
-	<div class="row">
+	<div class="row d-none">
 		<div class="col-9 ">
 
 
@@ -386,7 +386,7 @@ if(isset($_POST['submit'])){
 	<div class="col-sm-12 ">
 
 
-		<h1 class="h3 mb-3 font-weight-normal text-dark text-center">Volunteer Details</h1>
+		<h1 class="h3 mb-3 font-weight-normal text-dark text-center">blood donors Details</h1>
 
 
 
@@ -410,7 +410,7 @@ if(isset($_POST['submit'])){
 				<tbody>
 
 					<?php
-					$stmnt=" SELECT v.*, d.branch_or_specialisation, d.name, DATE(v.bd_date) AS ddate FROM `nss_blood_donation` v LEFT JOIN  stud_details d ON v.bd_admno = d.admissionno  WHERE v.bd_delete = 0  ORDER BY   v.bd_date  DESC";
+					$stmnt=" SELECT v.*, d.branch_or_specialisation, d.name, DATE(v.bd_date) AS ddate FROM `nss_blood_donation` v LEFT JOIN  stud_details d ON v.bd_admno = d.admissionno    ORDER BY v.bd_date DESC";
 
 					$details = $db->display($stmnt);
 
@@ -433,39 +433,41 @@ if(isset($_POST['submit'])){
 
 									<form accept="" method="post">
 										<input type="hidden" name="id" value="<?php echo indexMe( (int) isit('bd_id', $value, 0)); ?>">
-										
-										<button class="btn btn-sm btn-danger" name="make_delete" value="1">delete</button>
-										
-									</form>
+										<?php if( isit('bd_delete', $value) == 0 ): ?>
+											<button class="btn btn-sm btn-danger" name="make_delete" value="1">delete</button>
+											<?php else: ?>
+												<button class="btn btn-sm btn-success" name="make_delete" value="0">active</button>
+											<?php endif; ?>
+										</form>
 
 
 
-								</td>
-							</tr>
+									</td>
+								</tr>
 
 
 
-						<?php endforeach; ?>
-					<?php endif; ?>
-				</tbody>
-			</table>
+							<?php endforeach; ?>
+						<?php endif; ?>
+					</tbody>
+				</table>
 
-		</div>
-
-
-
-
-	</div> 
-</div>
+			</div>
 
 
 
 
-<?php
+		</div> 
+	</div>
 
-include_once("includes/footer.php");
 
-?>
+
+
+	<?php
+
+	include_once("includes/footer.php");
+
+	?>
 
 
 
