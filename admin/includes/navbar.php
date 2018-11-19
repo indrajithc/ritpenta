@@ -117,6 +117,37 @@
 
 
 <li class="nav-item">
+	<a class="nav-link" data-toggle="collapse" href="#awards-dropdown" aria-expanded="false" aria-controls="awards-dropdown">
+		<i class="fas fa-tachometer-alt  pr-4"></i>
+		<span class="menu-title">Awards</span>
+		<i class="menu-arrow"></i>
+	</a>
+	<div class="collapse" id="awards-dropdown">
+		<ul class="nav flex-column sub-menu">
+			<li class="nav-item">
+				<a class="nav-link" href="admin/addaward">Add</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="admin/viewaward">View</a>
+			</li> 
+
+		</ul>
+	</div>
+</li>
+
+
+
+<li class="nav-item">
+	<a class="nav-link" href="admin/blooddonors">
+		<i class="fas fa-tachometer-alt  pr-4"></i>
+		<span class="menu-title">Blood donation</span>
+	</a>
+</li>
+
+
+
+
+<li class="nav-item">
 	<a class="nav-link" href="admin/feedback">
 		<i class="menu-icon mdi mdi-trackpad"></i>
 		<span class="menu-title">Feedback</span>

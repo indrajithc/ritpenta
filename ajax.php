@@ -4,7 +4,7 @@
  * @Author: indran
  * @Date:   2018-11-14 04:50:37
  * @Last Modified by:   indran
- * @Last Modified time: 2018-11-15 06:15:26
+ * @Last Modified time: 2018-11-18 18:52:58
  */
 ?><?php 
 
@@ -33,6 +33,11 @@ if( isset( $_SESSION[ SYSTEM_NAME . 'userid'] )   ) {
 			echo json_encode(array('success'=>$flag));	 
 			break;
 
+			case 'image-to-award': 
+			$flag = imageToAward($_POST, $_FILES);	
+			echo json_encode(array('success'=>$flag));	 
+			break;
+			
 
 
 
