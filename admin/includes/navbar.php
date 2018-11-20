@@ -145,6 +145,15 @@
 </li>
 
 
+<li class="nav-item">
+	<a class="nav-link" href="admin/brequest">
+		<i class="fas fa-tachometer-alt  pr-4"></i>
+		<span class="menu-title">Blood Requests
+		</span>
+	</a>
+</li>
+
+
 
 
 <li class="nav-item">
