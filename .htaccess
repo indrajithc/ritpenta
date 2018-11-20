@@ -12,6 +12,8 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule ^login$ public/login.php [L]   
 
+RewriteRule ^public$ public/index.php [L]  
+RewriteRule ^public/brequest$ public/brequest.php [L]  
 
 #================ ======================================= ==================================
 
@@ -75,6 +77,7 @@ RewriteRule ^admin/editaward/([^/]+)$ admin/editaward.php?id=$1 [L]
 RewriteRule ^admin/imageaward/([^/]+)$ admin/imageaward.php?id=$1 [L] 
 
 
+RewriteRule ^admin/brequest$ admin/brequest.php [L] 
 
 
 
@@ -114,6 +117,7 @@ RewriteRule ^volunteer/edit_vol/([^/]+)$ volunteer/edit_vol.php?id=$1 [L]
 RewriteRule ^volunteer/blooddonors$	 volunteer/blooddonors.php [L]  
 
 
+RewriteRule ^volunteer/brequest$ admin/brequest.php [L] 
 
 #================ ======================================= ==================================
 
@@ -126,7 +130,7 @@ RewriteRule ^volunteer/blooddonors$	 volunteer/blooddonors.php [L]
 
 
 
-#RewriteRule ^login$ login.php [L]  
+#RewriteRule ^login$ public/login.php [L]  
 #RewriteRule ^ajax$ ajax.php [L]  
 
 

@@ -4,7 +4,7 @@
  * @Author: indran
  * @Date:   2018-11-12 20:42:11
  * @Last Modified by:   indran
- * @Last Modified time: 2018-11-12 23:02:27
+ * @Last Modified time: 2018-11-20 15:18:00
  */
 
 //(?=<!--)(.*)(?=-->)(.*)(?=\n)
@@ -47,6 +47,42 @@ if (isset($_POST['delete-fd'])) {
 }
 
 ?>
+<?php
+
+if (isset($_POST['delete-perme'])) {
+
+
+	$id = isit('id', $_POST, 0);
+	$id = unIndexMe((int) $id );
+
+	// if($_POST['make_delete'] == 1)
+	$action = 1;
+
+
+
+	$istrue =  $db->execute_query(  " DELETE FROM nss_feedback WHERE fd_id = " . $id);
+	
+
+	if($istrue){
+
+		$message [0] = 1;
+		$message [1] = ' updated ';  
+
+	}  else {
+
+		$message [0] = 4;
+		$message [1] = ' update error ';  
+	}
+	
+
+
+
+}
+
+?>
+
+
+
 
 
 
@@ -106,10 +142,10 @@ if (isset($_POST['delete-fd'])) {
 
 
 
-										<div class="card">
-											<div class="card-header" id="headingOne_<?php echo indexMe(  $value['fd_id'] ); ?>">
+										<div class="card border my-2">
+											<div class="card-header" id="pheadingOne_<?php echo indexMe(  $value['fd_id'] ); ?>">
 												<h5 class="mb-0">
-													<a class="btn btn-link w-100" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+													<a class="btn btn-link w-100" data-toggle="collapse" data-target="#headingOne_<?php echo indexMe(  $value['fd_id'] ); ?>" aria-expanded="true" aria-controls="#pheadingOne_<?php echo indexMe(  $value['fd_id'] ); ?>">
 														<div class="row">
 															<span class="col-sm-12 col-md-4 text-left text-info card-title text-capitalize">
 																<?php echo isit(  'fd_name',  $value); ?>
@@ -143,7 +179,7 @@ if (isset($_POST['delete-fd'])) {
 												</h5>
 											</div>
 
-											<div id="collapseOne" class="collapse show" aria-labelledby="headingOne_<?php echo indexMe(  $value['fd_id'] ); ?>" data-parent="#accordion">
+											<div id="headingOne_<?php echo indexMe(  $value['fd_id'] ); ?>" class="collapse " aria-labelledby="accordion" data-parent="#pheadingOne_<?php echo indexMe(  $value['fd_id'] ); ?>">
 												<div class="card-body">
 
 													<?php  echo isit(  'fd_msg',  $value); ?>
@@ -151,8 +187,8 @@ if (isset($_POST['delete-fd'])) {
 														<input type="hidden" name="id"  value="<?php 
 														echo indexMe(  $value['fd_id'] );
 														?>" >
-														<button name="delete-fd" class="btn btn-danger btn-sm 
-														" type="submit" >delete</button>
+														<button name="delete-fd" class="btn btn-info btn-sm 
+														" type="submit" >Read</button>
 													</form>
 												</div>
 											</div>
@@ -203,10 +239,10 @@ if (isset($_POST['delete-fd'])) {
 
 
 
-										<div class="card">
-											<div class="card-header" id="headingOne_<?php echo indexMe(  $value['fd_id'] ); ?>">
+										<div class="card border my-2">
+											<div class="card-header" id="pxheadingOne_<?php echo indexMe(  $value['fd_id'] ); ?>">
 												<h5 class="mb-0">
-													<a class="btn btn-link w-100" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+													<a class="btn btn-link w-100" data-toggle="collapse" data-target="#xheadingOne_<?php echo indexMe(  $value['fd_id'] ); ?>" aria-expanded="true" aria-controls="pxheadingOne_<?php echo indexMe(  $value['fd_id'] ); ?>">
 														<div class="row">
 															<span class="col-sm-12 col-md-4 text-left text-info card-title text-capitalize">
 																<?php echo isit(  'fd_name',  $value); ?>
@@ -240,10 +276,18 @@ if (isset($_POST['delete-fd'])) {
 												</h5>
 											</div>
 
-											<div id="collapseOne" class="collapse show" aria-labelledby="headingOne_<?php echo indexMe(  $value['fd_id'] ); ?>" data-parent="#accordion-delete">
+											<div id="xheadingOne_<?php echo indexMe(  $value['fd_id'] ); ?>" class="collapse" aria-labelledby="pxheadingOne_<?php echo indexMe(  $value['fd_id'] ); ?>" data-parent="#accordion-delete">
 												<div class="card-body">
 
 													<?php  echo isit(  'fd_msg',  $value); ?>
+
+													<form class=" w-100 text-right" method="post" action="">
+														<input type="hidden" name="id"  value="<?php 
+														echo indexMe(  $value['fd_id'] );
+														?>" >
+														<button name="delete-perme" class="btn btn-danger btn-sm 
+														" type="submit" >delete</button>
+													</form>
 
 												</div>
 											</div>
