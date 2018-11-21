@@ -1,11 +1,6 @@
 <?php
 
-/**
- * @Author: indran
- * @Date:   2018-10-17 16:48:54
- * @Last Modified by:   indran
- * @Last Modified time: 2018-11-13 06:32:14
- */
+
 
 include_once('../global.php'); ?>
 <?php include_once('../root/functions.php'); ?>

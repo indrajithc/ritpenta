@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @Author: indran
- * @Date:   2018-11-20 15:28:33
- * @Last Modified by:   indran
- * @Last Modified time: 2018-11-20 17:46:37
- */
 
 
 
@@ -245,8 +239,8 @@ textarea {
 				<ul class="nav navbar-nav navbar-right text-uppercase">
 					<li><a href="public/#myPage">HOME</a></li>
 					<li><a href="public/login.php">Login</a></li>
-					<li><a href="public/#tour">TOUR</a></li>
-					<li><a href="public/#contact">CONTACT</a></li>
+					<li><a href="public/#tour">About Us</a></li>
+					<li><a href="public/">Feedback</a></li>
 					<li><a href="public/brequest">blood request</a></li>
 
 					<li class="dropdown">

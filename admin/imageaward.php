@@ -1,11 +1,6 @@
 <?php
 
-/**
- * @Author: indran
- * @Date:   2018-11-18 11:51:50
- * @Last Modified by:   indran
- * @Last Modified time: 2018-11-18 18:58:18
- */
+
 
 
 include_once('includes/header.php');
@@ -49,8 +44,14 @@ if (isset($_POST['make_delete'])) {
 	$istrue = $db->display( " SELECT * FROM nss_awards_photo WHERE awrdp_id =  " . $idIN );
 	$pathName = "";
 
-	if (isset($istrue[0])) {
+	if (isset($istrue[0])&&($istrue)) {
+
+
+		$message [0] = 1;
+		$message [1] = '  Photo  Successfully added';
 		$pathName = "../" . $istrue[0]['awrdp_path']. "/" .  $istrue[0]['awrdp_name'];
+		  
+
 	}
 
 
@@ -64,12 +65,12 @@ if (isset($_POST['make_delete'])) {
 		} catch (Exception $e) {
 
 		}
-		$message [0] = 1;
-		$message [1] = ' updated ';  
+		$message [0] = 4;
+		$message [1] = '  Photo  Successfully Removed';  
 
 	}  else {
 
-		$message [0] = 4;
+		$message [0] = 3;
 		$message [1] = ' update error ';  
 	}
 
@@ -115,13 +116,7 @@ if (isset($_POST['image-up'])) {
 
 
 
-		<div class="page-header">
-			<div class="h3 mb-3 px-3 bg-primary text-white"><h3> Complete Details</h3>
-			</div>
-		</div>
-
-
-
+			<center>	<h3 class="h3 mb-3 font-weight-normal danger-text"> Gallery</h3></center>
 
 		<?php
 
@@ -175,14 +170,7 @@ if (isset($_POST['image-up'])) {
 								<th scope="col"></th>
 								<td></td>
 								<th scope="col"></th>
-								<td> 
-									<a title="edit" href="volunteer/viewaward/<?php echo indexMe((int)isit('awrd_id', $details, 0)); ?>" class="btn btn-sm btn-info ">
-										<i class="ti-eye"></i>
-									</a>
-									<a title="edit" href="volunteer/editaward/<?php echo indexMe((int)isit('awrd_id', $details, 0)); ?>" class="btn btn-sm btn-warning ">
-										<i class="ti-pencil-alt"></i>
-									</a>
-								</td>
+								
 							</tr>
 
 						</tbody>

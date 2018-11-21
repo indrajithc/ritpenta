@@ -1,12 +1,6 @@
 <?php
 
-/**
- * @Author: indran
- * @Date:   2018-11-11 19:17:20
- * @Last Modified by:   indran
- * @Last Modified time: 2018-11-12 22:26:25
- */ 
-//(?=<!--)(.*)(?=-->)(.*)(?=\n)
+
 
 
 
@@ -38,12 +32,12 @@ if (   $id == -1) {
 	<div class="col-sm-12 px-3  bg-white ">
 
 
+</br>
+		
+		<center>	<h3 class="h3 mb-3 font-weight-normal danger-text">Regular Activities</h3></center>
+		
 
-		<div class="page-header">
-			<div class="h3 mb-3 bg-primary text-white"><h1> Complete Details</h1>
-			</div>
-		</div>
-
+</br>
 
 
 
@@ -81,33 +75,33 @@ if (   $id == -1) {
 					<table class="table table-hover w-100">
 						<tbody>
 							<tr>
-								<th scope="col">Camp key</th>
+								<th scope="col">Event key</th>
 								<td>
 									<?php echo  isit( 'event_key', $details); ?>
 								</td>
 							</tr> 
 							<tr>
-								<th scope="col">Name</th>
+								<th scope="col">  Event Name</th>
 								<td> 
 									<?php echo  isit( 'event_name', $details); ?>
 								</td>
 							</tr>
 							<tr>
-								<th scope="col">Name</th>
+								<th scope="col">Event On</th>
 								<td> 
-									<?php echo  isit( 'event_name', $details); ?>
+									<?php echo  isit( 'event_date', $details); ?>
 								</td>
 							</tr>
 							<tr>
-								<th scope="col">Name</th>
+								<th scope="col">Total hours</th>
 								<td> 
-									<?php echo  isit( 'event_name', $details); ?>
+									<?php echo  isit( 'event_hrs', $details); ?>
 								</td>
 							</tr>
 							<tr>
-								<th scope="col">Name</th>
+								<th scope="col">Event Objective</th>
 								<td> 
-									<?php echo  isit( 'event_name', $details); ?>
+									<?php echo  isit( 'event_dtls', $details); ?>
 								</td>
 							</tr>
 

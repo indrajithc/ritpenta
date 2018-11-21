@@ -1,7 +1,6 @@
 
 <?php
 
-//(?=<!--)(.*)(?=-->)(.*)(?=\n)
 
 
 include_once('includes/header.php');

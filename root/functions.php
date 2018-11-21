@@ -1,11 +1,6 @@
 <?php include_once('../global.php'); ?><?php
 
-/**
- * @Author: indran
- * @Date:   2018-08-21 18:45:04
- * @Last Modified by:   indran
- * @Last Modified time: 2018-11-12 21:57:24
- */
+
 function auth_login() {
 
 

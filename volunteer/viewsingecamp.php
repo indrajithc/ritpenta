@@ -1,13 +1,6 @@
 <?php
 
-/**
- * @Author: indran
- * @Date:   2018-11-12 22:20:32
- * @Last Modified by:   indran
- * @Last Modified time: 2018-11-12 22:23:44
- */
 
-//(?=<!--)(.*)(?=-->)(.*)(?=\n)
 
 
 
@@ -39,12 +32,12 @@ if (   $id == -1) {
 	<div class="col-sm-12 px-3  bg-white ">
 
 
+</br>
+		
+		<center>	<h3 class="h3 mb-3 font-weight-normal danger-text">Camp Activities</h3></center>
+		
 
-		<div class="page-header">
-			<div class="h3 mb-3 bg-primary text-white"><h1> Complete Details</h1>
-			</div>
-		</div>
-
+</br>
 
 
 
@@ -79,6 +72,7 @@ if (   $id == -1) {
 
 
 
+					
 					<table class="table table-hover w-100">
 						<tbody>
 							<tr>
@@ -88,31 +82,34 @@ if (   $id == -1) {
 								</td>
 							</tr> 
 							<tr>
-								<th scope="col">Name</th>
+								<th scope="col"> Camp Name</th>
 								<td> 
 									<?php echo  isit( 'cp_name', $details); ?>
 								</td>
 							</tr>
 							<tr>
-								<th scope="col">Name</th>
+								<th scope="col">Camp  Start On</th>
 								<td> 
-									<?php echo  isit( 'cp_name', $details); ?>
+									<?php echo  isit( 'cp_date_frm', $details); ?>
 								</td>
 							</tr>
 							<tr>
-								<th scope="col">Name</th>
+								<th scope="col">Camp End On</th>
 								<td> 
-									<?php echo  isit( 'cp_name', $details); ?>
+									<?php echo  isit( 'cp_date_to', $details); ?>
 								</td>
 							</tr>
 							<tr>
-								<th scope="col">Name</th>
+								<th scope="col">Camp Objective</th>
 								<td> 
-									<?php echo  isit( 'cp_name', $details); ?>
+									<?php echo  isit( 'cp_details', $details); ?>
 								</td>
 							</tr>
 
 						</tbody>
+
+
+					</table>
 
 
 					</table>

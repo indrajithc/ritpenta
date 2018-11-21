@@ -1,13 +1,5 @@
 <?php
 
-/**
- * @Author: indran
- * @Date:   2018-11-11 19:17:02
- * @Last Modified by:   indran
- * @Last Modified time: 2018-11-17 20:01:51
- */ 
-
-//(?=<!--)(.*)(?=-->)(.*)(?=\n)
 
 include_once('includes/header.php');
 
@@ -39,11 +31,17 @@ include_once('includes/header.php');
 
 
 
-			<div class="page-header">
-				<div class="h3 mb-3 bg-primary text-white"><h1>Event Details</h1>
-				</div>
-			</div>
+		<div class="card">
+			<div class="card-body"> 
 
+
+				</br>
+		
+		<center>	<h3 class="h3 mb-3 font-weight-normal danger-text">Regular Activities</h3></center>
+		
+
+</br>
+			
 
 			<div class="table-responsive">
 				

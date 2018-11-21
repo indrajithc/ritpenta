@@ -1,13 +1,6 @@
 <?php
 
-/**
- * @Author: indran
- * @Date:   2018-11-11 15:19:01
- * @Last Modified by:   indran
- * @Last Modified time: 2018-11-11 17:45:42
- */  
 
-//(?=<!--)(.*)(?=-->)(.*)(?=\n)
 
 
 
@@ -115,7 +108,8 @@ if(isset($_POST['submit'])){
 }
 
 ?>
-
+<div class="card">
+<div class="card-body">
 
 
 <div class="row">
@@ -123,10 +117,10 @@ if(isset($_POST['submit'])){
 
 
 
-		<div class="page-header">
-			<div class="h3 mb-3 bg-primary text-white"><h1> Edit Details</h1>
-			</div>
-		</div>
+		
+	<center>	<h3 class="h3 mb-3 font-weight-normal danger-text"> Update  Volunteer Details</h3> </center>
+		
+		<?php 
 
 
 

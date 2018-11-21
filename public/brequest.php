@@ -125,7 +125,12 @@ footer {
         <?php
         $blg = isit('vol_bg', $_GET, 0) ;
         if (isset($_GET['vol_bg'])) {
-          $result = selectFromTable( ' COUNT(*) AS count ', 'nss_blood_donation',  "bd_group = '$blg' " , $db);
+          // $result = selectFromTable( ' COUNT(*) AS count ', 'nss_blood_donation',  "bd_group = '$blg' " , $db);
+
+          $result = selectFromTable( ' COUNT( DISTINCT(admissionno) ) AS count ', '  stud_details ',  "   admissionno IN ( SELECT bd_admno FROM nss_blood_donation WHERE bd_group = '$blg'  ) OR admissionno IN ( SELECT admnno FROM nss_vol_reg WHERE vol_bg = '$blg'  )    " , $db);
+
+
+            
           $blg =  $result;
           if (isset($blg[0]['count'])) {
             $blg = $blg[0]['count'];
@@ -137,7 +142,7 @@ footer {
 
         <?php if (isset($_GET['vol_bg'])): ?>
           <div class="form-group" >
-            <input class="form-control" style=" color: red; font-size: 2rem; " type="text" id="reqdate" value="<?php echo $blg . ' blood donor available '; ?>" readonly >
+            <input class="form-control" style=" color: red; font-size: 2rem; " type="text" id="reqdate" value="<?php echo $blg . '     Blood Donor Available '; ?>" readonly >
           </div>
         <?php endif; ?>
       </form>
@@ -215,8 +220,8 @@ footer {
 
         </form>
         <?php else: ?>
-          <?php $message[0] = 1; ?>
-          <?php $message[1] = " sorry "; ?>
+          <?php $message[0] = 0; ?>
+          <?php $message[1] = "  "; ?>
 
 
           <?php  echo show_error($message); ?>

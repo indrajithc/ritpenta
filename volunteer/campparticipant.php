@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @Author: indran
- * @Date:   2018-11-17 12:40:21
- * @Last Modified by:   indran
- * @Last Modified time: 2018-11-17 19:21:22
- */
 
 
 include_once('includes/header.php');
@@ -156,12 +150,12 @@ if (isset($_POST['image-up'])) {
 
 
 
-		<div class="page-header">
-			<div class="h3 mb-3 px-3 bg-primary text-white"><h3> Complete Details</h3>
-			</div>
-		</div>
+</br>
+		
+		<center>	<h3 class="h3 mb-3 font-weight-normal danger-text">Camp Participation</h3></center>
+		
 
-
+</br>
 
 
 		<?php
@@ -224,14 +218,7 @@ if (isset($_POST['image-up'])) {
 								<th scope="col"></th>
 								<td></td>
 								<th scope="col"></th>
-								<td> 
-									<a title="edit" href="volunteer/viewcamp/<?php echo indexMe((int)isit('cp_id', $details, 0)); ?>" class="btn btn-sm btn-info ">
-										<i class="ti-eye"></i>
-									</a>
-									<a title="edit" href="volunteer/editcamp/<?php echo indexMe((int)isit('cp_id', $details, 0)); ?>" class="btn btn-sm btn-warning ">
-										<i class="ti-pencil-alt"></i>
-									</a>
-								</td>
+								
 							</tr>
 
 						</tbody>
@@ -254,7 +241,7 @@ if (isset($_POST['image-up'])) {
 			
 			<form class="form-horizontal bordered-row   py-5" id="add-volunteer-0"  action="" method="post" data-parsley-validate>
 
-				<h4>Camp Participants</h4>
+				<h4><b>Camp Participants</b></h4>
 				<div class="row  " >
 					<div class="col-9 ">
 
@@ -263,7 +250,7 @@ if (isset($_POST['image-up'])) {
 
 
 							<div class="form-group">
-								<label class="bmd-label-floating">Admission No</label>
+								<label class="bmd-label-floating"></label>
 								<div class="">
 
 									<?php  
@@ -311,7 +298,6 @@ if (isset($_POST['image-up'])) {
 			<div class="row mt-4">
 				<div class="col-sm-12  ">
 
-					<h4>Camp Participants</h4>
 					<?php
 
 					$details = selectFromTable( '*' , ' nss_camp_partcptn p LEFT JOIN nss_vol_reg v ON v.vol_id = p.camp_vol_id LEFT JOIN stud_details d ON d.admissionno = v.admnno ', ' 1 ' , $db);

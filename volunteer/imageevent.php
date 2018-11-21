@@ -1,11 +1,6 @@
 <?php
 
-/**
-* @Author: indran
-* @Date:   2018-11-15 06:05:13
-* @Last Modified by:   indran
-* @Last Modified time: 2018-11-15 06:05:28
-*/  
+
 
 include_once('includes/header.php');
 
@@ -114,11 +109,12 @@ if (isset($_POST['image-up'])) {
 
 
 
-		<div class="page-header">
-			<div class="h3 mb-3 px-3 bg-primary text-white"><h3> Complete Details</h3>
-			</div>
-		</div>
+				</br>
+		
+		<center>	<h3 class="h3 mb-3 font-weight-normal danger-text"> Regular Events  Gallery</h3></center>
+		
 
+</br>
 
 
 
@@ -182,14 +178,7 @@ if (isset($_POST['image-up'])) {
 								<th scope="col"></th>
 								<td></td>
 								<th scope="col"></th>
-								<td> 
-									<a title="edit" href="volunteer/viewevent/<?php echo indexMe((int)isit('event_id', $details, 0)); ?>" class="btn btn-sm btn-info ">
-										<i class="ti-eye"></i>
-									</a>
-									<a title="edit" href="volunteer/editevent/<?php echo indexMe((int)isit('event_id', $details, 0)); ?>" class="btn btn-sm btn-warning ">
-										<i class="ti-pencil-alt"></i>
-									</a>
-								</td>
+								
 							</tr>
 
 						</tbody>

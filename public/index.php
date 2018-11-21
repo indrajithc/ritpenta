@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @Author: indran
- * @Date:   2018-10-17 16:48:54
- * @Last Modified by:   indran
- * @Last Modified time: 2018-11-20 15:58:42
- */
 
 include_once('includes/header.php');
 ?>
@@ -191,7 +185,7 @@ if (isset($_POST['add-feedback'])) {
 
   <!-- Container (Contact Section) -->
   <div id="contact" class="container">
-    <h3 class="text-center">Contact</h3>
+    <h3 class="text-center">Feedback</h3>
     <p class="text-center"><em>We love our fans!</em></p>
 
     <div class="row">
