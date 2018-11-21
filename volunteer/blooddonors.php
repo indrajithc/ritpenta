@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @Author: indran
- * @Date:   2018-11-17 22:01:27
- * @Last Modified by:   indran
- * @Last Modified time: 2018-11-18 10:32:34
- */ 
 
 
 include_once('includes/header.php'); ?>
@@ -168,23 +162,19 @@ if(isset($_POST['submit'])){
 
 
 
+<div class="card">
+<div class="card-body">
 
 
-<div class="row">
-	<div class="col h3 mb-3 bg-primary text-white">
-
-
-
-		<div class="page-header">
-			<h1>Add  blood donation</h1>
-		</div>
+	
 
 
 
+		<<center>	<h3 class="h3 mb-3 font-weight-normal danger-text"> Blood Donors </h3> </center>
+		
 
 
-	</div>
-</div>
+
 
 
 <div class="row">
@@ -211,7 +201,7 @@ if(isset($_POST['submit'])){
 
 
 				<div class="form-group">
-					<label class="bmd-label-floating">Admission No</label>
+					<label class="bmd-label-floating"><b>Admission No</b></label>
 					<div class="">
 
 						<?php  
@@ -382,11 +372,11 @@ if(isset($_POST['submit'])){
 
 
 
-<div class="row">
-	<div class="col-sm-12 ">
+<div class="card">
+<div class="card-body">
 
 
-		<h1 class="h3 mb-3 font-weight-normal text-dark text-center">Volunteer Details</h1>
+	
 
 
 

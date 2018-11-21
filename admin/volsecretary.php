@@ -1,11 +1,6 @@
 <?php
 
-/**
- * @Author: indran
- * @Date:   2018-11-11 20:09:39
- * @Last Modified by:   indran
- * @Last Modified time: 2018-11-11 21:48:18
- */ 
+
 
 include_once('includes/header.php');
 
@@ -127,7 +122,7 @@ $details = $db->display($stmnt);
 			<form class="form" method="post" action="">
 
 
-				<h5  class="text-capitalize mt-3 text-left"> Slect a Volunteer</h5>
+				<h5  class="text-dark mt-3 text-left"><B> SELECT A VOLUNTEER</B></h5>
 
 
 				<?php  

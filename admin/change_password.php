@@ -1,12 +1,5 @@
 <?php
 
-/**
- * @Author: indran
- * @Date:   2018-11-06 15:13:03
- * @Last Modified by:   indran
- * @Last Modified time: 2018-11-12 21:44:54
- */
-
 
 include_once('includes/header.php'); ?>
 
@@ -64,32 +57,6 @@ if (isset($_POST['update'])) {
 
 
 
-<div class="page-header  mb-4 ">
-	<div class="row align-items-end">
-		<div class="col-lg-8">
-			<div class="page-header-title">
-				<i class="feather icon-home bg-c-blue"></i>
-				<div class="d-inline">
-					<h5>Change Password</h5>
-					<span>edit basic details</span>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-4">
-		<!-- 	<div class="page-header-breadcrumb">
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb float-right">
-						<li class="breadcrumb-item text-capitalize"><a href="admin/dashboard">dashboard</a></li> 
-						<li class="breadcrumb-item text-capitalize active" aria-current="page">change password</li>
-					</ol>
-				</nav>
-			</div> -->
-		</div>
-	</div>
-</div>
-
-
-
 <div class="row flex-grow">
 	<div class="col-12">
 
@@ -99,6 +66,10 @@ if (isset($_POST['update'])) {
 			<div class="card-body">
 <!-- 	<h4 class="card-title">Horizontal Form</h4>
 	<p class="card-description"> Horizontal form layout </p> -->
+
+
+		<center>	<h3 class="h3 mb-3 font-weight-normal danger-text">Change  Your Password</h3></center>
+
 	<form class="forms-sample" action="" method="post" data-parsley-validate>
 		
 		<div class="form-group row">

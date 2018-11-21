@@ -1,13 +1,5 @@
 <?php
 
-/**
- * @Author: indran
- * @Date:   2018-11-12 20:42:11
- * @Last Modified by:   indran
- * @Last Modified time: 2018-11-20 15:18:00
- */
-
-//(?=<!--)(.*)(?=-->)(.*)(?=\n)
 
 
 
@@ -108,10 +100,10 @@ if (isset($_POST['delete-perme'])) {
 
 				<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
 					<li class="nav-item">
-						<a class="nav-link active" id="pills-active-tab" data-toggle="pill" href="#pills-active" role="tab" aria-controls="pills-active" aria-selected="true">active</a>
+						<a class="nav-link active" id="pills-active-tab" data-toggle="pill" href="#pills-active" role="tab" aria-controls="pills-active" aria-selected="true">feedbacks</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" id="pills-delete-tab" data-toggle="pill" href="#pills-delete" role="tab" aria-controls="pills-delete" aria-selected="false">delete</a>
+						<a class="nav-link" id="pills-delete-tab" data-toggle="pill" href="#pills-delete" role="tab" aria-controls="pills-delete" aria-selected="false"> Readed</a>
 					</li>
 
 				</ul>

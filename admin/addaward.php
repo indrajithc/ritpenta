@@ -1,11 +1,6 @@
 <?php
 
-/**
- * @Author: indran
- * @Date:   2018-11-18 11:55:18
- * @Last Modified by:   indran
- * @Last Modified time: 2018-11-18 17:34:17
- */
+
 include_once('includes/header.php'); ?>
 
 
@@ -66,7 +61,7 @@ if(isset($_POST['submit-btn'])){
 
 		<form  id="addaward"  action="" method="post" class="form-horizontal borderd-row" align="center" data-parsley-validate >
 
-			<center>	<h3 class="h3 mb-3 font-weight-normal danger-text">Add Regular Activities</h3></center>
+			<center>	<h3 class="h3 mb-3 font-weight-normal danger-text">Awards And Achievements</h3></center>
 
 
 

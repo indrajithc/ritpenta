@@ -1,12 +1,5 @@
 <?php
 
-/**
- * @Author: indran
- * @Date:   2018-11-18 11:50:48
- * @Last Modified by:   indran
- * @Last Modified time: 2018-11-18 17:44:14
- */
-
 
 include_once('includes/header.php');
 

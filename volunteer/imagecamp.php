@@ -1,12 +1,5 @@
 <?php
 
-/**
- * @Author: indran
- * @Date:   2018-11-13 06:37:47
- * @Last Modified by:   indran
- * @Last Modified time: 2018-11-15 07:02:05
- */ 
-
 
 
 include_once('includes/header.php');
@@ -118,13 +111,17 @@ if (isset($_POST['image-up'])) {
 	<div class="col-sm-12 p-3  bg-white ">
 
 
-
-		<div class="page-header">
-			<div class="h3 mb-3 px-3 bg-primary text-white"><h3> Complete Details</h3>
-			</div>
-		</div>
+<div class="card">
+			<div class="card-body"> 
 
 
+				</br>
+		
+		<center>	<h3 class="h3 mb-3 font-weight-normal danger-text"> Camp Gallery</h3></center>
+		
+
+</br>
+		
 
 
 		<?php
@@ -187,14 +184,7 @@ if (isset($_POST['image-up'])) {
 								<th scope="col"></th>
 								<td></td>
 								<th scope="col"></th>
-								<td> 
-									<a title="edit" href="volunteer/viewcamp/<?php echo indexMe((int)isit('cp_id', $details, 0)); ?>" class="btn btn-sm btn-info ">
-										<i class="ti-eye"></i>
-									</a>
-									<a title="edit" href="volunteer/editcamp/<?php echo indexMe((int)isit('cp_id', $details, 0)); ?>" class="btn btn-sm btn-warning ">
-										<i class="ti-pencil-alt"></i>
-									</a>
-								</td>
+							
 							</tr>
 
 						</tbody>

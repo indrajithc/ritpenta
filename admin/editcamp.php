@@ -1,14 +1,5 @@
 <?php
 
-/**
- * @Author: indran
- * @Date:   2018-11-07 06:51:37
- * @Last Modified by:   indran
- * @Last Modified time: 2018-11-11 19:13:52
- */
-
-//(?=<!--)(.*)(?=-->)(.*)(?=\n)
-
 
 include_once('includes/header.php');
 
@@ -187,15 +178,6 @@ if(isset($_POST['submit-btn'])){
 
 
 
-<div class="row">
-	<div class="col-sm-12 px-3  bg-white ">
-
-
-
-		<div class="page-header">
-			<div class="h3 mb-3 bg-primary text-white"><h1> Complete Details</h1>
-			</div>
-		</div>
 
 
 

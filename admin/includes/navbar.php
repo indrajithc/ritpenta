@@ -80,12 +80,6 @@
 
 
 
-<li class="nav-item">
-	<a class="nav-link" href="admin/vol_select">
-		<i class="fas fa-tachometer-alt  pr-4"></i>
-		<span class="menu-title">SELECT VOLUNTEER</span>
-	</a>
-</li>
 
 
 

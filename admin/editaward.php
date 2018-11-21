@@ -1,14 +1,6 @@
 <?php
 
-/**
- * @Author: indran
- * @Date:   2018-11-18 11:51:24
- * @Last Modified by:   indran
- * @Last Modified time: 2018-11-18 17:55:51
- */
 
-
-//(?=<!--)(.*)(?=-->)(.*)(?=\n)
 
 
 include_once('includes/header.php');
@@ -107,7 +99,7 @@ if(isset($_POST['submit-btn'])){
 					//$message=' added!';
 
 			$message [0] = 1;
-			$message [1] = ' award added '; 
+			$message [1] = ' Awards Updated '; 
 
 
 

@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @Author: indran
- * @Date:   2018-11-12 22:20:20
- * @Last Modified by:   indran
- * @Last Modified time: 2018-11-17 14:12:58
- */
 
 include_once('includes/header.php'); ?>
 
@@ -49,9 +43,14 @@ $data = selectFromTable('*' , 'nss_camp_reg ' , '  cp_delete = 0 ', $db);
 			<div class="card-body"> 
 
 
-				<h4 class="card-title">Existing Departments</h4>
-				<p class="card-description"> view all departments </p>
+				</br>
+		
+		<center>	<h3 class="h3 mb-3 font-weight-normal danger-text">Camp Activities</h3></center>
+		
 
+</br>
+
+				
 
 				<?php if($data): ?>
 					<div class="table-responsive">
@@ -59,8 +58,8 @@ $data = selectFromTable('*' , 'nss_camp_reg ' , '  cp_delete = 0 ', $db);
 						<table class="table dataTable table-hover">
 							<thead>
 								<tr>
-									<th class="text-uppercase">name</th>
 									<th class="text-uppercase">key</th>
+									<th class="text-uppercase">Name</th>
 									<th class="text-uppercase">date from</th>
 									<th class="text-uppercase">date to</th>
 									<th class="text-uppercase">added time</th>  

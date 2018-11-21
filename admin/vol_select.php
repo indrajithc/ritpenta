@@ -1,7 +1,6 @@
 
 <?php
 
-//(?=<!--)(.*)(?=-->)(.*)(?=\n)
 
 include_once('../global.php'); ?>
 <?php include_once('../root/functions.php'); ?>

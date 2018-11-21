@@ -1,11 +1,5 @@
 <?php
-
-/**
- * @Author: indran
- * @Date:   2018-11-17 22:01:27
- * @Last Modified by:   indran
- * @Last Modified time: 2018-11-18 10:47:00
- */ 
+ 
 
 
 include_once('includes/header.php'); ?>
@@ -170,22 +164,9 @@ if(isset($_POST['submit'])){
 
 
 
-<div class="row">
-	<div class="col h3 mb-3 bg-primary text-white">
 
-
-
-		<div class="page-header">
-			<h1>Add  blood donation</h1>
-		</div>
-
-
-
-
-
-	</div>
-</div>
-
+<div class="card">
+	<div class="card-body">
 
 <div class="row">
 	<div class="col">
@@ -432,12 +413,8 @@ if(isset($_POST['submit'])){
 								<td>
 
 									<form accept="" method="post">
-										<input type="hidden" name="id" value="<?php echo indexMe( (int) isit('bd_id', $value, 0)); ?>">
-										<?php if( isit('bd_delete', $value) == 0 ): ?>
-											<button class="btn btn-sm btn-danger" name="make_delete" value="1">delete</button>
-											<?php else: ?>
-												<button class="btn btn-sm btn-success" name="make_delete" value="0">active</button>
-											<?php endif; ?>
+					<input type="hidden" name="id" value="<?php echo indexMe( (int) isit('bd_id', $value, 0)); ?>">
+										
 										</form>
 
 

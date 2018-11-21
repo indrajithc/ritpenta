@@ -116,25 +116,17 @@ if(isset($_POST['submit'])){
 
 
 
-<div class="row">
-	<div class="col h3 mb-3 bg-primary text-white">
 
-
-
-		<div class="page-header">
-			<h1>Add Volunteer</h1>
-		</div>
-
-
-
-
-
-	</div>
-</div>
-
+<div class="card">
+<div class="card-body">
 
 <div class="row">
 	<div class="col">
+
+
+
+	<center>	<h3 class="h3 mb-3 font-weight-normal danger-text"> Add Volunteer</h3> </center>
+
 		
 		<?php 
 
