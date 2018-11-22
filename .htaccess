@@ -78,6 +78,7 @@ RewriteRule ^admin/imageaward/([^/]+)$ admin/imageaward.php?id=$1 [L]
 
 
 RewriteRule ^admin/brequest$ admin/brequest.php [L] 
+RewriteRule ^admin/blooddonorsall$ admin/blooddonorsall.php [L] 
 
 
 

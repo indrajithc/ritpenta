@@ -106,57 +106,61 @@ $message=array(
      </tr>
      <tr>
        <th scope="col">DOB</th>
-       <td></td>
+       <td><?php echo  isit( 'dob', $details); ?></td>
      </tr>
      <tr>
        <th scope="col">Gender</th>
-       <td></td>
+       <td><?php echo  isit( 'gender', $details); ?></td>
      </tr>
      <tr>
        <th scope="col">Religion</th>
-       <td></td>
+       <td><?php echo  isit( 'religion', $details); ?></td>
      </tr>
      <tr>
        <th scope="col">Caste</th>
-       <td></td>
+       <td><?php echo  isit( 'caste', $details); ?></td>
      </tr>
 
      <tr>
 
        <th scope="col">Address</th>
-       <td></td>
+       <td><?php echo  isit( 'address', $details); ?></td>
      </tr>
      <tr>
        <th scope="col">Year of Admission</th>
-       <td></td>
+       <td><?php echo  isit( 'year_of_admission', $details); ?></td>
      </tr>
      <tr>
        <th scope="col">Course</th>
-       <td></td>
+       <td><?php echo  isit( 'courseid', $details); ?></td>
      </tr>
      <tr>
        <th scope="col">Branch</th>
-       <td></td>
+       <td><?php echo  isit( 'branch_or_specialisation', $details); ?></td>
      </tr>
      <tr>
        <th scope="col">Semester</th>
-       <td></td>
+       <td><?php echo  isit( 'semid', $details); ?></td>
      </tr>
      <tr>
        <th scope="col">Department</th>
+       <td><?php echo  isit( 'deptname', $details); ?></td>
      </tr>
      <tr>
        <th scope="col">Blood Group</th>
+       <td><?php echo  isit( 'vol_bg', $details); ?></td>
      </tr>
      <tr>
        <th scope="col">Mobile Number</th>
+       <td><?php echo  isit( 'vol_mob', $details); ?></td>
      </tr>
      <tr>
        <th scope="col">Alternate Mobile Number</th>
+       <td><?php echo  isit( 'vol_alt_mob', $details); ?></td>
      </tr>
      <tr>
        <th scope="col">Email Id</th>
-       <th scope="col"></th>
+       <td><?php echo  isit( 'vol_emailid', $details); ?></td>
      </tr>
    </tbody>
 

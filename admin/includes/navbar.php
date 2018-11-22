@@ -85,12 +85,12 @@
 
 
 <li class="nav-item">
-	<a class="nav-link" data-toggle="collapse" href="#dashboard-dropdown" aria-expanded="false" aria-controls="dashboard-dropdown">
+	<a class="nav-link" data-toggle="collapse" href="#Volunteer-dropdown" aria-expanded="false" aria-controls="Volunteer-dropdown">
 		<i class="fas fa-tachometer-alt  pr-4"></i>
 		<span class="menu-title">Volunteer</span>
 		<i class="menu-arrow"></i>
 	</a>
-	<div class="collapse" id="dashboard-dropdown">
+	<div class="collapse" id="Volunteer-dropdown">
 		<ul class="nav flex-column sub-menu">
 			<li class="nav-item">
 				<a class="nav-link" href="admin/addvol">Add</a>

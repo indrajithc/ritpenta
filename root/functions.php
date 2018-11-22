@@ -1,4 +1,4 @@
-<?php include_once('../global.php'); ?><?php
+<?php if( file_exists('../global.php')) include_once('../global.php'); ?><?php
 
 
 function auth_login() {
