@@ -155,9 +155,6 @@ if(isset($_POST['login'])){
 
 
 
-            <span class="text-muted pt-5 mt-5 d-block text-center text-sm-left d-sm-inline-block"> Copyright © <?php echo THEME_OWN_BY; ?>
-            <a href="<?php echo TERMS__CONDITIONS; ?>" target="_blank">read</a>. All rights reserved.</span>
-
 
 
           </div>
@@ -170,6 +167,10 @@ if(isset($_POST['login'])){
 
 
 </div>
+</br>
+</br>
+</br>
+</br>
 
 <?php 
 

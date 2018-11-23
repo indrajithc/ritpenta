@@ -115,7 +115,7 @@ $message=array(null,null);
 
 					<li class="nav-item  ml-4" >
 						<form action="admin/blooddonorsall">
-							<input type="text" name="group" class="form-control" placeholder="Search something ..."> 
+							<input type="text" name="group" class="form-control" placeholder="Enter Blood Group ..."> 
 						</form>
 					</li>
 

@@ -32,7 +32,7 @@
 <li class="nav-item">
 	<a class="nav-link" href="volunteer/viewcamp">
 		<i class="fas fa-tachometer-alt  pr-4"></i>
-		<span class="menu-title">View Camp</span>
+		<span class="menu-title" >Camp Acivities</span>
 	</a>
 </li>
 
@@ -40,7 +40,7 @@
 <li class="nav-item">
 	<a class="nav-link" href="volunteer/viewevent">
 		<i class="fas fa-tachometer-alt  pr-4"></i>
-		<span class="menu-title">View Event</span>
+		<span class="menu-title">Regular Activities</span>
 	</a>
 </li>
 

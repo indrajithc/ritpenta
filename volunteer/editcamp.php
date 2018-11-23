@@ -133,7 +133,7 @@ if(isset($_POST['submit-btn'])){
 				if ($result) {
 
 					$message [0] = 1;
-					$message [1] = ' camp and coordinators are added '; 
+					$message [1] = ' camp and coordinators are Updated'; 
 				}
 
 

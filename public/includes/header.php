@@ -97,8 +97,8 @@ h3, h4 {
 	border-color: #f1f1f1;
 }
 .carousel-inner img {
-	-webkit-filter: grayscale(90%);
-	filter: grayscale(90%); /* make all photos black and white */ 
+	-webkit-filter: grayscale(0%);
+	filter: grayscale(0%); /* make all photos black and white */ 
 	width: 100%; /* Set width to 100% */
 	margin: auto;
 }
@@ -166,7 +166,7 @@ h3, h4 {
 .navbar {
 	font-family: Montserrat, sans-serif;
 	margin-bottom: 0;
-	background-color: #5c5c8e;
+	background-color: #000080;
 	border: 0;
 	font-size: 11px !important;
 	letter-spacing: 4px;
@@ -196,7 +196,7 @@ h3, h4 {
 	background-color: red !important;
 }
 footer {
-	background-color: #5c5c8e;
+	background-color: #000080;
 	color: #f5f5f5;
 	padding: 32px;
 }
@@ -240,16 +240,16 @@ textarea {
 					<li><a href="public/#myPage">HOME</a></li>
 					<li><a href="public/login.php">Login</a></li>
 					<li><a href="public/#tour">About Us</a></li>
-					<li><a href="public/">Feedback</a></li>
+					<li><a href="public/#contact">Feedback</a></li>
 					<li><a href="public/brequest">blood request</a></li>
 
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE
 							<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="public/#">Merchandise</a></li>
-								<li><a href="public/#">Extras</a></li>
-								<li><a href="public/#">Media</a></li> 
+								<li><a href="public/#"></a></li>
+								<li><a href="public/#"></a></li>
+								<li><a href="public/#"></a></li> 
 							</ul>
 						</li>
 						<li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>

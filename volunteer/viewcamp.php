@@ -84,16 +84,16 @@ $data = selectFromTable('*' , 'nss_camp_reg ' , '  cp_delete = 0 ', $db);
 										</td>
 
 										<td>
-											<a title="edit" href="volunteer/imagecamp/<?php echo indexMe((int)isit('cp_id', $value, 0)); ?>" class="btn btn-sm btn-success ">
+											<a title="Image Upload" href="volunteer/imagecamp/<?php echo indexMe((int)isit('cp_id', $value, 0)); ?>" class="btn btn-sm btn-success ">
 												<i class="ti-image"></i>
 											</a>
-											<a title="edit" href="volunteer/viewcamp/<?php echo indexMe((int)isit('cp_id', $value, 0)); ?>" class="btn btn-sm btn-info ">
+											<a title="View" href="volunteer/viewcamp/<?php echo indexMe((int)isit('cp_id', $value, 0)); ?>" class="btn btn-sm btn-info ">
 												<i class="ti-eye"></i>
 											</a>
 											<a title="edit" href="volunteer/editcamp/<?php echo indexMe((int)isit('cp_id', $value, 0)); ?>" class="btn btn-sm btn-warning ">
 												<i class="ti-pencil-alt"></i>
 											</a>
-											<a title="edit" href="volunteer/campparticipant/<?php echo indexMe((int)isit('cp_id', $value, 0)); ?>" class="btn btn-sm btn-primary ">
+											<a title="Add" href="volunteer/campparticipant/<?php echo indexMe((int)isit('cp_id', $value, 0)); ?>" class="btn btn-sm btn-primary ">
 												<i class="fas fa-user-plus"></i>
 											</a>
 										</td>

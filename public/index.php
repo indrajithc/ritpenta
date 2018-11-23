@@ -40,20 +40,21 @@ if (isset($_POST['add-feedback'])) {
     <li data-target="#myCarousel" data-slide-to="2"></li>
   </ol>
 
-  <!-- Wrapper for slides -->
+   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img src="images/col1.jpg" alt="New York" width="1200" height="700">   
+      <img src="images/col1.jpg" alt="New York">
     </div>
 
     <div class="item">
-      <img src="images/col2.jpg" alt="Chicago" width="1200" height="700">
+      <img src="images/col2.jpg" alt="Chicago">
+      
     </div>
 
     <div class="item">
-      <img src="images/col3.jpg" alt="Los Angeles" width="1200" height="500">
+      <img src="images/col3.jpg" alt="Los Angeles">
     </div>
-
+  </div>
     <!-- Left and right controls -->
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
       <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>

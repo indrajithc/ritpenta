@@ -161,7 +161,7 @@ if(isset($_POST['submit'])){
 								<?php foreach ($result as $key => $value): ?>
 
 
-									<option value="<?php echo $value['admissionno']; ?>"><?php echo ''.$value['name'] . ' ' . $value['admissionno']. ' ' . $value['courseid']. '-' . $value['branch_or_specialisation']; ?></option>
+									<option value="<?php echo $value['admissionno']; ?>"><?php echo ''.$value['admissionno'] . ' ' . $value['name']. ' ' . $value['courseid']. '-' . $value['branch_or_specialisation']; ?></option>
 
 
 
@@ -184,7 +184,7 @@ if(isset($_POST['submit'])){
 
 		<div class="col-3"> 
 			
-			<button class="btn btn-outline-info " name="find-me" style="margin-top: 1.9rem;" type="submit">find</button>
+			<button class="btn btn-outline-dark " name="find-me" style="margin-top: 1.7rem;" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
 			
 		</div>
 	</div>
@@ -297,7 +297,7 @@ if(isset($_POST['submit'])){
 						<div class="form-group">
 							<label class="bmd-label-floating">Alternate Phone No</label>
 							<div class="">
-								<input type="text" class="form-control"  placeholdera="Alternate Phone No" name="vol_alt_mob"   data-parsley-type="number" required >
+								<input type="text" class="form-control"  placeholdera="Alternate Phone No" name="vol_alt_mob"   data-parsley-type="number" >
 							</div>
 						</div>
 

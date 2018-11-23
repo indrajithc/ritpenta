@@ -11,7 +11,7 @@ function mainTo ($to, $subject , $body) {
 	$to = 'indranspeaks@gmail.com';
 
 	 // include the class name
-
+	// $to = 'indranspeaks@gmail.com';
 	
 			$mail = new PHPMailer(); // create a new object
 			$mail->IsSMTP(); // enable SMTP
@@ -21,9 +21,9 @@ function mainTo ($to, $subject , $body) {
 			$mail->Host = "smtp.gmail.com";
 			$mail->Port = 465; // or 587 465 465
 			$mail->IsHTML(true);
-			$mail->Username = "yourgamiid@gmail.com";
-			$mail->Password ="yourpassword";
-			$mail->SetFrom("yourgmailid@gmail.com");
+			$mail->Username = "ritpenta158@gmail.com";
+			$mail->Password ="qwertypenta@158";
+			$mail->SetFrom("ritpenta158@gmail.com");
 			$mail->Subject =  $subject ;
 
 			$mail->Body = $body;

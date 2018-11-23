@@ -152,26 +152,26 @@ if (isset($_POST['image-up'])) {
 					<table class="table table-hover w-100">
 						<tbody>
 							<tr>
-								<th scope="col">Camp key</th>
+								<th scope="col">Event key</th>
 								<td>
-									<?php echo  isit( 'ev_key', $details); ?>
+									<?php echo  isit( 'event_key', $details); ?>
 								</td>
 
-								<th scope="col">Name</th>
+								<th scope="col"> Event Name</th>
 								<td> 
-									<?php echo  isit( 'ev_name', $details); ?>
+									<?php echo  isit( '	event_name', $details); ?>
 								</td>
 							</tr> 
 
 							<tr>
-								<th scope="col">Date From</th>
+								<th scope="col">Event On</th>
 								<td> 
-									<?php echo  isit( 'ev_date_frm', $details); ?>
+									<?php echo  isit( 'event_date', $details); ?>
 								</td>
 
-								<th scope="col">Date To</th>
+								<th scope="col">Total Hours</th>
 								<td> 
-									<?php echo  isit( 'ev_date_to', $details); ?>
+									<?php echo  isit( 'event_hrs', $details); ?>
 								</td>
 							</tr>
 							<tr>

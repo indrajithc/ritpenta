@@ -125,7 +125,7 @@ if(isset($_POST['submit'])){
 
 
 
-		<?php
+		
 
 
 		$stmnt=" SELECT * FROM `nss_vol_reg` v LEFT JOIN  stud_details d ON v.admnno = d.admissionno   WHERE v.vol_id = :id ";
@@ -270,7 +270,7 @@ if(isset($_POST['submit'])){
 									</div>	
 									<div class="btn-group" role="group">
 										<div class="content-box text-center">
-											<button type="submit" name="submit" value="" class="btn btn-lg btn-outline-primary">update</button>
+											<button type="submit" name="submit" value="" class="btn btn-lg btn btn-success">update</button>
 											<!-- <button type="button" name="submit1" value="" class="btn btn-lg btn-outline-primary">Upload</button> -->
 										</div>
 									</div>

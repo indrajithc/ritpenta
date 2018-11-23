@@ -97,7 +97,7 @@ $data = selectFromTable('*' , 'nss_camp_reg ' , ' 1 ', $db);
 									<th class="text-uppercase">date from</th>
 									<th class="text-uppercase">date to</th>
 									<th class="text-uppercase">added time</th> 
-									<th class="text-uppercase">delete</th>
+									<th class="text-uppercase">status</th>
 									<th class="text-uppercase">more</th>
 								</tr>
 							</thead>
@@ -122,7 +122,7 @@ $data = selectFromTable('*' , 'nss_camp_reg ' , ' 1 ', $db);
 											<form accept="" method="post">
 												<input type="hidden" name="id" value="<?php echo indexMe( (int) isit('cp_id', $value, 0)); ?>">
 												<?php if( isit('cp_delete', $value) == 0 ): ?>
-													<button class="btn btn-sm btn-danger" name="make_delete" value="1">delete</button>
+													<button class="btn btn-sm btn-danger" name="make_delete" value="1">Inactive</button>
 													<?php else: ?>
 														<button class="btn btn-sm btn-success" name="make_delete" value="0">active</button>
 													<?php endif; ?>
@@ -131,10 +131,11 @@ $data = selectFromTable('*' , 'nss_camp_reg ' , ' 1 ', $db);
 
 											</td>
 											<td>
-												<a title="edit" href="admin/viewcamp/<?php echo indexMe((int)isit('cp_id', $value, 0)); ?>" class="btn btn-sm btn-info ">
+												<a title="View" href="admin/viewcamp/<?php echo indexMe((int)isit('cp_id', $value, 0)); ?>" class="btn btn-sm btn-primary ">
 													<i class="ti-eye"></i>
 												</a>
-												<a title="edit" href="admin/editcamp/<?php echo indexMe((int)isit('cp_id', $value, 0)); ?>" class="btn btn-sm btn-warning ">
+												<a title="edit" href="admin/editcamp/<?php echo indexMe((int)isit('cp_id', $value, 0)); ?>" class="btn btn-sm btn-warning" >
+												
 													<i class="ti-pencil-alt"></i>
 												</a>
 											</td>

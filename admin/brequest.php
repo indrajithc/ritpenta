@@ -103,10 +103,10 @@ if (isset($_POST['delete-perme'])) {
 
 				<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
 					<li class="nav-item">
-						<a class="nav-link active" id="pills-active-tab" data-toggle="pill" href="#pills-active" role="tab" aria-controls="pills-active" aria-selected="true">active Requests</a>
+						<a class="nav-link active" id="pills-active-tab" data-toggle="pill" href="#pills-active" role="tab" aria-controls="pills-active" aria-selected="true">Unseen</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" id="pills-delete-tab" data-toggle="pill" href="#pills-delete" role="tab" aria-controls="pills-delete" aria-selected="false">Deactiveted Requests</a>
+						<a class="nav-link" id="pills-delete-tab" data-toggle="pill" href="#pills-delete" role="tab" aria-controls="pills-delete" aria-selected="false"> Viewed </a>
 					</li>
 
 				</ul>
@@ -137,7 +137,7 @@ if (isset($_POST['delete-perme'])) {
 									<table class="table dataTable ">
 										<thead>
 											<tr>
-												<th>b group</th>
+												<th>Blood group</th>
 												<th>Name</th>
 												<th>Email</th>
 												<th>Mobile</th>
@@ -226,7 +226,7 @@ if (isset($_POST['delete-perme'])) {
 										<table class="table dataTable ">
 											<thead>
 												<tr>
-													<th>b group</th>
+													<th>Blood group</th>
 													<th>Name</th>
 													<th>Email</th>
 													<th>Mobile</th>
@@ -252,7 +252,7 @@ if (isset($_POST['delete-perme'])) {
 																<form accept="" method="post">
 																	<input type="hidden" name="id" value="<?php echo indexMe( (int) isit('req_id', $value, 0)); ?>">
 
-																	<button class="btn btn-sm btn-danger" name="delete-perme" value="1">delete</button>
+																	<button class="btn btn-sm btn-danger" name="delete-perme" value="1"><i class ="fa fa-trash"></i></button>
 
 																</form>
 

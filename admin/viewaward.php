@@ -62,12 +62,13 @@ if (isset($_POST['make_delete'])) {
 		<div class="col-sm-12">
 
 
+			
+</br>
+		
+		<center>	<h3 class="h3 mb-3 font-weight-normal danger-text">Awards And Achievements</h3></center>
+		
 
-			<div class="page-header">
-				<div class="h3 mb-3 bg-primary text-white"><h1>Award Details</h1>
-				</div>
-			</div>
-
+</br>
 
 			<div class="table-responsive">
 				
@@ -78,7 +79,7 @@ if (isset($_POST['make_delete'])) {
 							<th scope="col">Award date</th>
 							<th scope="col">description</th> 
 							<th class="text-uppercase">added time</th> 
-							<th class="text-uppercase">delete</th>
+							<th class="text-uppercase">status</th>
 							<th class="text-uppercase">more</th>
 
 						</tr>
@@ -118,9 +119,9 @@ if (isset($_POST['make_delete'])) {
 									<form accept="" method="post">
 										<input type="hidden" name="id" value="<?php echo indexMe( (int) isit('awrd_id', $value, 0)); ?>">
 										<?php if( isit('awrd_delete', $value) == 0 ): ?>
-											<button class="btn btn-sm btn-danger" name="make_delete" value="1">delete</button>
+											<button class="btn btn-sm btn-danger" name="make_delete" value="1">Inactive</button>
 											<?php else: ?>
-												<button class="btn btn-sm btn-success" name="make_delete" value="0">active</button>
+												<button class="btn btn-sm btn-success" name="make_delete" value="0">Active</button>
 											<?php endif; ?>
 										</form>
 
@@ -128,10 +129,10 @@ if (isset($_POST['make_delete'])) {
 									</td>
 									<td>
 
-										<a title="edit" href="admin/imageaward/<?php echo indexMe((int)isit('awrd_id', $value, 0)); ?>" class="btn btn-sm btn-success ">
+										<a title="Image Upload" href="admin/imageaward/<?php echo indexMe((int)isit('awrd_id', $value, 0)); ?>" class="btn btn-sm btn-primary ">
 											<i class="ti-image"></i>
 										</a>
-										<a title="edit" href="admin/viewaward/<?php echo indexMe((int)isit('awrd_id', $value, 0)); ?>" class="btn btn-sm btn-info ">
+										<a title="view" href="admin/viewaward/<?php echo indexMe((int)isit('awrd_id', $value, 0)); ?>" class="btn btn-sm btn-info ">
 											<i class="ti-eye"></i>
 										</a>
 										<a title="edit" href="admin/editaward/<?php echo indexMe((int)isit('awrd_id', $value, 0)); ?>" class="btn btn-sm btn-warning ">

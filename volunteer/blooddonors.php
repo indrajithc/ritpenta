@@ -170,7 +170,7 @@ if(isset($_POST['submit'])){
 
 
 
-		<<center>	<h3 class="h3 mb-3 font-weight-normal danger-text"> Blood Donors </h3> </center>
+		<center>	<h3 class="h3 mb-3 font-weight-normal danger-text"> Blood Donors </h3> </center>
 		
 
 

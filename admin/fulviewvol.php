@@ -42,15 +42,12 @@ $message=array(
 <div class="row">
   <div class="col-sm-12 px-3  bg-white ">
 
+<br>
 
 
-    <div class="page-header">
-      <div class="h3 mb-3 bg-primary text-white"><h1> Complete Details</h1>
-      </div>
-    </div>
+    <h1 class="h3 mb-3 font-weight-normal text-dark text-center">Volunteer Profile</h1>
 
-
-
+</br>
 
     <?php
 
@@ -88,7 +85,7 @@ $message=array(
          <tr>
            <th scope="col">Volunteer Id</th>
            <td>
-            <?php echo  isit( 'vol_id', $details); ?>
+            <?php echo  isit( 'vol_regid', $details); ?>
           </td>
         </tr>
         <tr>
